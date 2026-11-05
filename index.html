@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haman Deutsch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B1F2A;--ink2:#2A3042;--paper:#F5F2EA;--card0:#fff;--red:#C0392B;--gold:#D4A017;--teal:#2E6E6B;--line:#DDD6C4;--text:#1B1F2A;--mut:#5B6478;
+--bg:var(--paper);--card:var(--card0);--fg:var(--text);--fgm:var(--mut);--bd:var(--line);--acc:#8C6A0A;--danger:#B4432E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit}
+@media (prefers-color-scheme:dark){:root{--bg:#10131B;--card:#181D2A;--fg:#EDE9DC;--fgm:#9AA3B8;--bd:#2B3347;--acc:#E3B84A;--danger:#E3735C}}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Vazirmatn',sans-serif;line-height:1.9}
+.wrap{max-width:480px;margin:0 auto;padding:0 18px 48px}
+header{background:linear-gradient(180deg,var(--ink),var(--ink2));color:#F5F2EA;padding:20px 18px 14px;margin-bottom:-14px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;max-width:480px;margin:0 auto}
+.brand{font-size:20px;font-weight:700}.brand small{display:block;font-size:12px;font-weight:400;color:#C9BFA0}
+.streak{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:6px 14px}
+.streak .n{font-size:20px;font-weight:700;color:var(--gold)}.streak .l{font-size:11px;color:#C9BFA0}
+.pb{height:6px;border-radius:6px;background:rgba(255,255,255,.12);margin:12px auto 0;max-width:480px;overflow:hidden}.pb>div{height:100%;background:var(--gold)}
+.tabs{display:flex;gap:6px;max-width:480px;margin:12px auto 0;background:rgba(255,255,255,.08);border-radius:12px;padding:4px;overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:none;white-space:nowrap;border:none;background:transparent;color:#D9D2BC;font-family:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:9px;cursor:pointer}
+.tabs button.on{background:var(--gold);color:#241a05}
+.dc{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px;margin-top:18px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.eb{font-size:12px;color:var(--acc);font-weight:600;margin-bottom:4px}
+.dt{font-size:22px;font-weight:700;margin:0 0 6px}.du{color:var(--fgm);font-size:14px;margin:0 0 10px}
+.btn{margin-top:12px;width:100%;padding:11px;border:none;border-radius:10px;background:var(--gold);color:#241a05;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.btn.o{background:transparent;border:1px solid var(--bd);color:var(--fgm)}
+.st{font-size:14px;font-weight:600;color:var(--fgm);margin:24px 4px 10px}
+.g{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;cursor:pointer}
+.ch .t{font-size:15px;font-weight:600;min-width:0}
+.lb{flex:none;font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;background:rgba(46,110,107,.18);color:var(--teal)}
+.cb{max-height:0;overflow:hidden;transition:max-height .25s}.card.open .cb{max-height:1400px}.cbi{padding:0 16px 16px}
+.hook{font-size:14px;font-weight:600;background:rgba(212,160,23,.18);border-radius:8px;padding:8px 10px;margin-top:4px}
+.lbl{font-size:12px;font-weight:600;color:var(--fgm);margin:12px 0 4px}
+.form{direction:ltr;text-align:left;font-size:13px;background:rgba(46,110,107,.12);border-radius:8px;padding:8px 10px}
+.ex{direction:ltr;text-align:left;font-size:14px;margin:0 0 6px}
+.warn{font-size:13px;margin-top:12px;color:var(--danger)}.tip{font-size:13px;margin-top:8px;color:var(--acc)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:16px 0 4px;scrollbar-width:none}
+.chip{flex:none;font-size:13px;font-family:inherit;padding:7px 14px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--fgm);cursor:pointer}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.w{direction:ltr;text-align:left;font-size:17px;font-weight:700}.pl{direction:ltr;text-align:left;font-size:12px;color:var(--fgm)}
+.der{color:#2F6FD0}.die{color:#C23B6B}.das{color:#2E8B57}
+.parts{font-size:13px;background:rgba(46,110,107,.12);border-radius:8px;padding:8px 10px;margin:8px 0}
+.mini{margin-top:10px;font-size:13px;background:transparent;border:1px solid var(--bd);color:var(--fgm);border-radius:8px;padding:8px;width:100%;font-family:inherit;cursor:pointer}.mini.d{color:var(--acc);border-color:var(--acc)}
+ul.tl{margin:0;padding:0 18px 12px 0;font-size:13.5px}ul.tl li{margin-bottom:8px}
+.qc{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.qq{direction:ltr;text-align:left;font-weight:600;margin:0 0 10px}
+.opt{display:block;width:100%;direction:ltr;text-align:left;font-family:inherit;font-size:14px;padding:9px 12px;margin-bottom:6px;border:1px solid var(--bd);border-radius:9px;background:transparent;color:var(--fg);cursor:pointer}
+.opt.ok{border-color:#3E8E5A;background:rgba(62,142,90,.18)}.opt.bad{border-color:var(--danger);background:rgba(180,67,46,.14)}
+.expl{font-size:13px;color:var(--fgm)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px}
+.stat .n{font-size:22px;font-weight:700;color:var(--acc);direction:ltr;text-align:right}.stat .l{font-size:12px;color:var(--fgm)}
+.bar{height:8px;border-radius:8px;background:var(--bd);overflow:hidden;margin-top:4px}.bar>div{height:100%;background:var(--teal)}
+.inp{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);font-family:inherit;direction:ltr;text-align:left}
+.hr{display:flex;justify-content:space-between;font-size:13.5px;padding:8px 2px;border-bottom:1px dashed var(--bd)}
+.wrap{padding-bottom:104px}
+.bnav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bnav-in{display:flex;max-width:480px;margin:0 auto}
+.bnav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 7px;border:none;background:transparent;color:var(--fgm);font-family:inherit;font-size:11px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bnav button svg{width:22px;height:22px}
+.bnav button.on{color:var(--acc);font-weight:700}
+.bnav button.on svg{stroke-width:2.2}
+footer{text-align:center;color:var(--fgm);font-size:12px;margin-top:30px}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1B1F2A">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+<div id="app"></div>
+<script>
+var GT = [
+ {id:'g1',l:'A1',fa:'اسم و جنس دستوری',de:'Artikel & Genus',hook:'هر اسم آلمانی یک جنس دارد: اسم را همیشه همراه artikel یاد بگیر، نه تنها.',us:'اسم‌ها سه جنس دارند: مذکر، مؤنث و خنثی؛ جمع همیشه die است.',form:'der (m) | die (f) | das (n) | die (Plural)',ex:['Der Tisch ist neu.','Die Lampe ist hell.','Das Buch liegt hier.','Die Kinder spielen.'],mi:'فارسی جنس ندارد، پس جنس را حدس نزن و با کلمه حفظ کن: der Tisch، نه فقط Tisch.',tip:'در A1 و A2 معمولاً شکل کامل «artikel + اسم» لازم است.'},
+ {id:'g2',l:'A1',fa:'جای فعل در جمله',de:'Wortstellung V2',hook:'فعل صرف‌شده در جملهٔ خبری همیشه جای دوم است.',us:'هر چیزی اول بیاید (فاعل، زمان، مکان)، فعل بعد از آن می‌آید.',form:'Position 1 + Verb + Rest',ex:['Ich lerne Deutsch.','Heute lerne ich Deutsch.','In Berlin wohne ich.','Lernst du Deutsch?'],mi:'Heute ich lerne ✘ ← Heute lerne ich ✔ (مثل فارسی فعل آخر نمی‌رود).',tip:'در Schreiben اگر جملهٔ اول را با زمان یا مکان شروع کنی، فاعل بعد از فعل می‌آید.'},
+ {id:'g3',l:'A1',fa:'فعل‌های جدا شدنی',de:'Trennbare Verben',hook:'پیشوند جدا می‌شود و به آخر جمله می‌رود.',us:'aufstehen، einkaufen، anrufen: پیشوند در جملهٔ اصلی آخر می‌آید.',form:'Verb (2.) ... Präfix (Ende)',ex:['Ich stehe um 7 Uhr auf.','Sie kauft im Supermarkt ein.','Ruf mich bitte an!','Ich will früh aufstehen.'],mi:'Ich aufstehe um 7 Uhr ✘ ← Ich stehe um 7 Uhr auf ✔',tip:'در Perfekt: ge رو بین پیشوند و ریشه می‌آید: aufgestanden.'},
+ {id:'g4',l:'A1',fa:'حالت‌های دستوری',de:'Kasus: Nom / Akk / Dat',hook:'کی؟ ← Nominativ | چه چیزی را؟ ← Akkusativ | به چه کسی؟ ← Dativ',us:'artikel بر اساس نقش اسم در جمله تغییر می‌کند.',form:'m: der / den / dem | f: die / die / der | n: das / das / dem | pl: die / die / den(+n)',ex:['Der Mann kommt.','Ich sehe den Mann.','Ich helfe dem Mann.','Ich gebe der Frau das Buch.'],mi:'Ich helfe den Mann ✘ ← helfen + Dativ: Ich helfe dem Mann ✔',tip:'فعل‌های دایتیو مثل helfen، danken، gefallen را فهرست کن و حفظ کن.'},
+ {id:'g5',l:'A2',fa:'افعال کمکی وجهی',de:'Modalverben',hook:'فعل وجهی جای دوم، فعل اصلی (مصدر) آخر جمله: «پرانتز فعلی».',us:'können، müssen, dürfen, wollen, sollen, möchten',form:'Modalverb (2.) ... Infinitiv (Ende)',ex:['Ich muss heute arbeiten.','Du darfst hier nicht parken.','Ich möchte einen Kaffee.','Kannst du mir helfen?'],mi:'Ich muss zu arbeiten ✘ ← بعد از modal مصدر بدون zu: Ich muss arbeiten ✔',tip:'möchten برای درخواست مؤدبانه، در Sprechen و Schreiben بسیار کاربردی است.'},
+ {id:'g6',l:'A2',fa:'گذشتهٔ نقلی',de:'Perfekt',hook:'haben/sein در جای دوم + Partizip II آخر جمله.',us:'گذشتهٔ محاوره‌ای؛ با sein برای حرکت و تغییر حالت.',form:'haben/sein + ge-...-t / ge-...-en',ex:['Ich habe gegessen.','Er ist nach Berlin gefahren.','Wir haben Fußball gespielt.','Sie ist aufgewacht.'],mi:'Ich habe nach Berlin gefahren ✘ ← Ich bin nach Berlin gefahren ✔',tip:'sein با: gehen، fahren، kommen، bleiben، werden، sterben و تغییر حالت.'},
+ {id:'g7',l:'A2',fa:'حروف اضافهٔ دوحالته',de:'Wechselpräpositionen',hook:'Wo؟ ← Dativ | Wohin؟ ← Akkusativ',us:'an, auf, hinter, in, neben, über, unter, vor, zwischen',form:'Wo? + Dativ | Wohin? + Akkusativ',ex:['Das Buch liegt auf dem Tisch.','Ich lege das Buch auf den Tisch.','Ich bin in der Schule.','Ich gehe in die Schule.'],mi:'Ich gehe in der Schule ✘ ← Ich gehe in die Schule ✔ (حرکت = Akkusativ)',tip:'قبل از انتخاب artikel بپرس: Wo oder Wohin؟'},
+ {id:'g8',l:'A2',fa:'جملهٔ پیرو',de:'Nebensätze: weil, dass, wenn, obwohl',hook:'بعد از weil / dass / wenn / obwohl فعل صرف‌شده می‌رود آخر جمله.',us:'جملهٔ پیرو دلیل، محتوا، شرط یا تضاد را می‌رساند.',form:'Hauptsatz, Konjunktion + ... + Verb (Ende)',ex:['Ich lerne Deutsch, weil ich hier arbeiten möchte.','Ich glaube, dass er kommt.','Wenn es regnet, bleibe ich zu Hause.','Obwohl ich müde war, habe ich gearbeitet.'],mi:'weil ich habe keine Zeit ✘ ← weil ich keine Zeit habe ✔ | denn = جملهٔ اصلی (V2)',tip:'اگر جملهٔ پیرو اول بیاید، فعل جملهٔ اصلی فوراً بعد از ویرگول می‌آید.'},
+ {id:'g9',l:'B1',fa:'ختم صفت',de:'Adjektivdeklination',hook:'اگر artikel جنس و حالت را نشان ندهد، صفت آن را نشان می‌دهد.',us:'صفت قبل از اسم پایانهٔ -e یا -en یا -er... می‌گیرد.',form:'der alte Mann | ein alter Mann | alter Wein',ex:['Der alte Mann kommt.','Ich sehe einen alten Mann.','Mit großem Interesse.','Eine interessante Frage.'],mi:'ein alte Mann ✘ ← ein alter Mann ✔ (ein نشان‌دهندهٔ مذکر نیست، پس صفت -er می‌گیرد)',tip:'اول جدول artikel معین و نامعین را حفظ کن؛ ختم‌ها از آن‌ها پیروی می‌کنند.'},
+ {id:'g10',l:'B1',fa:'جملهٔ موصولی',de:'Relativsätze',hook:'جنس و عدد از اسم قبل، حالت از نقش ضمیر در جملهٔ موصولی.',us:'اطلاعاتی دربارهٔ یک اسم؛ فعل آخر جمله.',form:'Nomen, der/die/das/den/dem ... + Verb (Ende)',ex:['Der Mann, der dort steht, ist mein Lehrer.','Das Buch, das ich lese, ist spannend.','Die Frau, der ich geholfen habe, ist nett.','Das Haus, in dem ich wohne, ist alt.'],mi:'Das Buch, der ich lese ✘ ← das ich lese ✔ (جنس از Buch = das)',tip:'ویرگول قبل و بعد از جملهٔ موصولی اجباری است؛ در Schreiben نمره دارد.'},
+ {id:'g11',l:'B1',fa:'مجهول',de:'Passiv',hook:'werden + Partizip II؛ تأکید روی کار، نه عامل.',us:'Vorgangspassiv (فرایند) و Zustandspassiv (نتیجه).',form:'werden + Partizip II | sein + Partizip II (Zustand)',ex:['Das Haus wird gebaut.','Das Haus wurde 1990 gebaut.','Der Brief ist geschrieben worden.','Die Tür ist geschlossen.'],mi:'Das Haus ist gebaut (وقتی فرایند است) ✘ ← wird gebaut ✔',tip:'عامل با von + Dativ: Das Buch wurde von ihm geschrieben.'},
+ {id:'g12',l:'B1',fa:'شرطی غیرواقعی',de:'Konjunktiv II',hook:'wenn + hätte/wäre ... würde + Infinitiv = «کاش».',us:'آرزو، فرض غیرواقعی و درخواست مؤدبانه.',form:'hätte / wäre / würde + Infinitiv',ex:['Wenn ich Zeit hätte, würde ich reisen.','Ich wäre gern reich.','Könnten Sie mir helfen?','An deiner Stelle würde ich das nicht tun.'],mi:'Wenn ich habe Zeit, würde ich... ✘ ← Wenn ich Zeit hätte, ... ✔',tip:'برای درخواست رسمی در Schreiben: Könnten Sie mir bitte...?'},
+ {id:'g13',l:'B2',fa:'مصدر با zu',de:'Infinitiv mit zu',hook:'um ... zu = برای اینکه | ohne ... zu = بدون اینکه | (an)statt ... zu = به‌جای اینکه',us:'برای هدف، همراهی و جایگزینی، وقتی فاعل هر دو بخش یکی است.',form:'..., um + ... + zu + Infinitiv',ex:['Er lernt, um besser zu werden.','Sie ging, ohne etwas zu sagen.','Statt zu arbeiten, schläft er.','Es ist wichtig, pünktlich zu sein.'],mi:'um zu lernen ✘ (zu قبل از فعل اصلی) ← um Deutsch zu lernen ✔',tip:'اگر فاعل دو جمله فرق دارد از damit استفاده کن.'},
+ {id:'g14',l:'B2',fa:'حروف اضافهٔ دارای Genitiv',de:'Genitiv-Präpositionen',hook:'wegen, trotz, während, aufgrund: زبان رسمی و نوشتاری ← Genitiv.',us:'برای دلیل و تضاد در نوشتار رسمی (Goethe B2 و C1).',form:'wegen / trotz / während / aufgrund + Genitiv',ex:['Wegen des Regens bleiben wir hier.','Trotz der Kälte gehen wir spazieren.','Während des Studiums arbeitete er.','Aufgrund der hohen Kosten...'],mi:'wegen dem Regen (محاوره‌ای) ✘ در Schreiben ← wegen des Regens ✔',tip:'مذکر و خنثی: des + -(e)s؛ مؤنث و جمع: der.'},
+ {id:'g15',l:'C1',fa:'صفت فعلی گسترده',de:'Partizipialattribute',hook:'جملهٔ موصولی را فشرده کن: Partizip I = هم‌زمان و فعال، Partizip II = تمام‌شده و مجهول.',us:'سبک نوشتاری و آکادمیک (Lesen و Schreiben C1).',form:'der + [Erweiterung] + Partizip + Nomen',ex:['die steigende Zahl der Studierenden','der von allen geschätzte Lehrer','die kürzlich veröffentlichte Studie','das zu lösende Problem'],mi:'ساخت را به جملهٔ موصولی برگردان تا بفهمی: der Lehrer, der von allen geschätzt wird.',tip:'zu + Partizip I = باید انجام شود (passiv mit Modalität): das zu lösende Problem.'},
+ {id:'g16',l:'C1',fa:'نقل غیرمستقیم',de:'Konjunktiv I / Indirekte Rede',hook:'گزارش رسمی و رسانه‌ای: er sei, sie habe, man werde.',us:'بازگویی گفتهٔ دیگران بدون تعهد به درستی آن.',form:'er/sie/es: sei, habe, werde, könne ... | sonst Konjunktiv II',ex:['Er sagte, er sei müde.','Sie behauptet, sie habe keine Zeit.','Der Minister erklärte, man werde handeln.','Man meldet, es gebe viele Opfer.'],mi:'Er sagt, er ist müde (محاوره‌ای) → در متن رسمی: er sei müde ✔',tip:'اگر شکل Konj. I با Indikativ یکی است، Konj. II به‌کار ببر.'},
+ {id:'g17',l:'C1',fa:'اسم‌سازی و فعل‌های ترکیبی',de:'Nominalisierung & Funktionsverbgefüge',hook:'سبک رسمی: فعل ← اسم + فعل کمکی.',us:'در متن‌های اداری، خبری و آکادمیک؛ تنوع واژگانی C1.',form:'eine Entscheidung treffen | in Betracht ziehen | zur Verfügung stellen',ex:['eine Entscheidung treffen (= entscheiden)','in Frage stellen (= anzweifeln)','zur Verfügung stellen (= bereitstellen)','Rücksicht nehmen auf (+ Akk)'],mi:'Entscheidung machen ✘ ← eine Entscheidung treffen ✔ (collocation ثابت است)',tip:'این ترکیب‌ها collocation هستند؛ با فعل درست حفظ کن.'},
+ {id:'g18',l:'A1',fa:'صرف فعل و sein / haben',de:'Konjugation',hook:'ich -e، du -st، er/sie/es -t، wir -en، ihr -t، sie/Sie -en',us:'فعل با فاعل صرف می‌شود؛ sein و haben بی‌قاعده‌اند.',form:'ich bin / habe | du bist / hast | er ist / hat | wir sind / haben',ex:['Ich bin Student.','Du hast Zeit.','Er arbeitet in Berlin.','Wir wohnen hier.'],mi:'Ich haben ✘ ← Ich habe ✔',tip:'فعل‌های e←i مثل sprechen: du sprichst؛ فعل‌های ریشهٔ d/t: du arbeitest، er arbeitet.'},
+ {id:'g19',l:'A1',fa:'نفی: nicht و kein',de:'Negation',hook:'kein = نفی اسم بدون artikel یا با ein | nicht = نفی بقیه چیزها',us:'kein جای ein و بدون artikel؛ nicht برای فعل، صفت و قید.',form:'kein + Nomen | nicht + Verb/Adjektiv/Adverb',ex:['Ich habe kein Auto.','Ich arbeite nicht.','Das ist nicht teuer.','Er kommt heute nicht.'],mi:'Ich habe nicht Auto ✘ ← Ich habe kein Auto ✔',tip:'نفی دوگانه در آلمانی ممنوع است: Ich kenne niemanden ✔.'},
+ {id:'g20',l:'A1',fa:'جمع اسم',de:'Plural',hook:'پنج الگو: -e، -er، -(e)n، -s، بدون پایان (گاهی با Umlaut)',us:'جمع را همراه اسم یاد بگیر؛ قاعدهٔ قطعی ندارد ولی الگو دارد.',form:'Tisch→Tische | Kind→Kinder | Frau→Frauen | Auto→Autos | Lehrer→Lehrer',ex:['der Tisch → die Tische','das Kind → die Kinder','die Frau → die Frauen','das Auto → die Autos'],mi:'Kinders ✘ ← Kinder ✔ (فقط یک نشانهٔ جمع)',tip:'مؤنث‌ها بیشتر -n/-en می‌گیرند؛ کلمات وارداتی اغلب -s.'},
+ {id:'g21',l:'A1',fa:'امر',de:'Imperativ',hook:'du: ریشهٔ فعل | ihr: مثل ihr | Sie: فعل + Sie',us:'برای دستور، درخواست و راهنمایی.',form:'Komm! | Kommt! | Kommen Sie!',ex:['Komm bitte her!','Lest den Text!','Öffnen Sie das Fenster.','Fahr langsam!'],mi:'Kommst du her! ✘ ← Komm her! ✔',tip:'در Schreiben برای درخواست رسمی Könnten Sie... مؤدبانه‌تر است.'},
+ {id:'g22',l:'A1',fa:'ضمیر ملکی',de:'Possessivartikel',hook:'mein، dein، sein، ihr، unser، euer، ihr: مثل ein صرف می‌شوند.',us:'نشان‌دهندهٔ مالکیت؛ پایانه مثل ein.',form:'mein Bruder | meine Mutter | mein Kind | meine Eltern',ex:['Das ist mein Bruder.','Ich liebe meine Mutter.','Wir besuchen unsere Oma.','Hast du deinen Schlüssel?'],mi:'mein Mutter ✘ ← meine Mutter ✔ (Mutter مؤنث)',tip:'دقت کن: sein = مال او (مذکر/خنثی)، ihr = مال او (مؤنث) یا مال آن‌ها.'},
+ {id:'g23',l:'A1',fa:'حروف اضافهٔ زمان',de:'Temporale Präpositionen',hook:'um + ساعت | am + روز و تاریخ | im + ماه و فصل',us:'حرف اضافهٔ زمان بر اساس نوع زمان انتخاب می‌شود.',form:'um 8 Uhr | am Montag | im Juli | von ... bis ...',ex:['Ich stehe um 7 Uhr auf.','Am Montag habe ich Unterricht.','Im Juli fahren wir weg.','Von 9 bis 17 Uhr arbeite ich.'],mi:'in Montag ✘ ← am Montag ✔',tip:'سال: im Jahr 2026 یا فقط 2026؛ شب: in der Nacht، ولی am Abend.'},
+ {id:'g24',l:'A2',fa:'افعال بازتابی',de:'Reflexive Verben',hook:'ضمیر بازتابی با فاعل می‌خواند: ich mich، du dich، er sich، wir uns، ihr euch',us:'فعل‌هایی که اثر کار روی فاعل برمی‌گردد.',form:'sich freuen auf + Akk | sich interessieren für + Akk',ex:['Ich freue mich auf den Urlaub.','Er interessiert sich für Musik.','Wir treffen uns um 8.','Ich wasche mir die Hände.'],mi:'Ich freue auf ✘ ← Ich freue mich auf ✔',tip:'اگر مفعول دیگری در جمله هست، ضمیر بازتابی Dativ می‌شود: Ich putze mir die Zähne.'},
+ {id:'g25',l:'A2',fa:'صفت تفضیلی و عالی',de:'Komparativ & Superlativ',hook:'-er + als | am -sten | gut→besser→am besten',us:'مقایسهٔ دو یا چند چیز.',form:'Adjektiv + -er (als) | am + Adjektiv + -sten',ex:['Berlin ist größer als Bonn.','Das ist das beste Essen.','Ich trinke lieber Tee.','Er ist so alt wie ich.'],mi:'mehr gut ✘ ← besser ✔',tip:'بی‌قاعده‌ها: gern–lieber–am liebsten، viel–mehr–am meisten؛ Umlaut: alt–älter–am ältesten.'},
+ {id:'g26',l:'A2',fa:'گذشتهٔ ساده',de:'Präteritum',hook:'sein، haben و modalverben حتی در گفتار Präteritum هستند.',us:'برای نوشتار رسمی، داستان و افعال کمکی.',form:'war / hatte / konnte / musste | schwache: -te | starke: ablaut',ex:['Ich war gestern krank.','Er hatte keine Zeit.','Wir konnten nicht kommen.','Sie lebte in Wien.'],mi:'Ich habe gewesen ✘ ← Ich war / bin gewesen ✔',tip:'در Schreiben B1 هر دو Perfekt و Präteritum پذیرفته‌اند، ولی یکدست بنویس.'},
+ {id:'g27',l:'A2',fa:'حروف اضافهٔ ثابت',de:'Präpositionen mit festem Kasus',hook:'Dativ: aus، bei، mit، nach، seit، von، zu | Akkusativ: durch، für، gegen، ohne، um',us:'برخی حروف اضافه همیشه یک حالت می‌خواهند.',form:'mit + Dativ | für + Akkusativ',ex:['Ich fahre mit dem Bus.','Ich warte seit einer Stunde.','Das ist für dich.','Er geht ohne seinen Freund.'],mi:'mit der Bus ✘ ← mit dem Bus ✔',tip:'فهرست Dativ را مثل یک شعر حفظ کن: aus bei mit nach seit von zu.'},
+ {id:'g28',l:'A2',fa:'ربط‌های موضع صفر',de:'Konjunktionen (Position 0)',hook:'und، aber، oder، denn، sondern: ترتیب جمله بعد از آن‌ها تغییر نمی‌کند.',us:'دو جملهٔ اصلی را بدون تغییر جای فعل به هم وصل می‌کنند.',form:'Hauptsatz + denn/aber/und/oder/sondern + Hauptsatz',ex:['Ich bleibe zu Hause, denn ich bin krank.','Er ist nicht alt, sondern jung.','Ich lerne, und er arbeitet.','Willst du Tee oder Kaffee?'],mi:'denn ich krank bin ✘ ← denn ich bin krank ✔ (denn ≠ weil)',tip:'sondern بعد از جملهٔ منفی می‌آید: nicht ..., sondern ....'},
+ {id:'g29',l:'A2',fa:'فعل + حرف اضافه',de:'Verben mit Präposition',hook:'فعل و حرف اضافه یک جفت ثابت‌اند؛ سؤال: Worauf؟ / Auf wen؟',us:'حرف اضافه را با حالتش به فعل بچسبان.',form:'warten auf + Akk | denken an + Akk | sich freuen über + Akk',ex:['Ich warte auf den Bus.','Er interessiert sich für Sport.','Ich denke an dich.','Wir sprechen über das Problem.'],mi:'warten für ✘ ← warten auf ✔',tip:'ضمیر شیء: darauf، dafür، darüber (و wor- برای سؤال: Worauf؟).'},
+ {id:'g30',l:'B1',fa:'جملهٔ زمانی',de:'Temporalsätze',hook:'als = یک‌بار در گذشته | wenn = تکرار، حال یا آینده | nachdem = بعد از',us:'انتخاب رابط زمانی.',form:'als / wenn / seit / bis / während / nachdem + Nebensatz (Verb am Ende)',ex:['Als ich Kind war, wohnte ich in Teheran.','Wenn ich Zeit habe, lese ich.','Nachdem er gegessen hatte, ging er schlafen.','Seit ich hier wohne, lerne ich Deutsch.'],mi:'wenn ich Kind war ✘ ← als ich Kind war ✔',tip:'nachdem معمولاً با Plusquamperfekt + Präteritum یا Perfekt + Präsens.'},
+ {id:'g31',l:'B1',fa:'پرسش غیرمستقیم',de:'Indirekte Fragen',hook:'W-Wort یا ob + فاعل ... + فعل آخر.',us:'سؤال را مؤدبانه یا درون جمله می‌آوری.',form:'Ich weiß nicht, + W-Wort/ob ... + Verb (Ende)',ex:['Ich weiß nicht, wo er wohnt.','Können Sie mir sagen, ob der Zug pünktlich ist?','Ich frage mich, warum er nicht kommt.','Weißt du, wann der Kurs beginnt?'],mi:'Ich weiß nicht, wo wohnt er ✘ ← wo er wohnt ✔',tip:'برای سؤال بله/خیر از ob استفاده کن، نه wenn.'},
+ {id:'g32',l:'B2',fa:'ربط‌های قیدی',de:'Konnektoren: deshalb, trotzdem, außerdem',hook:'بعد از deshalb / trotzdem / außerdem: فعل جای دوم (V2).',us:'قید ربط‌دهنده در جایگاه اول جمله است و فعل بلافاصله بعدش.',form:'Konnektor (1.) + Verb (2.) + Subjekt',ex:['Es regnet, deshalb bleibe ich zu Hause.','Er ist krank, trotzdem arbeitet er.','Außerdem ist es billig.','Das Wetter war schlecht, dennoch gingen wir.'],mi:'deshalb ich bleibe ✘ ← deshalb bleibe ich ✔',tip:'تفاوت: weil (فعل آخر) | deshalb (فعل دوم) | denn (موضع صفر).'},
+ {id:'g33',l:'B2',fa:'ربط‌های دوتایی',de:'Zweiteilige Konnektoren',hook:'entweder...oder، sowohl...als auch، weder...noch، nicht nur...sondern auch، je...desto',us:'دو بخش ثابت که با هم کار می‌کنند.',form:'sowohl A als auch B | weder A noch B | je + Komparativ, desto + Komparativ',ex:['Er spricht sowohl Deutsch als auch Englisch.','Weder er noch sie kam.','Nicht nur das Wetter, sondern auch das Essen war toll.','Je mehr ich lerne, desto besser verstehe ich.'],mi:'je mehr desto ✘ (بدون صفت تفضیلی) ← je mehr..., desto besser ✔',tip:'برای Schreiben B2 و C1 نمرهٔ تنوع ساختار می‌آورند.'},
+ {id:'g34',l:'B2',fa:'شرطی غیرواقعی گذشته',de:'Konjunktiv II der Vergangenheit',hook:'hätte / wäre + Partizip II = «کاش در گذشته...»',us:'برای پشیمانی، شرط تحقق‌نیافته در گذشته.',form:'Wenn + hätte/wäre + PII, hätte/wäre + PII',ex:['Wenn ich das gewusst hätte, wäre ich gekommen.','Ich hätte gern geholfen.','An deiner Stelle hätte ich angerufen.','Hätte er mehr gelernt, hätte er bestanden.'],mi:'Wenn ich gewusst hätte, würde ich gekommen ✘ ← wäre ich gekommen ✔',tip:'با sein: wäre gekommen، با haben: hätte gemacht؛ وارونگی Hätte er... هم ممکن است.'},
+ {id:'g35',l:'C1',fa:'معنای ذهنی افعال وجهی',de:'Subjektive Modalverben',hook:'er soll = می‌گویند | er will = ادعا می‌کند | er muss = قطعاً | er dürfte = احتمالاً',us:'افعال وجهی برای ابراز گمان، گزارش و ادعا.',form:'soll / will / muss / dürfte / könnte + Infinitiv Perfekt',ex:['Er soll sehr reich sein.','Sie will nichts gewusst haben.','Er muss krank sein, er ist nicht da.','Das dürfte stimmen.'],mi:'Er will reich sein ≠ او می‌خواهد ثروتمند باشد؛ در معنای ذهنی یعنی ادعا می‌کند ثروتمند است.',tip:'در Lesen C1 تشخیص این معنا سؤال‌ساز است.'}
+];
+var VW = [
+ {w:'Tisch',a:'der',pl:'-e',l:'A1',fa:'میز',ex:'Das Buch liegt auf dem Tisch.'},
+ {w:'Schule',a:'die',pl:'-n',l:'A1',fa:'مدرسه',ex:'Ich gehe in die Schule.'},
+ {w:'Haus',a:'das',pl:'Häuser',l:'A1',fa:'خانه',ex:'Unser Haus ist klein.'},
+ {w:'Arbeit',a:'die',pl:'-en',l:'A1',fa:'کار',ex:'Meine Arbeit macht mir Spaß.',p:'arbeiten (کار کردن) ← اسم مؤنث.'},
+ {w:'Freund',a:'der',pl:'-e',l:'A1',fa:'دوست',ex:'Mein Freund wohnt in Köln.'},
+ {w:'Wohnung',a:'die',pl:'-en',l:'A2',fa:'آپارتمان',ex:'Die Wohnung hat drei Zimmer.',p:'wohn(en) (زندگی کردن) + -ung = جای زندگی.'},
+ {w:'Gesundheit',a:'die',pl:'-',l:'A2',fa:'سلامتی',ex:'Gesundheit ist wichtig.',p:'gesund (سالم) + -heit (حالت) = سالمی.'},
+ {w:'Termin',a:'der',pl:'-e',l:'A2',fa:'وقت ملاقات',ex:'Ich habe morgen einen Termin.'},
+ {w:'Urlaub',a:'der',pl:'-e',l:'A2',fa:'تعطیلات',ex:'Wir machen Urlaub in Spanien.'},
+ {w:'Ziel',a:'das',pl:'-e',l:'A2',fa:'هدف',ex:'Mein Ziel ist das B1-Zertifikat.'},
+ {w:'Entscheidung',a:'die',pl:'-en',l:'B1',fa:'تصمیم',ex:'Das war eine schwere Entscheidung.',p:'ent- (جدا) + scheiden (جدا کردن) + -ung = جدا کردن گزینه‌ها از هم.'},
+ {w:'Erfahrung',a:'die',pl:'-en',l:'B1',fa:'تجربه',ex:'Ich habe viel Erfahrung im Verkauf.',p:'er- + fahren (رفتن) + -ung = آنچه در مسیر زندگی به دست می‌آید.'},
+ {w:'Vorteil',a:'der',pl:'-e',l:'B1',fa:'مزیت',ex:'Ein Vorteil ist die niedrige Miete.',p:'vor (پیش) + Teil (بخش) = بخش جلوتر. ضدش: Nachteil (nach = عقب).'},
+ {w:'Nachteil',a:'der',pl:'-e',l:'B1',fa:'عیب',ex:'Der Nachteil ist der lange Weg.',p:'nach (پس، عقب) + Teil (بخش) = بخش عقب‌افتاده.'},
+ {w:'Meinung',a:'die',pl:'-en',l:'B1',fa:'نظر',ex:'Meiner Meinung nach ist das richtig.',p:'meinen (فکر کردن) + -ung.'},
+ {w:'Bewerbung',a:'die',pl:'-en',l:'B1',fa:'درخواست کار',ex:'Ich schreibe eine Bewerbung.',p:'be- + werben (عرضه کردن) + -ung = عرضهٔ خود برای کار.'},
+ {w:'Beruf',a:'der',pl:'-e',l:'B1',fa:'حرفه',ex:'Was sind Sie von Beruf?',p:'be- + rufen (صدا زدن) = آنچه تو را صدا می‌زند.'},
+ {w:'Ergebnis',a:'das',pl:'-se',l:'B1',fa:'نتیجه',ex:'Das Ergebnis war überraschend.',p:'er- + geben (دادن) + -nis = آنچه حاصل می‌شود.'},
+ {w:'Gesellschaft',a:'die',pl:'-en',l:'B1',fa:'جامعه',ex:'Die Gesellschaft verändert sich.',p:'Geselle (همراه) + -schaft = جمع همراهان.'},
+ {w:'Auswirkung',a:'die',pl:'-en',l:'B2',fa:'تأثیر، پیامد',ex:'Die Auswirkungen sind spürbar.',p:'aus (بیرون) + wirken (اثر کردن) + -ung = اثر به بیرون.'},
+ {w:'Herausforderung',a:'die',pl:'-en',l:'B2',fa:'چالش',ex:'Das ist eine große Herausforderung.',p:'heraus (بیرون) + fordern (طلبیدن) = به میدان طلبیدن.'},
+ {w:'Zusammenhang',a:'der',pl:'Zusammenhänge',l:'B2',fa:'ارتباط',ex:'Es besteht ein Zusammenhang.',p:'zusammen (با هم) + Hang (آویختن) = آویخته به هم.'},
+ {w:'Voraussetzung',a:'die',pl:'-en',l:'B2',fa:'پیش‌شرط',ex:'Gute Deutschkenntnisse sind Voraussetzung.',p:'vor (پیش) + aus + setzen (گذاشتن) = از پیش گذاشته‌شده.'},
+ {w:'Entwicklung',a:'die',pl:'-en',l:'B2',fa:'توسعه، تحول',ex:'Die Entwicklung geht schnell.',p:'ent- (باز) + wickeln (پیچیدن) = باز شدنِ پیچیده.'},
+ {w:'Maßnahme',a:'die',pl:'-n',l:'B2',fa:'اقدام',ex:'Die Regierung ergreift Maßnahmen.',p:'Maß (اندازه) + Nahme (گرفتن) = اندازه‌گرفتن، اقدام.'},
+ {w:'Einschränkung',a:'die',pl:'-en',l:'B2',fa:'محدودیت',ex:'Es gibt keine Einschränkungen.',p:'ein (درون) + schränken (محدود کردن) + -ung.'},
+ {w:'beeinflussen',a:'',pl:'Verb',l:'B2',fa:'تأثیر گذاشتن',ex:'Das Wetter beeinflusst die Stimmung.',p:'be- + Einfluss (نفوذ) = تحت نفوذ قرار دادن.'},
+ {w:'Nachhaltigkeit',a:'die',pl:'-',l:'C1',fa:'پایداری',ex:'Nachhaltigkeit ist ein zentrales Thema.',p:'nach (پس) + halten (نگه داشتن) = ماندن اثر در آینده.'},
+ {w:'Bewusstsein',a:'das',pl:'-',l:'C1',fa:'آگاهی',ex:'Das Bewusstsein für Umweltschutz wächst.',p:'bewusst (آگاه) + sein (بودن) = آگاه‌بودن.'},
+ {w:'Wahrnehmung',a:'die',pl:'-en',l:'C1',fa:'ادراک',ex:'Die Wahrnehmung ist subjektiv.',p:'wahr (درست) + nehmen (گرفتن) + -ung = درست گرفتن.'},
+ {w:'Missstand',a:'der',pl:'Missstände',l:'C1',fa:'وضع نابسامان',ex:'Die Zeitung deckt Missstände auf.',p:'miss- (بد) + Stand (وضع) = وضعیت بد.'},
+ {w:'Gegebenheit',a:'die',pl:'-en',l:'C1',fa:'شرایط موجود',ex:'Wir müssen die Gegebenheiten berücksichtigen.',p:'gegeben (داده‌شده) + -heit = آنچه از پیش داده شده.'},
+ {w:'Spannungsfeld',a:'das',pl:'-er',l:'C1',fa:'عرصهٔ تنش',ex:'Wir bewegen uns im Spannungsfeld zwischen Kosten und Qualität.',p:'Spannung (تنش) + Feld (میدان).'},
+ {w:'Tragweite',a:'die',pl:'-',l:'C1',fa:'دامنهٔ اثر',ex:'Die Tragweite der Entscheidung ist enorm.',p:'tragen (حمل کردن) + Weite (دامنه) = تا کجا اثر می‌رسد.'},
+ {w:'Anspruch',a:'der',pl:'Ansprüche',l:'C1',fa:'حق، ادعا',ex:'Er hat Anspruch auf Urlaub.',p:'an (به) + Spruch (گفتار) = حقی که به زبان می‌آوری.'},
+ {w:'erforderlich',a:'',pl:'Adj.',l:'C1',fa:'لازم',ex:'Eine Anmeldung ist erforderlich.',p:'er- + fordern (طلبیدن) + -lich = چیزی که طلب می‌شود.'},
+ {w:'nachhaltig',a:'',pl:'Adj.',l:'C1',fa:'پایدار',ex:'Wir brauchen nachhaltige Lösungen.',p:'nach (پس) + halten (نگه داشتن) + -ig.'}
+];
+var GO = [
+ {t:'درباره آزمون Goethe',i:['سطح‌ها: A1، A2، B1، B2، C1، C2؛ چهار ماژول: Lesen، Hören، Schreiben، Sprechen.','هر ماژول جدا قابل ثبت‌نام و گواهی است و حداکثر ۱۰۰ امتیاز دارد؛ حد قبولی هر ماژول ۶۰ امتیاز (۶۰٪) است.','B1 (طبق برگهٔ رسمی): Lesen ۶۵ دقیقه، Hören حدود ۴۰ دقیقه، Schreiben ۶۰ دقیقه، Sprechen حدود ۱۵ دقیقه (معمولاً دونفره).','C1 (طبق منابع رسمی): Lesen حدود ۷۰ دقیقه، Hören حدود ۴۰، Schreiben حدود ۸۰ و Sprechen حدود ۱۵ تا ۲۰ دقیقه.','زمان‌ها و ساختار ممکن است در سال‌های مختلف تغییر کند؛ قبل از آزمون حتماً از goethe.de و مرکز آزمون خودت تأیید کن.']},
+ {t:'Lesen (خواندن)',i:['اول سؤال‌ها را بخوان، بعد متن را؛ جواب معمولاً به ترتیب متن است.','دنبال مترادف و بازنویسی باش، نه کلمات یکسان.','Richtig/Falsch/Text sagt dazu nichts: اگر متن حرفی نزده، «nichts» است.','روی کلمهٔ ناشناخته گیر نکن؛ از ساختار جمله و کلمات هم‌ریشه حدس بزن.','وقت را بین بخش‌ها تقسیم کن و بخش سخت را آخر بگذار.']},
+ {t:'Hören (شنیدن)',i:['قبل از پخش، سؤال‌ها را بخوان و کلمهٔ کلیدی را علامت بزن.','در بعضی بخش‌ها فقط یک بار می‌شنوی؛ هرچه می‌شنوی همان لحظه علامت بزن.','Distractor: گوینده نظر اول را می‌گوید و بعد اصلاح می‌کند؛ پاسخ نهایی مهم است.','اعداد، تاریخ و ساعت را تمرین کن: dreizehn / dreißig، halb drei = 2:30.','به حرف ربط‌ها گوش بده: aber، jedoch، trotzdem نشانهٔ تغییر نظر هستند.']},
+ {t:'Schreiben (نوشتن)',i:['B1: ایمیل غیررسمی، پست انجمن (Forumsbeitrag) و ایمیل رسمی/اداری؛ به همهٔ نکات داده‌شده جواب بده.','ساختار: Anrede ← Einleitung ← نکات ← Schluss ← Grußformel.','رسمی: Sehr geehrte Damen und Herren, ... Mit freundlichen Grüßen. غیررسمی: Liebe Anna, ... Viele Grüße.','برای Forum: Meiner Meinung nach... | Einerseits..., andererseits... | Ich bin der Ansicht, dass...','تعداد کلمات را رعایت کن و آخر وقت املا، artikel و جای فعل را چک کن.']},
+ {t:'Sprechen (گفتار)',i:['B1: Teil 1 برنامه‌ریزی مشترک، Teil 2 ارائهٔ یک موضوع، Teil 3 واکنش و پرسش.','فرمول ارائه: Einleitung ← persönliche Erfahrung ← Situation im Heimatland ← Vor- und Nachteile ← Schluss ← Dank.','جمله‌های پرکننده: Also, ... | Das ist eine gute Frage. | Ich würde sagen, ...','اگر کلمه‌ای را نمی‌دانی توضیح بده: Das ist etwas, womit man ...','با شریک آزمون همکاری کن؛ فقط خودت حرف نزن و سؤال بپرس.']},
+ {t:'خطاهای رایج فارسی‌زبان‌ها',i:['فعل آخر جملهٔ پیرو (weil، dass) و جای دوم در جملهٔ اصلی.','artikel و جنس: همیشه اسم را با artikel یاد بگیر.','Großschreibung: همهٔ اسم‌ها با حرف بزرگ نوشته می‌شوند.','ویرگول قبل از dass، weil و جملهٔ موصولی اجباری است.','حروف اضافه را با حالتشان حفظ کن: mit + Dativ، für + Akkusativ.']}
+];
+var RU = [{t:'جنس از روی پسوند',i:['die (مؤنث): -ung، -heit، -keit، -schaft، -ion، -tät، -ie، -ik، -ur (die Zeitung، die Freiheit، die Universität).','der (مذکر): -er (شغل و عامل)، -ling، -ismus، -ig (der Lehrer، der Frühling).','das (خنثی): -chen، -lein، -um، -ment (das Mädchen، das Museum).','استثناهای اندکی هست؛ ولی این قواعد اکثر اسم‌ها را درست پیش‌بینی می‌کند.']},
+ {t:'جدول artikel معین',i:['مذکر: der ← den ← dem ← des','مؤنث: die ← die ← der ← der','خنثی: das ← das ← dem ← des','جمع: die ← die ← den (+n) ← der','ترتیب: Nominativ ← Akkusativ ← Dativ ← Genitiv؛ این جدول را حفظ کن، همه‌چیز (صفت، ضمیر موصولی) از آن می‌آید.']},
+ {t:'ضمایر شخصی',i:['ich ← mich ← mir | du ← dich ← dir','er ← ihn ← ihm | sie ← sie ← ihr | es ← es ← ihm','wir ← uns ← uns | ihr ← euch ← euch','sie (آن‌ها) ← sie ← ihnen | Sie (شما، رسمی) ← Sie ← Ihnen','ترتیب: ضمیر قبل از اسم؛ Akkusativ ضمیر قبل از Dativ ضمیر: Ich gebe es dir.']},
+ {t:'ترتیب اجزای جمله: TeKaMoLo',i:['Temporal (کی) ← Kausal (چرا) ← Modal (چطور) ← Lokal (کجا).','نمونه: Ich fahre morgen wegen der Arbeit mit dem Zug nach Berlin.','اسم: Dativ قبل از Akkusativ: Ich gebe dem Mann das Buch.','ضمیر قبل از اسم: Ich gebe es dem Mann.','فعل صرف‌شده در جملهٔ خبری همیشه جای دوم است.']},
+ {t:'ویرگول (Komma)',i:['قبل از dass، weil، wenn، obwohl، ob و جملهٔ موصولی ویرگول اجباری است.','قبل از denn، aber، sondern ویرگول می‌آید؛ قبل از und و oder معمولاً نه.','Infinitiv mit zu: با um...zu، ohne...zu، (an)statt...zu ویرگول اجباری است.','بعد از Anrede در ایمیل: Liebe Anna, ← بعد از ویرگول حرف کوچک.']},
+ {t:'صرف فعل: جدول و تغییرات',i:['ich -e | du -st | er/sie/es -t | wir -en | ihr -t | sie/Sie -en','ریشهٔ d/t: du arbeitest، er arbeitet.','e←i: sprechen ← du sprichst؛ e←ie: lesen ← du liest؛ a←ä: fahren ← du fährst.','trennbare: ich stehe auf | untrennbare: ich verstehe.']},
+ {t:'Partizip II (ساخت)',i:['منظم: ge- + ریشه + -t (gemacht).','بی‌قاعده: ge- + ... + -en (gegangen، geschrieben).','بدون ge-: فعل‌های -ieren (studiert) و پیشوندهای be-، ge-، er-، ver-، zer-، ent- (bekommen، verstanden).','جدا شدنی: ge در وسط: aufgestanden، eingekauft.']},
+ {t:'فعل‌های Dativ و Wechselpräpositionen',i:['فعل‌های Dativ: helfen، danken، gefallen، gehören، schmecken، antworten، folgen، passen، fehlen، gratulieren.','وضعیت (Wo? Dativ): stehen، liegen، sitzen، hängen (ایستاده، خوابیده، نشسته).','حرکت (Wohin? Akkusativ): stellen، legen، setzen، hängen.','نمونه: Das Buch liegt auf dem Tisch. ← Ich lege das Buch auf den Tisch.']},
+ {t:'املا و علامت‌ها',i:['همهٔ اسم‌ها حرف بزرگ: das Haus، die Liebe.','ä، ö، ü را اگر صفحه‌کلید ندارد ae، oe، ue بنویس، ولی در آزمون شکل اصلی بهتر است.','ß بعد از مصوت بلند و دوگانه (Straße، heißen)؛ ss بعد از مصوت کوتاه (muss، dass).','dass (ربط) با ss نوشته می‌شود؛ das (artikel/ضمیر) با یک s.']}];
+var QZ = [
+ {q:'Ich helfe ___ Mann.',o:['dem','den','der','des'],a:0,e:'helfen + Dativ ← dem Mann.'},
+ {q:'Heute ___ Deutsch.',o:['ich lerne','lerne ich','lerne','ich lernen'],a:1,e:'V2: فعل جای دوم؛ بعد از Heute فعل می‌آید.'},
+ {q:'Ich lerne Deutsch, weil ich in Deutschland ___.',o:['arbeiten möchte','möchte arbeiten','möchte zu arbeiten','arbeiten zu möchte'],a:0,e:'جملهٔ weil: فعل صرف‌شده آخر؛ ... arbeiten möchte.'},
+ {q:'Er ___ nach Berlin gefahren.',o:['hat','ist','wird','war'],a:1,e:'fahren (حرکت) با sein: Er ist gefahren.'},
+ {q:'Das Buch liegt ___ Tisch. (Wo?)',o:['auf den','auf dem','auf der','in den'],a:1,e:'Wo? ← Dativ؛ Tisch مذکر ← dem.'},
+ {q:'Wenn ich Zeit ___, würde ich reisen.',o:['hätte','habe','hatte','würde haben'],a:0,e:'جملهٔ شرطی غیرواقعی: Konjunktiv II ← hätte.'},
+ {q:'Der Mann, ___ dort steht, ist mein Lehrer.',o:['der','den','dem','das'],a:0,e:'ضمیر موصولی فاعل است و جنسش از Mann (مذکر): der.'},
+ {q:'Das Haus ___ 1990 gebaut.',o:['wird','wurde','ist','hat'],a:1,e:'گذشتهٔ مجهول: wurde + Partizip II.'},
+ {q:'___ des Regens bleiben wir hier.',o:['Wegen','Mit','Nach','Für'],a:0,e:'wegen + Genitiv (des Regens).'},
+ {q:'Sie sagte, sie ___ müde.',o:['sei','ist','war','würde'],a:0,e:'نقل غیرمستقیم رسمی: Konjunktiv I ← sei.'},
+ {q:'Er lernt, ___ besser zu werden.',o:['um','damit','dass','weil'],a:0,e:'هدف با فاعل یکسان: um ... zu.'},
+ {q:'ein ___ Mann',o:['alte','alter','alten','altes'],a:1,e:'ein + مذکر نامعین: ein alter Mann.'}
+];
+function load(k,f){try{var v=localStorage.getItem(k);return v===null?f:JSON.parse(v);}catch(e){return f;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}if(k.indexOf('hd_')===0&&k!=='hd_session'&&k!=='hd_last'){sched();}}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+var LV=['A1','A2','B1','B2','C1'];
+var gd=load('hd_g',{}), vd=load('hd_v',{}), prefs=load('hd_prefs',{}), ql=load('hd_q',[]);
+var view='gr', lv='all', qa={};
+function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function streakUp(){var last=load('hd_last',null),s=load('hd_streak',0),t=today();if(last!==t){var y=new Date(Date.now()-86400000);var ys=y.getFullYear()+'-'+(y.getMonth()+1)+'-'+y.getDate();s=(last===ys)?s+1:1;save('hd_streak',s);save('hd_last',t);}return s;}
+var streak=streakUp();
+var SB_URL='https://gchsfdnsmounxnetsawa.supabase.co',SB_KEY='sb_publishable_GoA-LrYNcHmPrMA5EW-8Ug_GoBGTMEA';
+var ses=load('hd_session',null),amsg='',stimer=null;
+function sbf(path,o,tk){o=o||{};var h=Object.assign({'apikey':SB_KEY,'Content-Type':'application/json'},o.headers||{});if(tk)h['Authorization']='Bearer '+tk;return fetch(SB_URL+path,{method:o.method||'GET',headers:h,body:o.body?JSON.stringify(o.body):undefined});}
+function setSes(r){ses={access_token:r.access_token,refresh_token:r.refresh_token,expires_at:Math.floor(Date.now()/1000)+(r.expires_in||3600),user:{id:r.user.id,email:r.user.email}};save('hd_session',ses);}
+async function getTok(){if(!ses)return null;if(ses.expires_at-60>Date.now()/1000)return ses.access_token;var r=await sbf('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:ses.refresh_token}});if(!r.ok){ses=null;save('hd_session',null);return null;}setSes(await r.json());return ses.access_token;}
+function mergeF(t,s){if(!s)return;Object.keys(s).forEach(function(k){if(s[k])t[k]=true;});}
+async function push(){var t=await getTok();if(!t)return;await sbf('/rest/v1/progress_de',{method:'POST',headers:{'Prefer':'resolution=merge-duplicates'},body:{user_id:ses.user.id,data:{g:gd,v:vd,streak:streak,p:prefs,q:ql},updated_at:new Date().toISOString()}},t);}
+function sched(){if(!ses)return;clearTimeout(stimer);stimer=setTimeout(function(){push().catch(function(){});},1500);}
+async function pull(){
+  try{var t=await getTok();if(!t){render();return;}
+    var r=await sbf('/rest/v1/progress_de?select=data',{},t);
+    if(r.ok){var rows=await r.json();if(rows.length){var d=rows[0].data||{};mergeF(gd,d.g);mergeF(vd,d.v);streak=Math.max(streak,d.streak||0);if(d.p)prefs=Object.assign({},d.p,prefs);
+      if(d.q){var seen={};ql.forEach(function(x){seen[JSON.stringify(x)]=1;});d.q.forEach(function(x){if(!seen[JSON.stringify(x)])ql.push(x);});ql.sort(function(a,b){return a.d<b.d?1:-1;});ql=ql.slice(0,20);}}}
+    save('hd_g',gd);save('hd_v',vd);save('hd_streak',streak);save('hd_prefs',prefs);save('hd_q',ql);await push();
+  }catch(e){}
+  render();
+}
+async function doAuth(m){
+  var em=(document.getElementById('e_email')||{}).value||'',pw=(document.getElementById('e_pw')||{}).value||'';amsg='';
+  if(!em||pw.length<6){amsg='ایمیل و رمز عبور (حداقل ۶ کاراکتر) را وارد کنید.';render();return;}
+  try{var r,j;
+    if(m==='up')r=await sbf('/auth/v1/signup?redirect_to='+encodeURIComponent(location.origin+location.pathname),{method:'POST',body:{email:em,password:pw}});
+    else r=await sbf('/auth/v1/token?grant_type=password',{method:'POST',body:{email:em,password:pw}});
+    j=await r.json();
+    if(!r.ok)amsg='خطا: '+(j.msg||j.error_description||j.message||'ناموفق');
+    else if(j.access_token){setSes(j);amsg='وارد شدید.';render();await pull();return;}
+    else amsg='ثبت‌نام انجام شد. اگر ایمیل تأیید آمد، آن را تأیید کنید و سپس وارد شوید.';
+  }catch(e){amsg='اتصال به سرور برقرار نشد. (در نسخهٔ آرتیفکت Claude اتصال بیرونی مسدود است؛ از نسخهٔ GitHub Pages استفاده کنید.)';}
+  render();
+}
+async function hashIn(){
+  var h=location.hash?location.hash.slice(1):'';if(!h)return;var p={};
+  h.split('&').forEach(function(kv){var a=kv.split('=');p[a[0]]=decodeURIComponent((a[1]||'').replace(/\+/g,' '));});
+  if(p.error_description){amsg='خطا: '+p.error_description;view='pr';history.replaceState(null,'',location.pathname);render();return;}
+  if(p.access_token){try{var r=await sbf('/auth/v1/user',{},p.access_token);if(r.ok){var u=await r.json();setSes({access_token:p.access_token,refresh_token:p.refresh_token,expires_in:+p.expires_in||3600,user:u});view='pr';amsg='وارد شدید.';}}catch(e){}history.replaceState(null,'',location.pathname);await pull();}
+}
+function dayIdx(n){var d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/86400000)%n;}
+function art(v){return v.a?'<span class="'+v.a+'">'+v.a+'</span> ':'';}
+function gOf(){return GT.filter(function(t){return lv==='all'||t.l===lv;});}
+function vOf(){return VW.filter(function(v){return lv==='all'||v.l===lv;});}
+function chips(){var h='<div class="chips"><button class="chip '+(lv==='all'?'on':'')+'" data-a="lvl" data-v="all">همه</button>';LV.forEach(function(x){h+='<button class="chip '+(lv===x?'on':'')+'" data-a="lvl" data-v="'+x+'">'+x+'</button>';});return h+'</div>';}
+function rGr(){
+  var h=chips()+'<div class="g">';
+  gOf().forEach(function(t){
+    h+='<div class="card"><div class="ch" data-a="tog"><div class="t"><span class="lb">'+t.l+'</span> '+(gd[t.id]?'\u2714 ':'')+t.fa+' &middot; '+t.de+'</div><span>&#9662;</span></div><div class="cb"><div class="cbi">';
+    h+='<div class="lbl">🧠 قاعدهٔ ذهنی</div><div class="hook">'+t.hook+'</div><div class="lbl">مفهوم</div><div>'+t.us+'</div><div class="lbl">فرمول</div><div class="form">'+t.form+'</div><div class="lbl">مثال‌ها</div>';
+    t.ex.forEach(function(e){h+='<p class="ex">'+e+'</p>';});
+    h+='<div class="warn">⚠ اشتباه رایج: '+t.mi+'</div><div class="tip">💡 '+t.tip+'</div><button class="mini '+(gd[t.id]?'d':'')+'" data-a="gd" data-v="'+t.id+'">'+(gd[t.id]?'\u2714 تسلط دارم':'علامت به‌عنوان یادگرفته‌شده')+'</button></div></div></div>';
+  });
+  return h+'</div>';
+}
+function rVo(){
+  var tw=VW[dayIdx(VW.length)];
+  var h='<div class="dc"><div class="eb">کلمهٔ امروز</div><h1 class="dt">'+art(tw)+tw.w+' <span style="font-weight:400;font-size:14px;color:var(--fgm)">'+tw.l+'</span></h1><p class="du">'+tw.fa+' &middot; جمع: '+esc(tw.pl)+'</p><p class="ex">'+esc(tw.ex)+'</p>'+(tw.p?'<div class="parts">🧩 '+tw.p+'</div>':'')+'</div>';
+  h+=chips()+'<div class="g">';
+  vOf().forEach(function(v){
+    h+='<div class="card"><div class="ch" data-a="tog"><div><div class="w">'+art(v)+v.w+(vd[v.w]?' \u2714':'')+'</div><div class="pl">'+esc(v.pl)+' &middot; '+v.l+'</div></div><span class="lb">'+v.fa+'</span></div><div class="cb"><div class="cbi"><p class="ex">'+esc(v.ex)+'</p>'+(v.p?'<div class="parts">🧩 '+v.p+'</div>':'')+'<button class="mini '+(vd[v.w]?'d':'')+'" data-a="vd" data-v="'+esc(v.w)+'">'+(vd[v.w]?'\u2714 بلدم':'یاد گرفتم')+'</button></div></div></div>';
+  });
+  return h+'</div>';
+}
+function rGo(){
+  var h='<div class="st">آمادگی آزمون Goethe</div><div class="g">';
+  GO.forEach(function(k){h+='<div class="card"><div class="ch" data-a="tog"><div class="t">'+k.t+'</div><span>&#9662;</span></div><div class="cb"><ul class="tl">'+k.i.map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul></div></div>';});
+  return h+'</div>';
+}
+function rRu(){
+  var h='<div class="st">قوانین طلایی گرامر (برگهٔ تقلب)</div><div class="g">';
+  RU.forEach(function(k){h+='<div class="card"><div class="ch" data-a="tog"><div class="t">'+k.t+'</div><span>&#9662;</span></div><div class="cb"><ul class="tl">'+k.i.map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul></div></div>';});
+  return h+'</div>';
+}
+function rQz(){
+  var sc=0,dn=0;QZ.forEach(function(q,i){if(qa[i]!==undefined){dn++;if(qa[i]===q.a)sc++;}});
+  var h='<div class="st">امتیاز: '+sc+' از '+QZ.length+' ('+dn+' پاسخ)</div>';
+  QZ.forEach(function(q,i){
+    h+='<div class="qc"><p class="qq">'+(i+1)+'. '+q.q+'</p>';
+    q.o.forEach(function(o,j){var c='';if(qa[i]!==undefined){if(j===q.a)c=' ok';else if(j===qa[i])c=' bad';}h+='<button class="opt'+c+'" data-a="qa" data-v="'+i+':'+j+'">'+o+'</button>';});
+    if(qa[i]!==undefined)h+='<div class="expl">'+q.e+'</div>';
+    h+='</div>';
+  });
+  return h+'<button class="btn o" data-a="qr">شروع دوباره</button>';
+}
+function stat(n,l){return '<div class="stat"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>';}
+function rPr(){
+  var gN=GT.filter(function(t){return gd[t.id];}).length,vN=VW.filter(function(v){return vd[v.w];}).length;
+  var avg=ql.length?Math.round(ql.reduce(function(a,q){return a+q.s/q.t;},0)/ql.length*100):0;
+  var h='<div class="st">پروفایل من</div><div class="stats">'+stat(streak,'روز پیاپی')+stat(vN+' / '+VW.length,'لغت یادگرفته')+stat(gN+' / '+GT.length,'مبحث گرامر')+stat(ql.length?avg+'%':'-','میانگین آزمون')+'</div>';
+  h+='<div class="st">پیشرفت لغات هر سطح</div><div class="dc" style="margin-top:0">';
+  LV.forEach(function(x){var t=VW.filter(function(v){return v.l===x;}),d=t.filter(function(v){return vd[v.w];}).length;h+='<div style="margin:8px 0;font-size:13px"><b>'+x+'</b> <span style="direction:ltr;display:inline-block">'+d+' / '+t.length+'</span><div class="bar"><div style="width:'+(t.length?Math.round(d/t.length*100):0)+'%"></div></div></div>';});
+  h+='</div><div class="st">هدف من</div><div class="dc" style="margin-top:0"><div class="eb">سطح هدف</div><div class="chips" style="padding-top:2px">';
+  LV.forEach(function(x){h+='<button class="chip '+(prefs.goal===x?'on':'')+'" data-a="goal" data-v="'+x+'">'+x+'</button>';});
+  h+='</div><div class="eb" style="margin-top:8px">تاریخ آزمون Goethe</div><input class="inp" type="date" id="exam" value="'+esc(prefs.exam||'')+'">';
+  if(prefs.exam){var d=Math.ceil((new Date(prefs.exam)-new Date())/86400000);h+='<p class="du" style="margin-top:8px">'+(d>0?d+' روز تا آزمون باقی مانده است.':(d===0?'آزمون امروز است. موفق باشی!':'تاریخ آزمون گذشته است.'))+'</p>';}
+  h+='</div><div class="st">نمرهٔ آزمون‌های اخیر</div><div class="dc" style="margin-top:0;padding:6px 16px">';
+  if(!ql.length)h+='<div class="hr">هنوز آزمونی کامل نکرده‌ای.</div>';
+  ql.slice(0,8).forEach(function(q){h+='<div class="hr"><span>'+q.s+' / '+q.t+'</span><span style="direction:ltr">'+esc(q.d)+'</span></div>';});
+  h+='</div><div class="st">حساب کاربری</div><div class="dc" style="margin-top:0">';
+  if(!ses){h+='<p class="du">با ساخت حساب، پیشرفتت روی همهٔ دستگاه‌ها ذخیره می‌شود. بدون حساب، داده‌ها فقط روی همین دستگاه می‌مانند.</p><input class="inp" id="e_email" type="email" placeholder="Email" style="margin-bottom:8px"><input class="inp" id="e_pw" type="password" placeholder="Password (min 6)"><button class="btn" data-a="auth" data-v="in">ورود</button><button class="btn o" data-a="auth" data-v="up">ساخت حساب جدید</button><button class="btn o" data-a="auth" data-v="google">ورود با Google (Gmail)</button>';}
+  else{h+='<div class="eb">وارد شده با</div><div style="direction:ltr;text-align:left;font-weight:600">'+esc(ses.user.email)+'</div><button class="btn" data-a="auth" data-v="sync">همگام‌سازی همین حالا</button><button class="btn o" data-a="auth" data-v="out">خروج</button>';}
+  if(amsg)h+='<p class="du" style="margin-top:8px">'+esc(amsg)+'</p>';
+  return h+'</div>';
+}
+var NAVICON = {"gr": "<path d=\"M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z\"/><path d=\"M4 21.5v-17\"/>", "ru": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M9 8h6M9 12h6M9 16h4\"/>", "vo": "<path d=\"M3 18 7.5 6 12 18M4.8 14h5.4\"/><circle cx=\"17\" cy=\"15\" r=\"3\"/><path d=\"M20 12v6\"/>", "go": "<path d=\"M2 9l10-5 10 5-10 5z\"/><path d=\"M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5\"/>", "qz": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12.5 3 3 5-6\"/>", "pr": "<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4 4-6 8-6s8 2 8 6\"/>"};
+function bnav(T){
+  var h = '<nav class="bnav"><div class="bnav-in">';
+  T.forEach(function(t){
+    h += '<button class="'+(view===t[0]?'on':'')+'" data-a="tab" data-v="'+t[0]+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+NAVICON[t[0]]+'</svg><span>'+t[1]+'</span></button>';
+  });
+  return h + '</div></nav>';
+}
+function render(){
+  var sy=window.scrollY;
+  var gN=GT.filter(function(t){return gd[t.id];}).length,vN=VW.filter(function(v){return vd[v.w];}).length;
+  var pct=Math.round((gN+vN)/(GT.length+VW.length)*100);
+  var T=[['gr','گرامر'],['ru','قوانین'],['vo','لغات'],['go','Goethe'],['qz','تست'],['pr','پروفایل']];
+  var h='<header><div class="row"><div class="brand">Haman Deutsch<small>گرامر، لغات و آمادگی Goethe (A1 تا C1)</small></div><div class="streak"><div class="n">'+streak+'</div><div class="l">روز پیاپی</div></div></div><div class="pb"><div style="width:'+pct+'%"></div></div>';
+  h+='</header><div class="wrap">'+({gr:rGr,ru:rRu,vo:rVo,go:rGo,qz:rQz,pr:rPr}[view])()+'<footer>Haman Deutsch</footer></div>'+bnav(T);
+  document.getElementById('app').innerHTML=h;
+  window.scrollTo(0,sy);
+}
+document.getElementById('app').addEventListener('click',function(e){
+  var t=e.target.closest('[data-a]');if(!t)return;
+  var a=t.getAttribute('data-a'),v=t.getAttribute('data-v');
+  if(a==='tog'){t.closest('.card').classList.toggle('open');return;}
+  if(a==='tab'){view=v;}
+  else if(a==='lvl'){lv=v;}
+  else if(a==='gd'){gd[v]=!gd[v];save('hd_g',gd);}
+  else if(a==='vd'){vd[v]=!vd[v];save('hd_v',vd);}
+  else if(a==='goal'){prefs.goal=v;save('hd_prefs',prefs);}
+  else if(a==='qr'){qa={};}
+  else if(a==='auth'){
+    if(v==='google'){location.href=SB_URL+'/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(location.origin+location.pathname);return;}
+    if(v==='out'){ses=null;save('hd_session',null);amsg='خارج شدید.';}
+    else if(v==='sync'){amsg='در حال همگام‌سازی...';render();pull();return;}
+    else{doAuth(v);return;}
+  }
+  else if(a==='qa'){var p=v.split(':'),i=+p[0];if(qa[i]!==undefined)return;qa[i]=+p[1];
+    if(Object.keys(qa).length===QZ.length){var s=0;QZ.forEach(function(q,k){if(qa[k]===q.a)s++;});ql.unshift({s:s,t:QZ.length,d:new Date().toISOString().slice(0,10)});ql=ql.slice(0,20);save('hd_q',ql);}}
+  render();if(a==='tab')window.scrollTo(0,0);
+});
+document.getElementById('app').addEventListener('change',function(e){if(e.target.id==='exam'){prefs.exam=e.target.value;save('hd_prefs',prefs);render();}});
+render();
+if(ses){pull();}
+hashIn();
+if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){ window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+</script>
+</body>
+</html>
