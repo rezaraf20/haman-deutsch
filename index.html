@@ -66,6 +66,7 @@ ul.tl{margin:0;padding:0 18px 12px 0;font-size:13.5px}ul.tl li{margin-bottom:8px
 .bnav button svg{width:22px;height:22px}
 .bnav button.on{color:var(--acc);font-weight:700}
 .bnav button.on svg{stroke-width:2.2}
+.av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--gold);color:#241a05;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
 footer{text-align:center;color:var(--fgm);font-size:12px;margin-top:30px}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
@@ -110,7 +111,21 @@ var GT = [
  {id:'g32',l:'B2',fa:'ربط‌های قیدی',de:'Konnektoren: deshalb, trotzdem, außerdem',hook:'بعد از deshalb / trotzdem / außerdem: فعل جای دوم (V2).',us:'قید ربط‌دهنده در جایگاه اول جمله است و فعل بلافاصله بعدش.',form:'Konnektor (1.) + Verb (2.) + Subjekt',ex:['Es regnet, deshalb bleibe ich zu Hause.','Er ist krank, trotzdem arbeitet er.','Außerdem ist es billig.','Das Wetter war schlecht, dennoch gingen wir.'],mi:'deshalb ich bleibe ✘ ← deshalb bleibe ich ✔',tip:'تفاوت: weil (فعل آخر) | deshalb (فعل دوم) | denn (موضع صفر).'},
  {id:'g33',l:'B2',fa:'ربط‌های دوتایی',de:'Zweiteilige Konnektoren',hook:'entweder...oder، sowohl...als auch، weder...noch، nicht nur...sondern auch، je...desto',us:'دو بخش ثابت که با هم کار می‌کنند.',form:'sowohl A als auch B | weder A noch B | je + Komparativ, desto + Komparativ',ex:['Er spricht sowohl Deutsch als auch Englisch.','Weder er noch sie kam.','Nicht nur das Wetter, sondern auch das Essen war toll.','Je mehr ich lerne, desto besser verstehe ich.'],mi:'je mehr desto ✘ (بدون صفت تفضیلی) ← je mehr..., desto besser ✔',tip:'برای Schreiben B2 و C1 نمرهٔ تنوع ساختار می‌آورند.'},
  {id:'g34',l:'B2',fa:'شرطی غیرواقعی گذشته',de:'Konjunktiv II der Vergangenheit',hook:'hätte / wäre + Partizip II = «کاش در گذشته...»',us:'برای پشیمانی، شرط تحقق‌نیافته در گذشته.',form:'Wenn + hätte/wäre + PII, hätte/wäre + PII',ex:['Wenn ich das gewusst hätte, wäre ich gekommen.','Ich hätte gern geholfen.','An deiner Stelle hätte ich angerufen.','Hätte er mehr gelernt, hätte er bestanden.'],mi:'Wenn ich gewusst hätte, würde ich gekommen ✘ ← wäre ich gekommen ✔',tip:'با sein: wäre gekommen، با haben: hätte gemacht؛ وارونگی Hätte er... هم ممکن است.'},
- {id:'g35',l:'C1',fa:'معنای ذهنی افعال وجهی',de:'Subjektive Modalverben',hook:'er soll = می‌گویند | er will = ادعا می‌کند | er muss = قطعاً | er dürfte = احتمالاً',us:'افعال وجهی برای ابراز گمان، گزارش و ادعا.',form:'soll / will / muss / dürfte / könnte + Infinitiv Perfekt',ex:['Er soll sehr reich sein.','Sie will nichts gewusst haben.','Er muss krank sein, er ist nicht da.','Das dürfte stimmen.'],mi:'Er will reich sein ≠ او می‌خواهد ثروتمند باشد؛ در معنای ذهنی یعنی ادعا می‌کند ثروتمند است.',tip:'در Lesen C1 تشخیص این معنا سؤال‌ساز است.'}
+ {id:'g35',l:'C1',fa:'معنای ذهنی افعال وجهی',de:'Subjektive Modalverben',hook:'er soll = می‌گویند | er will = ادعا می‌کند | er muss = قطعاً | er dürfte = احتمالاً',us:'افعال وجهی برای ابراز گمان، گزارش و ادعا.',form:'soll / will / muss / dürfte / könnte + Infinitiv Perfekt',ex:['Er soll sehr reich sein.','Sie will nichts gewusst haben.','Er muss krank sein, er ist nicht da.','Das dürfte stimmen.'],mi:'Er will reich sein ≠ او می‌خواهد ثروتمند باشد؛ در معنای ذهنی یعنی ادعا می‌کند ثروتمند است.',tip:'در Lesen C1 تشخیص این معنا سؤال‌ساز است.'},
+ {id:'g36',l:'A1',fa:'کلمات پرسشی',de:'W-Fragen',hook:'wer = چه کسی | was = چه چیزی | wo = کجا | wohin = به کجا | woher = از کجا | wann = کی | warum = چرا | wie = چطور',us:'پرسش با کلمهٔ پرسشی؛ فعل بلافاصله بعد از آن می‌آید.',form:'W-Wort + Verb (2.) + Subjekt',ex:['Wer ist das?','Wo wohnst du?','Woher kommst du?','Warum lernst du Deutsch?'],mi:'Wo gehst du? ✘ ← Wohin gehst du? ✔ (حرکت = wohin)',tip:'سه‌تایی wo / wohin / woher را همیشه کنار هم یاد بگیر.'},
+ {id:'g37',l:'A1',fa:'ساعت',de:'Uhrzeit',hook:'halb drei = نیم ساعت مانده به سه = ۲:۳۰',us:'در گفتار: halb، Viertel، vor، nach؛ رسمی: ۲۴ ساعته.',form:'Viertel nach / vor | halb + ساعت بعدی',ex:['Es ist halb drei. (2:30)','Es ist Viertel nach acht. (8:15)','Es ist Viertel vor drei. (2:45)','Der Zug fährt um vierzehn Uhr dreißig.'],mi:'halb drei را ۳:۳۰ نخوان؛ ۲:۳۰ است.',tip:'در Hören اعداد dreizehn/dreißig و halb را جدا تمرین کن.'},
+ {id:'g38',l:'A2',fa:'فعل با دو مفعول',de:'Dativ + Akkusativ',hook:'شخص (Dativ) قبل از چیز (Akkusativ)؛ ضمیر Akkusativ قبل از ضمیر Dativ',us:'geben، zeigen، schenken، erklären، schicken.',form:'Subjekt + Verb + Dativ + Akkusativ',ex:['Ich gebe dem Kind einen Apfel.','Er zeigt mir die Stadt.','Sie schenkt ihrer Mutter Blumen.','Ich gebe es ihm.'],mi:'Ich gebe ihm es ✘ ← Ich gebe es ihm ✔ (ضمیرها: Akk قبل از Dat)',tip:'با اسم‌ها: اول Dativ، بعد Akkusativ؛ با ضمیرها برعکس.'},
+ {id:'g39',l:'B1',fa:'آینده و گذشتهٔ کامل',de:'Futur I & Plusquamperfekt',hook:'Futur: werden + مصدر آخر | Plusquamperfekt: hatte/war + Partizip II = گذشتهٔ گذشته',us:'Futur برای وعده، پیش‌بینی و حدس؛ Plusquamperfekt برای کاری قبل از کار گذشتهٔ دیگر.',form:'werden + Infinitiv | hatte/war + Partizip II',ex:['Ich werde morgen anrufen.','Er wird wohl krank sein.','Nachdem er gegessen hatte, ging er schlafen.','Sie war schon gegangen, als ich kam.'],mi:'Ich werde anrufen morgen ✘ ← Ich werde morgen anrufen ✔',tip:'در گفتار برای آینده اغلب Präsens + زمان کافی است: Morgen rufe ich an.'},
+ {id:'g40',l:'B1',fa:'اسم‌های ضعیف',de:'N-Deklination',hook:'مذکرهای جاندار: همهٔ حالت‌ها جز Nominativ ← پایانهٔ -(e)n',us:'Herr، Student، Kollege، Junge، Mensch، Name، Nachbar، Kunde.',form:'der Student → den / dem / des Studenten',ex:['Ich kenne den Studenten.','Er hilft dem Jungen.','Die Meinung des Herrn ist wichtig.','Ich frage den Nachbarn.'],mi:'den Student ✘ ← den Studenten ✔',tip:'Herr: den Herrn؛ Name: des Namens (استثنا).'},
+ {id:'g41',l:'B1',fa:'جملهٔ موصولی با حرف اضافه',de:'Relativsatz mit Präposition',hook:'حرف اضافه + ضمیر موصولی؛ حالت از حرف اضافه، جنس از اسم',us:'برای مکان از wo، بعد از alles / etwas / nichts از was استفاده کن.',form:'Präposition + der/die/das (Kasus der Präposition) ... Verb (Ende)',ex:['Das ist die Frau, mit der ich arbeite.','Das Haus, in dem ich wohne, ist alt.','Das ist der Ort, wo wir uns kennengelernt haben.','Das ist alles, was ich weiß.'],mi:'mit die Frau ✘ ← mit der Frau ✔ (mit + Dativ)',tip:'حرف اضافه همیشه قبل از ضمیر موصولی می‌آید.'},
+ {id:'g42',l:'B1',fa:'lassen',de:'lassen',hook:'lassen = اجازه دادن | وا گذاشتن | انجام دادن توسط دیگری',us:'سه کاربرد و ساخت Perfekt با دو مصدر (Doppelinfinitiv).',form:'lassen + Infinitiv | sich lassen + Infinitiv (امکان)',ex:['Ich lasse mein Auto reparieren.','Lass mich in Ruhe!','Das lässt sich leicht machen.','Er hat sich die Haare schneiden lassen.'],mi:'Ich habe es machen gelassen ✘ ← Ich habe es machen lassen ✔ (lassen + مصدر)',tip:'sich lassen = امکان‌پذیر بودن (جایگزین مجهول).'},
+ {id:'g43',l:'B2',fa:'قیدهای ضمیری',de:'Pronominaladverbien',hook:'da(r)- جواب | wo(r)- سؤال؛ برای اشیا و موضوع‌ها، نه برای آدم‌ها',us:'da + حرف اضافه (darauf، dafür، darüber) و wo + حرف اضافه (worauf، wofür).',form:'da(r) / wo(r) + Präposition',ex:['Ich warte darauf.','Worauf wartest du?','Er freut sich darüber, dass du kommst.','Dafür habe ich keine Zeit.'],mi:'Ich warte auf es ✘ ← Ich warte darauf ✔ | برای آدم: Ich warte auf ihn ✔',tip:'اگر حرف اضافه با مصوت شروع شود، r اضافه می‌شود: darauf، worüber.'},
+ {id:'g44',l:'B2',fa:'مجهول با فعل وجهی',de:'Passiv mit Modalverben',hook:'Modalverb + Partizip II + werden',us:'برای الزام، امکان و ممنوعیت در متن‌های رسمی.',form:'Modalverb + Partizip II + werden (Infinitiv)',ex:['Das muss gemacht werden.','Der Antrag kann online gestellt werden.','Das konnte nicht gelöst werden.','Die Regeln müssen beachtet werden.'],mi:'Das muss gemacht wird ✘ ← gemacht werden ✔',tip:'در Lesen B2 این ساختار در اعلامیه‌ها و دستورالعمل‌ها زیاد است.'},
+ {id:'g45',l:'B2',fa:'جایگزین‌های مجهول',de:'Passiversatzformen',hook:'man | sich lassen | sein + zu | -bar',us:'برای تنوع و سبک رسمی به جای werden.',form:'man + Aktiv | sich lassen + Inf. | sein + zu + Inf.',ex:['Man darf hier nicht rauchen.','Das lässt sich leicht lösen.','Der Antrag ist bis Freitag einzureichen.','Das Wasser ist trinkbar.'],mi:'در Schreiben فقط werden به‌کار بردن تنوع کم می‌دهد.',tip:'sein + zu = باید انجام شود؛ -bar = قابل انجام.'},
+ {id:'g46',l:'B2',fa:'حالت اضافه',de:'Genitiv',hook:'Nomen + Genitiv؛ مذکر و خنثی: des + -(e)s، مؤنث و جمع: der',us:'مالکیت و رابطهٔ اسم‌ها در نوشتار.',form:'das Auto + des Vaters | die Hauptstadt + des Landes',ex:['das Auto meines Vaters','die Hauptstadt des Landes','die Ergebnisse der Studie','Annas Buch'],mi:'das Auto von meinem Vater (محاوره‌ای) ← در نوشتار رسمی: das Auto meines Vaters',tip:'نام خاص: Annas Buch (بدون artikel).'},
+ {id:'g47',l:'C1',fa:'ربط‌های پیشرفته',de:'Konnektoren C1',hook:'indem = با انجام | sodass = در نتیجه | es sei denn = مگر اینکه | zumal = به‌ویژه چون',us:'برای استدلال دقیق و متنوع در Schreiben و Sprechen.',form:'indem / sodass / sofern / zumal + Nebensatz | es sei denn, ...',ex:['Er lernt, indem er viel liest.','Es regnete stark, sodass die Straße überflutet wurde.','Ich komme, es sei denn, es regnet.','Ich bleibe, zumal es schon spät ist.'],mi:'indem ≠ während؛ indem = روش، während = هم‌زمانی',tip:'sofern و falls شرط‌اند؛ sofern رسمی‌تر است.'},
+ {id:'g48',l:'C1',fa:'ذره‌های گفتاری',de:'Modalpartikeln',hook:'doch، mal، ja، eben، denn، halt: لحن و احساس را اضافه می‌کنند',us:'در گفتار طبیعی بسیار رایج، در نوشتار رسمی کم.',form:'Partikel معمولاً بعد از فعل، بدون تکیه',ex:['Komm doch mal vorbei!','Das ist ja interessant!','Wie heißt du denn?','Das ist eben so.'],mi:'ترجمهٔ تحت‌اللفظی ممکن نیست؛ از جمله‌ها و لحن یاد بگیر.',tip:'در Sprechen C1 کمی از آن‌ها گفتار را طبیعی‌تر می‌کند.'},
+ {id:'g49',l:'C1',fa:'ساخت واژه',de:'Wortbildung',hook:'پیشوند و پسوند را بشناس تا معنی ناشناخته را حدس بزنی',us:'un-، miss-، ver-، ent-، be-، er- و -ung، -heit، -keit، -lich، -bar، -los، -voll.',form:'Präfix + Stamm + Suffix',ex:['unmöglich (un- = نه)','unvorstellbar (قابل تصور نیست)','verantwortungsvoll (پر از مسئولیت)','hoffnungslos (بدون امید)'],mi:'verantwortlich ≠ verantwortungsvoll (مسئول بودن ≠ مسئولیت‌پذیر)',tip:'در Lesen C1 بسیار کمک می‌کند.'}
 ];
 var VW = [
  {w:'Tisch',a:'der',pl:'-e',l:'A1',fa:'میز',ex:'Das Buch liegt auf dem Tisch.'},
@@ -149,7 +164,184 @@ var VW = [
  {w:'Tragweite',a:'die',pl:'-',l:'C1',fa:'دامنهٔ اثر',ex:'Die Tragweite der Entscheidung ist enorm.',p:'tragen (حمل کردن) + Weite (دامنه) = تا کجا اثر می‌رسد.'},
  {w:'Anspruch',a:'der',pl:'Ansprüche',l:'C1',fa:'حق، ادعا',ex:'Er hat Anspruch auf Urlaub.',p:'an (به) + Spruch (گفتار) = حقی که به زبان می‌آوری.'},
  {w:'erforderlich',a:'',pl:'Adj.',l:'C1',fa:'لازم',ex:'Eine Anmeldung ist erforderlich.',p:'er- + fordern (طلبیدن) + -lich = چیزی که طلب می‌شود.'},
- {w:'nachhaltig',a:'',pl:'Adj.',l:'C1',fa:'پایدار',ex:'Wir brauchen nachhaltige Lösungen.',p:'nach (پس) + halten (نگه داشتن) + -ig.'}
+ {w:'nachhaltig',a:'',pl:'Adj.',l:'C1',fa:'پایدار',ex:'Wir brauchen nachhaltige Lösungen.',p:'nach (پس) + halten (نگه داشتن) + -ig.'},
+ {w:'Bahnhof',a:'der',pl:'Bahnhöfe',l:'A1',fa:'ایستگاه قطار',ex:'Der Bahnhof ist nicht weit von hier.',p:'Bahn (راه‌آهن) + Hof (محوطه) = ایستگاه.'},
+ {w:'Straße',a:'die',pl:'-n',l:'A1',fa:'خیابان',ex:'Die Straße ist sehr eng.'},
+ {w:'Wetter',a:'das',pl:'-',l:'A1',fa:'هوا',ex:'Das Wetter ist heute schön.'},
+ {w:'Stadt',a:'die',pl:'Städte',l:'A1',fa:'شهر',ex:'Ich wohne in einer großen Stadt.'},
+ {w:'Kaffee',a:'der',pl:'-s',l:'A1',fa:'قهوه',ex:'Ich trinke jeden Morgen Kaffee.'},
+ {w:'Brot',a:'das',pl:'-e',l:'A1',fa:'نان',ex:'Ich kaufe frisches Brot.'},
+ {w:'Geld',a:'das',pl:'-',l:'A1',fa:'پول',ex:'Ich habe nicht genug Geld.'},
+ {w:'Einladung',a:'die',pl:'-en',l:'A2',fa:'دعوت',ex:'Danke für die Einladung!',p:'ein (به درون) + laden (دعوت کردن) + -ung.'},
+ {w:'Ausflug',a:'der',pl:'Ausflüge',l:'A2',fa:'گردش',ex:'Am Sonntag machen wir einen Ausflug.',p:'aus (بیرون) + Flug (پرواز) = پرواز به بیرون، گردش.'},
+ {w:'Erkältung',a:'die',pl:'-en',l:'A2',fa:'سرماخوردگی',ex:'Ich habe eine Erkältung.',p:'er- + kalt (سرد) + -ung = سرد شدن بدن.'},
+ {w:'Fahrplan',a:'der',pl:'Fahrpläne',l:'A2',fa:'برنامهٔ حرکت',ex:'Der Fahrplan hängt am Bahnhof.',p:'fahren (رفتن) + Plan (برنامه).'},
+ {w:'Rechnung',a:'die',pl:'-en',l:'A2',fa:'صورت‌حساب',ex:'Die Rechnung, bitte!',p:'rechnen (حساب کردن) + -ung.'},
+ {w:'Angebot',a:'das',pl:'-e',l:'A2',fa:'پیشنهاد، تخفیف',ex:'Das Angebot gilt bis Freitag.',p:'an (به) + bieten (پیشنهاد دادن).'},
+ {w:'Mehrheit',a:'die',pl:'-en',l:'B1',fa:'اکثریت',ex:'Die Mehrheit stimmte dafür.',p:'mehr (بیشتر) + -heit (حالت).'},
+ {w:'Gelegenheit',a:'die',pl:'-en',l:'B1',fa:'فرصت',ex:'Ich nutze jede Gelegenheit zum Sprechen.',p:'gelegen (واقع، مناسب) + -heit = موقعیت مناسب.'},
+ {w:'Zukunft',a:'die',pl:'-',l:'B1',fa:'آینده',ex:'In Zukunft möchte ich in Deutschland arbeiten.',p:'zu (به سوی) + kommen (آمدن) = آنچه به سوی ما می‌آید.'},
+ {w:'Veranstaltung',a:'die',pl:'-en',l:'B1',fa:'رویداد',ex:'Die Veranstaltung beginnt um 19 Uhr.',p:'veranstalten (برگزار کردن) + -ung.'},
+ {w:'Kenntnis',a:'die',pl:'-se',l:'B1',fa:'دانش',ex:'Er hat gute Kenntnisse in Mathematik.',p:'kennen (شناختن) + -nis.'},
+ {w:'Absicht',a:'die',pl:'-en',l:'B1',fa:'قصد',ex:'Das war nicht meine Absicht.',p:'ab (از) + Sicht (دید) = آنچه در نظر داری.'},
+ {w:'Eindruck',a:'der',pl:'Eindrücke',l:'B1',fa:'تأثیر، برداشت',ex:'Der erste Eindruck ist wichtig.',p:'ein (به درون) + drücken (فشار دادن) = اثری که می‌ماند.'},
+ {w:'Unterkunft',a:'die',pl:'Unterkünfte',l:'B1',fa:'محل اقامت',ex:'Wir suchen eine günstige Unterkunft.',p:'unter (زیر) + kommen (آمدن) = جایی که زیرش پناه می‌گیری.'},
+ {w:'Umwelt',a:'die',pl:'-',l:'B1',fa:'محیط زیست',ex:'Wir müssen die Umwelt schützen.',p:'um (اطراف) + Welt (جهان) = جهان پیرامون.'},
+ {w:'Verkehr',a:'der',pl:'-',l:'B1',fa:'ترافیک',ex:'Der Verkehr ist morgens sehr dicht.'},
+ {w:'Wirtschaft',a:'die',pl:'-en',l:'B2',fa:'اقتصاد',ex:'Die Wirtschaft wächst langsam.',p:'Wirt (میزبان) + -schaft = اداره‌ی خانه، اقتصاد.'},
+ {w:'Forschung',a:'die',pl:'-en',l:'B2',fa:'پژوهش',ex:'Die Forschung braucht mehr Geld.',p:'forschen (پژوهیدن) + -ung.'},
+ {w:'Fortschritt',a:'der',pl:'-e',l:'B2',fa:'پیشرفت',ex:'Der technische Fortschritt verändert die Arbeitswelt.',p:'fort (به جلو) + Schritt (گام).'},
+ {w:'Anforderung',a:'die',pl:'-en',l:'B2',fa:'نیاز، الزام',ex:'Die Anforderungen an Bewerber steigen.',p:'an + fordern (طلبیدن) + -ung.'},
+ {w:'Auseinandersetzung',a:'die',pl:'-en',l:'B2',fa:'بحث، درگیری',ex:'Es kam zu einer heftigen Auseinandersetzung.',p:'auseinander (از هم) + setzen (گذاشتن) = رویارو گذاشتن.'},
+ {w:'Umgang',a:'der',pl:'-',l:'B2',fa:'برخورد، مواجهه',ex:'Der Umgang mit Kritik fällt ihm schwer.',p:'um (دور) + gehen (رفتن) = رفتن دور و بر چیزی.'},
+ {w:'Beteiligung',a:'die',pl:'-en',l:'B2',fa:'مشارکت',ex:'Die Beteiligung an der Wahl war hoch.',p:'be- + Teil (بخش) + -ung = سهیم شدن.'},
+ {w:'Zuverlässigkeit',a:'die',pl:'-',l:'B2',fa:'قابل اعتماد بودن',ex:'Zuverlässigkeit ist im Beruf entscheidend.',p:'zu + verlassen (تکیه کردن) = چیزی که می‌شود به آن تکیه کرد.'},
+ {w:'Verhalten',a:'das',pl:'-',l:'B2',fa:'رفتار',ex:'Sein Verhalten war unangemessen.',p:'ver- + halten (نگه داشتن) = نحوهٔ نگه‌داشتن خود.'},
+ {w:'verzichten',a:'',pl:'Verb (auf + Akk.)',l:'B2',fa:'چشم‌پوشی کردن',ex:'Ich verzichte auf Zucker.',p:'ver- + Verzicht = دست کشیدن.'},
+ {w:'bewältigen',a:'',pl:'Verb',l:'B2',fa:'از پس چیزی برآمدن',ex:'Er konnte die Aufgabe bewältigen.'},
+ {w:'Phänomen',a:'das',pl:'-e',l:'C1',fa:'پدیده',ex:'Das Phänomen ist wissenschaftlich noch nicht erklärt.'},
+ {w:'Ambivalenz',a:'die',pl:'-en',l:'C1',fa:'دوگانگی',ex:'Es herrscht eine gewisse Ambivalenz in der Debatte.',p:'ambi (دو) + Valenz (ارزش) = دو ارزش هم‌زمان.'},
+ {w:'Ausmaß',a:'das',pl:'-e',l:'C1',fa:'میزان، ابعاد',ex:'Das Ausmaß des Schadens ist enorm.',p:'aus (بیرون) + Maß (اندازه) = اندازهٔ بیرونی.'},
+ {w:'Kehrseite',a:'die',pl:'-n',l:'C1',fa:'روی دیگر سکه',ex:'Die Kehrseite der Medaille ist der hohe Preis.',p:'Kehre (چرخش) + Seite (سمت) = سمت برگشته.'},
+ {w:'Stellenwert',a:'der',pl:'-e',l:'C1',fa:'جایگاه و اهمیت',ex:'Bildung hat einen hohen Stellenwert.',p:'Stelle (جایگاه) + Wert (ارزش).'},
+ {w:'Schlussfolgerung',a:'die',pl:'-en',l:'C1',fa:'نتیجه‌گیری',ex:'Daraus ziehe ich die Schlussfolgerung, dass wir handeln müssen.',p:'Schluss (پایان) + folgern (نتیجه گرفتن) + -ung.'},
+ {w:'Abwägung',a:'die',pl:'-en',l:'C1',fa:'سبک‌سنگین‌کردن',ex:'Nach sorgfältiger Abwägung entschied er sich.',p:'ab + wägen (سنجیدن) + -ung.'},
+ {w:'Dilemma',a:'das',pl:'-s',l:'C1',fa:'دوراهی',ex:'Wir stehen vor einem Dilemma.'},
+ {w:'Notwendigkeit',a:'die',pl:'-en',l:'C1',fa:'ضرورت',ex:'Die Notwendigkeit von Reformen ist unbestritten.',p:'Not (نیاز) + wenden (چرخاندن) + -ig + -keit = آنچه نیاز را رفع می‌کند.'},
+ {w:'Beeinträchtigung',a:'die',pl:'-en',l:'C1',fa:'اختلال، آسیب',ex:'Die Baustelle führt zu Beeinträchtigungen im Verkehr.'},
+ {w:'Mutter',a:'die',pl:'Mütter',l:'A1',fa:'مادر',ex:'Meine Mutter kocht gern.'},
+ {w:'Vater',a:'der',pl:'Väter',l:'A1',fa:'پدر',ex:'Mein Vater arbeitet im Büro.'},
+ {w:'Bruder',a:'der',pl:'Brüder',l:'A1',fa:'برادر',ex:'Ich habe einen Bruder.'},
+ {w:'Schwester',a:'die',pl:'-n',l:'A1',fa:'خواهر',ex:'Meine Schwester wohnt in Wien.'},
+ {w:'Kind',a:'das',pl:'-er',l:'A1',fa:'کودک',ex:'Das Kind spielt im Garten.'},
+ {w:'Mann',a:'der',pl:'Männer',l:'A1',fa:'مرد',ex:'Der Mann liest die Zeitung.'},
+ {w:'Frau',a:'die',pl:'-en',l:'A1',fa:'زن',ex:'Die Frau arbeitet als Ärztin.'},
+ {w:'Name',a:'der',pl:'-n',l:'A1',fa:'نام',ex:'Wie ist Ihr Name?'},
+ {w:'Auto',a:'das',pl:'-s',l:'A1',fa:'ماشین',ex:'Das Auto ist neu.'},
+ {w:'Buch',a:'das',pl:'Bücher',l:'A1',fa:'کتاب',ex:'Ich lese ein Buch.'},
+ {w:'Zimmer',a:'das',pl:'-',l:'A1',fa:'اتاق',ex:'Mein Zimmer ist klein.'},
+ {w:'Küche',a:'die',pl:'-n',l:'A1',fa:'آشپزخانه',ex:'Wir kochen in der Küche.'},
+ {w:'Fenster',a:'das',pl:'-',l:'A1',fa:'پنجره',ex:'Bitte öffne das Fenster.'},
+ {w:'Tür',a:'die',pl:'-en',l:'A1',fa:'در',ex:'Die Tür ist zu.'},
+ {w:'Essen',a:'das',pl:'-',l:'A1',fa:'غذا',ex:'Das Essen schmeckt gut.'},
+ {w:'Wasser',a:'das',pl:'-',l:'A1',fa:'آب',ex:'Ich trinke Wasser.'},
+ {w:'Apfel',a:'der',pl:'Äpfel',l:'A1',fa:'سیب',ex:'Der Apfel ist rot.'},
+ {w:'Milch',a:'die',pl:'-',l:'A1',fa:'شیر',ex:'Ich trinke Milch.'},
+ {w:'Tag',a:'der',pl:'-e',l:'A1',fa:'روز',ex:'Wir haben einen schönen Tag.'},
+ {w:'Woche',a:'die',pl:'-n',l:'A1',fa:'هفته',ex:'Die Woche hat sieben Tage.'},
+ {w:'Jahr',a:'das',pl:'-e',l:'A1',fa:'سال',ex:'Ich lerne seit einem Jahr Deutsch.'},
+ {w:'Stunde',a:'die',pl:'-n',l:'A1',fa:'ساعت (مدت)',ex:'Der Kurs dauert zwei Stunden.'},
+ {w:'Morgen',a:'der',pl:'-',l:'A1',fa:'صبح',ex:'Am Morgen trinke ich Kaffee.'},
+ {w:'Abend',a:'der',pl:'-e',l:'A1',fa:'عصر، شب',ex:'Am Abend sehe ich fern.'},
+ {w:'Nacht',a:'die',pl:'Nächte',l:'A1',fa:'شب',ex:'Gute Nacht!'},
+ {w:'Hund',a:'der',pl:'-e',l:'A1',fa:'سگ',ex:'Der Hund ist freundlich.'},
+ {w:'Katze',a:'die',pl:'-n',l:'A1',fa:'گربه',ex:'Die Katze schläft.'},
+ {w:'Garten',a:'der',pl:'Gärten',l:'A1',fa:'باغ',ex:'Wir sitzen im Garten.'},
+ {w:'Lehrer',a:'der',pl:'-',l:'A1',fa:'معلم',ex:'Der Lehrer erklärt die Grammatik.'},
+ {w:'Stuhl',a:'der',pl:'Stühle',l:'A1',fa:'صندلی',ex:'Der Stuhl steht am Tisch.'},
+ {w:'lernen',a:'',pl:'Verb',l:'A1',fa:'یاد گرفتن',ex:'Ich lerne jeden Tag Deutsch.'},
+ {w:'wohnen',a:'',pl:'Verb',l:'A1',fa:'زندگی کردن (ساکن بودن)',ex:'Ich wohne in Köln.'},
+ {w:'arbeiten',a:'',pl:'Verb',l:'A1',fa:'کار کردن',ex:'Er arbeitet bei einer Bank.'},
+ {w:'kaufen',a:'',pl:'Verb',l:'A1',fa:'خریدن',ex:'Ich kaufe Brot.'},
+ {w:'sprechen',a:'',pl:'Verb',l:'A1',fa:'صحبت کردن',ex:'Sprechen Sie Englisch?'},
+ {w:'brauchen',a:'',pl:'Verb',l:'A1',fa:'نیاز داشتن',ex:'Ich brauche Hilfe.'},
+ {w:'schlafen',a:'',pl:'Verb',l:'A1',fa:'خوابیدن',ex:'Das Baby schläft.'},
+ {w:'fragen',a:'',pl:'Verb',l:'A1',fa:'پرسیدن',ex:'Darf ich etwas fragen?'},
+ {w:'Reise',a:'die',pl:'-n',l:'A2',fa:'سفر',ex:'Die Reise nach Berlin war lang.'},
+ {w:'Gepäck',a:'das',pl:'-',l:'A2',fa:'بار و بنه',ex:'Mein Gepäck ist schwer.'},
+ {w:'Fahrkarte',a:'die',pl:'-n',l:'A2',fa:'بلیت',ex:'Ich kaufe eine Fahrkarte.',p:'fahren (رفتن) + Karte (کارت).'},
+ {w:'Flughafen',a:'der',pl:'Flughäfen',l:'A2',fa:'فرودگاه',ex:'Der Flughafen liegt außerhalb der Stadt.',p:'Flug (پرواز) + Hafen (بندر) = بندر پرواز.'},
+ {w:'Hotel',a:'das',pl:'-s',l:'A2',fa:'هتل',ex:'Das Hotel hat ein Restaurant.'},
+ {w:'Krankenhaus',a:'das',pl:'Krankenhäuser',l:'A2',fa:'بیمارستان',ex:'Er liegt im Krankenhaus.',p:'krank (بیمار) + Haus (خانه).'},
+ {w:'Arzt',a:'der',pl:'Ärzte',l:'A2',fa:'پزشک',ex:'Ich muss zum Arzt gehen.'},
+ {w:'Medikament',a:'das',pl:'-e',l:'A2',fa:'دارو',ex:'Das Medikament nehme ich dreimal täglich.'},
+ {w:'Schmerz',a:'der',pl:'-en',l:'A2',fa:'درد',ex:'Der Schmerz ist sehr stark.'},
+ {w:'Kleidung',a:'die',pl:'-',l:'A2',fa:'لباس',ex:'Ich brauche neue Kleidung.'},
+ {w:'Geschäft',a:'das',pl:'-e',l:'A2',fa:'مغازه، کسب‌وکار',ex:'Das Geschäft öffnet um neun Uhr.'},
+ {w:'Preis',a:'der',pl:'-e',l:'A2',fa:'قیمت',ex:'Der Preis ist zu hoch.'},
+ {w:'Kollege',a:'der',pl:'-n',l:'A2',fa:'همکار',ex:'Mein Kollege ist sehr hilfsbereit.'},
+ {w:'Chef',a:'der',pl:'-s',l:'A2',fa:'رئیس',ex:'Der Chef ist heute nicht da.'},
+ {w:'Büro',a:'das',pl:'-s',l:'A2',fa:'دفتر',ex:'Ich arbeite im Büro.'},
+ {w:'Kurs',a:'der',pl:'-e',l:'A2',fa:'کلاس، دوره',ex:'Ich besuche einen Deutschkurs.'},
+ {w:'Prüfung',a:'die',pl:'-en',l:'A2',fa:'امتحان',ex:'Die Prüfung ist nächste Woche.'},
+ {w:'Hausaufgabe',a:'die',pl:'-n',l:'A2',fa:'تکلیف',ex:'Ich mache meine Hausaufgaben.',p:'Haus (خانه) + Aufgabe (تکلیف).'},
+ {w:'Freizeit',a:'die',pl:'-',l:'A2',fa:'اوقات فراغت',ex:'In meiner Freizeit lese ich.',p:'frei (آزاد) + Zeit (وقت).'},
+ {w:'Hobby',a:'das',pl:'-s',l:'A2',fa:'سرگرمی',ex:'Mein Hobby ist Fotografieren.'},
+ {w:'Nachbar',a:'der',pl:'-n',l:'A2',fa:'همسایه',ex:'Mein Nachbar ist freundlich.'},
+ {w:'Ecke',a:'die',pl:'-n',l:'A2',fa:'گوشه',ex:'Das Café ist an der Ecke.'},
+ {w:'Platz',a:'der',pl:'Plätze',l:'A2',fa:'جا، میدان',ex:'Hier ist noch ein Platz frei.'},
+ {w:'Gast',a:'der',pl:'Gäste',l:'A2',fa:'مهمان',ex:'Wir haben heute Gäste.'},
+ {w:'vergessen',a:'',pl:'Verb',l:'A2',fa:'فراموش کردن',ex:'Ich habe meinen Schlüssel vergessen.'},
+ {w:'bestellen',a:'',pl:'Verb',l:'A2',fa:'سفارش دادن',ex:'Wir bestellen zwei Kaffee.'},
+ {w:'besuchen',a:'',pl:'Verb',l:'A2',fa:'بازدید کردن',ex:'Am Wochenende besuche ich meine Oma.'},
+ {w:'Vergleich',a:'der',pl:'-e',l:'B1',fa:'مقایسه',ex:'Im Vergleich zu früher ist es besser.'},
+ {w:'Unterschied',a:'der',pl:'-e',l:'B1',fa:'تفاوت',ex:'Es gibt einen großen Unterschied.'},
+ {w:'Möglichkeit',a:'die',pl:'-en',l:'B1',fa:'امکان',ex:'Es gibt viele Möglichkeiten.'},
+ {w:'Problem',a:'das',pl:'-e',l:'B1',fa:'مشکل',ex:'Das Problem ist schwer zu lösen.'},
+ {w:'Lösung',a:'die',pl:'-en',l:'B1',fa:'راه‌حل',ex:'Wir suchen eine Lösung.'},
+ {w:'Grund',a:'der',pl:'Gründe',l:'B1',fa:'دلیل',ex:'Was ist der Grund dafür?'},
+ {w:'Folge',a:'die',pl:'-n',l:'B1',fa:'پیامد',ex:'Das hat schwere Folgen.'},
+ {w:'Ursache',a:'die',pl:'-n',l:'B1',fa:'علت',ex:'Die Ursache ist noch unklar.'},
+ {w:'Aufgabe',a:'die',pl:'-n',l:'B1',fa:'وظیفه',ex:'Meine Aufgabe ist die Planung.',p:'auf (روی) + geben (دادن) = آنچه بر عهده‌ات گذاشته شده.'},
+ {w:'Ausbildung',a:'die',pl:'-en',l:'B1',fa:'آموزش حرفه‌ای',ex:'Er macht eine Ausbildung zum Koch.'},
+ {w:'Studium',a:'das',pl:'Studien',l:'B1',fa:'تحصیل دانشگاهی',ex:'Mein Studium dauert vier Jahre.'},
+ {w:'Lebenslauf',a:'der',pl:'Lebensläufe',l:'B1',fa:'رزومه',ex:'Bitte schicken Sie Ihren Lebenslauf.',p:'Leben (زندگی) + Lauf (مسیر) = مسیر زندگی.'},
+ {w:'Gehalt',a:'das',pl:'Gehälter',l:'B1',fa:'حقوق',ex:'Das Gehalt wird monatlich gezahlt.'},
+ {w:'Vertrag',a:'der',pl:'Verträge',l:'B1',fa:'قرارداد',ex:'Ich unterschreibe den Vertrag.'},
+ {w:'Mitarbeiter',a:'der',pl:'-',l:'B1',fa:'کارمند، همکار',ex:'Die Firma hat fünfzig Mitarbeiter.',p:'mit (با) + Arbeiter (کارگر).'},
+ {w:'Kunde',a:'der',pl:'-n',l:'B1',fa:'مشتری',ex:'Der Kunde ist zufrieden.'},
+ {w:'Sicherheit',a:'die',pl:'-',l:'B1',fa:'امنیت',ex:'Sicherheit ist wichtig.',p:'sicher (امن) + -heit (حالت).'},
+ {w:'Freiheit',a:'die',pl:'-en',l:'B1',fa:'آزادی',ex:'Freiheit bedeutet auch Verantwortung.'},
+ {w:'Verständnis',a:'das',pl:'-se',l:'B1',fa:'درک، همدلی',ex:'Ich habe Verständnis dafür.'},
+ {w:'Vorschlag',a:'der',pl:'Vorschläge',l:'B1',fa:'پیشنهاد',ex:'Das ist ein guter Vorschlag.',p:'vor (پیش) + schlagen (زدن) = چیزی که پیش می‌گذاری.'},
+ {w:'Beschwerde',a:'die',pl:'-n',l:'B1',fa:'شکایت',ex:'Ich möchte eine Beschwerde einreichen.'},
+ {w:'Anmeldung',a:'die',pl:'-en',l:'B1',fa:'ثبت‌نام',ex:'Die Anmeldung ist online möglich.',p:'an + melden (اطلاع دادن) + -ung.'},
+ {w:'Verspätung',a:'die',pl:'-en',l:'B1',fa:'تأخیر',ex:'Der Zug hat zehn Minuten Verspätung.',p:'ver- + spät (دیر) + -ung.'},
+ {w:'Umzug',a:'der',pl:'Umzüge',l:'B1',fa:'اسباب‌کشی',ex:'Der Umzug war anstrengend.',p:'um + ziehen (کشیدن) = جابه‌جایی.'},
+ {w:'vermeiden',a:'',pl:'Verb',l:'B1',fa:'اجتناب کردن',ex:'Wir sollten Streit vermeiden.'},
+ {w:'vergleichen',a:'',pl:'Verb',l:'B1',fa:'مقایسه کردن',ex:'Man kann die Preise online vergleichen.'},
+ {w:'überzeugen',a:'',pl:'Verb',l:'B1',fa:'متقاعد کردن',ex:'Das Argument hat mich überzeugt.'},
+ {w:'Einfluss',a:'der',pl:'Einflüsse',l:'B2',fa:'نفوذ، تأثیر',ex:'Der Einfluss der Medien ist groß.'},
+ {w:'Gleichberechtigung',a:'die',pl:'-',l:'B2',fa:'برابری حقوق',ex:'Gleichberechtigung ist ein wichtiges Ziel.'},
+ {w:'Arbeitslosigkeit',a:'die',pl:'-',l:'B2',fa:'بیکاری',ex:'Die Arbeitslosigkeit sinkt.',p:'Arbeit + los (بدون) + -igkeit.'},
+ {w:'Einkommen',a:'das',pl:'-',l:'B2',fa:'درآمد',ex:'Das Einkommen reicht kaum.',p:'ein + kommen (آمدن) = آنچه وارد می‌شود.'},
+ {w:'Ausgabe',a:'die',pl:'-n',l:'B2',fa:'هزینه، شماره (نشریه)',ex:'Die Ausgaben sind gestiegen.',p:'aus + geben (دادن) = بیرون دادن.'},
+ {w:'Verbrauch',a:'der',pl:'-',l:'B2',fa:'مصرف',ex:'Der Verbrauch an Energie steigt.'},
+ {w:'Ressource',a:'die',pl:'-n',l:'B2',fa:'منبع',ex:'Wasser ist eine knappe Ressource.'},
+ {w:'Klimawandel',a:'der',pl:'-',l:'B2',fa:'تغییر اقلیم',ex:'Der Klimawandel betrifft alle.',p:'Klima + Wandel (تغییر).'},
+ {w:'Gefahr',a:'die',pl:'-en',l:'B2',fa:'خطر',ex:'Die Gefahr ist nicht zu unterschätzen.'},
+ {w:'Risiko',a:'das',pl:'Risiken',l:'B2',fa:'ریسک',ex:'Das Risiko ist hoch.'},
+ {w:'Bedeutung',a:'die',pl:'-en',l:'B2',fa:'اهمیت، معنی',ex:'Die Bedeutung des Themas wächst.'},
+ {w:'Vorurteil',a:'das',pl:'-e',l:'B2',fa:'پیش‌داوری',ex:'Vorurteile erschweren das Zusammenleben.',p:'vor (پیش) + Urteil (قضاوت).'},
+ {w:'Integration',a:'die',pl:'-',l:'B2',fa:'ادغام',ex:'Integration braucht Zeit.'},
+ {w:'Gleichgewicht',a:'das',pl:'-e',l:'B2',fa:'تعادل',ex:'Ein Gleichgewicht zwischen Arbeit und Freizeit ist wichtig.',p:'gleich (برابر) + Gewicht (وزن).'},
+ {w:'Zusammenarbeit',a:'die',pl:'-',l:'B2',fa:'همکاری',ex:'Die Zusammenarbeit funktioniert gut.',p:'zusammen (با هم) + Arbeit.'},
+ {w:'Überzeugung',a:'die',pl:'-en',l:'B2',fa:'باور راسخ',ex:'Das ist meine feste Überzeugung.'},
+ {w:'Stellungnahme',a:'die',pl:'-n',l:'B2',fa:'اظهار نظر رسمی',ex:'Die Stellungnahme ist schriftlich einzureichen.'},
+ {w:'Zustimmung',a:'die',pl:'-en',l:'B2',fa:'موافقت',ex:'Er gab seine Zustimmung.'},
+ {w:'Behauptung',a:'die',pl:'-en',l:'B2',fa:'ادعا',ex:'Die Behauptung ist nicht belegt.'},
+ {w:'betonen',a:'',pl:'Verb',l:'B2',fa:'تأکید کردن',ex:'Er betonte die Bedeutung der Bildung.'},
+ {w:'Diskrepanz',a:'die',pl:'-en',l:'C1',fa:'ناهم‌خوانی',ex:'Es besteht eine Diskrepanz zwischen Theorie und Praxis.'},
+ {w:'Tendenz',a:'die',pl:'-en',l:'C1',fa:'گرایش',ex:'Die Tendenz ist steigend.'},
+ {w:'Aspekt',a:'der',pl:'-e',l:'C1',fa:'جنبه',ex:'Dieser Aspekt wird oft übersehen.'},
+ {w:'Sachverhalt',a:'der',pl:'-e',l:'C1',fa:'موضوع و وضعیت واقعی',ex:'Der Sachverhalt ist komplex.',p:'Sache (چیز) + Verhalt (وضع).'},
+ {w:'Rahmenbedingung',a:'die',pl:'-en',l:'C1',fa:'شرایط چارچوبی',ex:'Die Rahmenbedingungen müssen stimmen.',p:'Rahmen (چارچوب) + Bedingung (شرط).'},
+ {w:'Gewichtung',a:'die',pl:'-en',l:'C1',fa:'وزن‌دهی',ex:'Die Gewichtung der Kriterien ist umstritten.'},
+ {w:'Wechselwirkung',a:'die',pl:'-en',l:'C1',fa:'اثر متقابل',ex:'Zwischen beiden Faktoren besteht eine Wechselwirkung.',p:'wechseln (عوض شدن) + Wirkung (اثر).'},
+ {w:'Umbruch',a:'der',pl:'Umbrüche',l:'C1',fa:'دگرگونی',ex:'Wir erleben einen gesellschaftlichen Umbruch.',p:'um (دور) + Bruch (شکست) = شکستن نظم قبلی.'},
+ {w:'Wandel',a:'der',pl:'-',l:'C1',fa:'تغییر',ex:'Der Wandel verläuft schnell.'},
+ {w:'Konsens',a:'der',pl:'-e',l:'C1',fa:'اجماع',ex:'Man einigte sich auf einen Konsens.'},
+ {w:'Verfügbarkeit',a:'die',pl:'-',l:'C1',fa:'در دسترس بودن',ex:'Die Verfügbarkeit von Daten ist begrenzt.'},
+ {w:'Eigenverantwortung',a:'die',pl:'-',l:'C1',fa:'مسئولیت شخصی',ex:'Eigenverantwortung wird gefördert.',p:'eigen (خود) + Verantwortung.'},
+ {w:'Mehrwert',a:'der',pl:'-e',l:'C1',fa:'ارزش افزوده',ex:'Das Projekt bietet einen Mehrwert.',p:'mehr (بیشتر) + Wert (ارزش).'},
+ {w:'Hürde',a:'die',pl:'-n',l:'C1',fa:'مانع',ex:'Die bürokratische Hürde ist hoch.'},
+ {w:'Weitsicht',a:'die',pl:'-',l:'C1',fa:'دوراندیشی',ex:'Die Entscheidung zeugt von Weitsicht.',p:'weit (دور) + Sicht (دید).'},
+ {w:'Fehlentwicklung',a:'die',pl:'-en',l:'C1',fa:'روند نادرست',ex:'Man muss Fehlentwicklungen früh erkennen.'},
+ {w:'Gesichtspunkt',a:'der',pl:'-e',l:'C1',fa:'نقطه‌نظر',ex:'Unter diesem Gesichtspunkt ist es sinnvoll.',p:'Gesicht (چهره) + Punkt (نقطه).'},
+ {w:'Verhältnismäßigkeit',a:'die',pl:'-',l:'C1',fa:'تناسب',ex:'Die Verhältnismäßigkeit der Mittel ist fraglich.'},
+ {w:'maßgeblich',a:'',pl:'Adj.',l:'C1',fa:'تعیین‌کننده',ex:'Er spielte eine maßgebliche Rolle.'},
+ {w:'beträchtlich',a:'',pl:'Adj.',l:'C1',fa:'قابل‌توجه',ex:'Die Kosten sind beträchtlich.'},
+ {w:'umstritten',a:'',pl:'Adj.',l:'C1',fa:'بحث‌برانگیز',ex:'Das Gesetz ist umstritten.'}
 ];
 var GO = [
  {t:'درباره آزمون Goethe',i:['سطح‌ها: A1، A2، B1، B2، C1، C2؛ چهار ماژول: Lesen، Hören، Schreiben، Sprechen.','هر ماژول جدا قابل ثبت‌نام و گواهی است و حداکثر ۱۰۰ امتیاز دارد؛ حد قبولی هر ماژول ۶۰ امتیاز (۶۰٪) است.','B1 (طبق برگهٔ رسمی): Lesen ۶۵ دقیقه، Hören حدود ۴۰ دقیقه، Schreiben ۶۰ دقیقه، Sprechen حدود ۱۵ دقیقه (معمولاً دونفره).','C1 (طبق منابع رسمی): Lesen حدود ۷۰ دقیقه، Hören حدود ۴۰، Schreiben حدود ۸۰ و Sprechen حدود ۱۵ تا ۲۰ دقیقه.','زمان‌ها و ساختار ممکن است در سال‌های مختلف تغییر کند؛ قبل از آزمون حتماً از goethe.de و مرکز آزمون خودت تأیید کن.']},
@@ -193,26 +385,37 @@ function streakUp(){var last=load('hd_last',null),s=load('hd_streak',0),t=today(
 var streak=streakUp();
 var SB_URL='https://gchsfdnsmounxnetsawa.supabase.co',SB_KEY='sb_publishable_GoA-LrYNcHmPrMA5EW-8Ug_GoBGTMEA';
 var ses=load('hd_session',null),amsg='',stimer=null;
-function sbf(path,o,tk){o=o||{};var h=Object.assign({'apikey':SB_KEY,'Content-Type':'application/json'},o.headers||{});if(tk)h['Authorization']='Bearer '+tk;return fetch(SB_URL+path,{method:o.method||'GET',headers:h,body:o.body?JSON.stringify(o.body):undefined});}
+function sbf(path,o,tk){o=o||{};var h=Object.assign({'apikey':SB_KEY,'Content-Type':'application/json'},o.headers||{});if(tk)h['Authorization']='Bearer '+tk;var ac=new AbortController(),to=setTimeout(function(){ac.abort();},15000);return fetch(SB_URL+path,{method:o.method||'GET',headers:h,body:o.body?JSON.stringify(o.body):undefined,signal:ac.signal}).finally(function(){clearTimeout(to);});}
 function setSes(r){ses={access_token:r.access_token,refresh_token:r.refresh_token,expires_at:Math.floor(Date.now()/1000)+(r.expires_in||3600),user:{id:r.user.id,email:r.user.email}};save('hd_session',ses);}
 async function getTok(){if(!ses)return null;if(ses.expires_at-60>Date.now()/1000)return ses.access_token;var r=await sbf('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:ses.refresh_token}});if(!r.ok){ses=null;save('hd_session',null);return null;}setSes(await r.json());return ses.access_token;}
 function mergeF(t,s){if(!s)return;Object.keys(s).forEach(function(k){if(s[k])t[k]=true;});}
-async function push(){var t=await getTok();if(!t)return;await sbf('/rest/v1/progress_de',{method:'POST',headers:{'Prefer':'resolution=merge-duplicates'},body:{user_id:ses.user.id,data:{g:gd,v:vd,streak:streak,p:prefs,q:ql},updated_at:new Date().toISOString()}},t);}
+async function push(){
+  var t=await getTok();if(!t)return {ok:false,err:'no session'};
+  var r=await sbf('/rest/v1/progress_de',{method:'POST',headers:{'Prefer':'resolution=merge-duplicates'},body:{user_id:ses.user.id,data:{g:gd,v:vd,streak:streak,p:prefs,q:ql},updated_at:new Date().toISOString()}},t);
+  if(!r.ok){var x='';try{x=await r.text();}catch(e){}return {ok:false,err:r.status+' '+x.slice(0,120)};}
+  return {ok:true};
+}
 function sched(){if(!ses)return;clearTimeout(stimer);stimer=setTimeout(function(){push().catch(function(){});},1500);}
 async function pull(){
-  try{var t=await getTok();if(!t){render();return;}
+  var err='';
+  try{
+    var t=await getTok();if(!t){amsg='نشست شما منقضی شده؛ دوباره وارد شوید.';render();return;}
     var r=await sbf('/rest/v1/progress_de?select=data',{},t);
     if(r.ok){var rows=await r.json();if(rows.length){var d=rows[0].data||{};mergeF(gd,d.g);mergeF(vd,d.v);streak=Math.max(streak,d.streak||0);if(d.p)prefs=Object.assign({},d.p,prefs);
       if(d.q){var seen={};ql.forEach(function(x){seen[JSON.stringify(x)]=1;});d.q.forEach(function(x){if(!seen[JSON.stringify(x)])ql.push(x);});ql.sort(function(a,b){return a.d<b.d?1:-1;});ql=ql.slice(0,20);}}}
-    save('hd_g',gd);save('hd_v',vd);save('hd_streak',streak);save('hd_prefs',prefs);save('hd_q',ql);await push();
-  }catch(e){}
+    else{var x='';try{x=await r.text();}catch(e){}err='خواندن: '+r.status+' '+x.slice(0,120);}
+    save('hd_g',gd);save('hd_v',vd);save('hd_streak',streak);save('hd_prefs',prefs);save('hd_q',ql);
+    var p=await push();if(!p.ok&&!err)err='ذخیره: '+p.err;
+  }catch(e){err='اتصال: '+(e&&e.name==='AbortError'?'زمان پاسخ‌دهی تمام شد':(e&&e.message?e.message:'نامشخص'));}
+  amsg=err?'همگام‌سازی ناموفق بود ('+err+')':'همگام‌سازی شد.';
   render();
 }
 async function doAuth(m){
-  var em=(document.getElementById('e_email')||{}).value||'',pw=(document.getElementById('e_pw')||{}).value||'';amsg='';
+  var em=(document.getElementById('e_email')||{}).value||'',pw=(document.getElementById('e_pw')||{}).value||'',fn=(document.getElementById('e_fn')||{}).value||'',ln=(document.getElementById('e_ln')||{}).value||'';amsg='';
   if(!em||pw.length<6){amsg='ایمیل و رمز عبور (حداقل ۶ کاراکتر) را وارد کنید.';render();return;}
+  if(m==='up'&&(fn||ln)){prefs.fn=fn;prefs.ln=ln;save('hd_prefs',prefs);}
   try{var r,j;
-    if(m==='up')r=await sbf('/auth/v1/signup?redirect_to='+encodeURIComponent(location.origin+location.pathname),{method:'POST',body:{email:em,password:pw}});
+    if(m==='up')r=await sbf('/auth/v1/signup?redirect_to='+encodeURIComponent(location.origin+location.pathname),{method:'POST',body:{email:em,password:pw,data:{first_name:fn,last_name:ln}}});
     else r=await sbf('/auth/v1/token?grant_type=password',{method:'POST',body:{email:em,password:pw}});
     j=await r.json();
     if(!r.ok)amsg='خطا: '+(j.msg||j.error_description||j.message||'ناموفق');
@@ -276,18 +479,19 @@ function stat(n,l){return '<div class="stat"><div class="n">'+n+'</div><div clas
 function rPr(){
   var gN=GT.filter(function(t){return gd[t.id];}).length,vN=VW.filter(function(v){return vd[v.w];}).length;
   var avg=ql.length?Math.round(ql.reduce(function(a,q){return a+q.s/q.t;},0)/ql.length*100):0;
-  var h='<div class="st">پروفایل من</div><div class="stats">'+stat(streak,'روز پیاپی')+stat(vN+' / '+VW.length,'لغت یادگرفته')+stat(gN+' / '+GT.length,'مبحث گرامر')+stat(ql.length?avg+'%':'-','میانگین آزمون')+'</div>';
+  var nm=((prefs.fn||'')+' '+(prefs.ln||'')).trim()||(ses?ses.user.email.split('@')[0]:'کاربر مهمان');
+  var h='<div class="st">پروفایل من</div><div class="dc" style="margin-top:0;display:flex;gap:14px;align-items:center"><div class="av">'+esc(nm.charAt(0).toUpperCase())+'</div><div><div class="dt" style="font-size:18px;margin:0">'+esc(nm)+'</div><div class="du" style="margin:2px 0 0">'+(prefs.goal?'سطح هدف: '+prefs.goal:'سطح هدف انتخاب نشده')+'</div></div></div><div class="stats">'+stat(streak,'روز پیاپی')+stat(vN+' / '+VW.length,'لغت یادگرفته')+stat(gN+' / '+GT.length,'مبحث گرامر')+stat(ql.length?avg+'%':'-','میانگین آزمون')+'</div>';
   h+='<div class="st">پیشرفت لغات هر سطح</div><div class="dc" style="margin-top:0">';
   LV.forEach(function(x){var t=VW.filter(function(v){return v.l===x;}),d=t.filter(function(v){return vd[v.w];}).length;h+='<div style="margin:8px 0;font-size:13px"><b>'+x+'</b> <span style="direction:ltr;display:inline-block">'+d+' / '+t.length+'</span><div class="bar"><div style="width:'+(t.length?Math.round(d/t.length*100):0)+'%"></div></div></div>';});
   h+='</div><div class="st">هدف من</div><div class="dc" style="margin-top:0"><div class="eb">سطح هدف</div><div class="chips" style="padding-top:2px">';
   LV.forEach(function(x){h+='<button class="chip '+(prefs.goal===x?'on':'')+'" data-a="goal" data-v="'+x+'">'+x+'</button>';});
   h+='</div><div class="eb" style="margin-top:8px">تاریخ آزمون Goethe</div><input class="inp" type="date" id="exam" value="'+esc(prefs.exam||'')+'">';
   if(prefs.exam){var d=Math.ceil((new Date(prefs.exam)-new Date())/86400000);h+='<p class="du" style="margin-top:8px">'+(d>0?d+' روز تا آزمون باقی مانده است.':(d===0?'آزمون امروز است. موفق باشی!':'تاریخ آزمون گذشته است.'))+'</p>';}
-  h+='</div><div class="st">نمرهٔ آزمون‌های اخیر</div><div class="dc" style="margin-top:0;padding:6px 16px">';
+  h+='<div class="eb" style="margin-top:10px">نام و نام خانوادگی</div><div style="display:flex;gap:8px"><input class="inp" id="p_fn" placeholder="Vorname" value="'+esc(prefs.fn||'')+'"><input class="inp" id="p_ln" placeholder="Nachname" value="'+esc(prefs.ln||'')+'"></div><button class="btn o" data-a="name">ذخیرهٔ نام</button></div><div class="st">نمرهٔ آزمون‌های اخیر</div><div class="dc" style="margin-top:0;padding:6px 16px">';
   if(!ql.length)h+='<div class="hr">هنوز آزمونی کامل نکرده‌ای.</div>';
   ql.slice(0,8).forEach(function(q){h+='<div class="hr"><span>'+q.s+' / '+q.t+'</span><span style="direction:ltr">'+esc(q.d)+'</span></div>';});
   h+='</div><div class="st">حساب کاربری</div><div class="dc" style="margin-top:0">';
-  if(!ses){h+='<p class="du">با ساخت حساب، پیشرفتت روی همهٔ دستگاه‌ها ذخیره می‌شود. بدون حساب، داده‌ها فقط روی همین دستگاه می‌مانند.</p><input class="inp" id="e_email" type="email" placeholder="Email" style="margin-bottom:8px"><input class="inp" id="e_pw" type="password" placeholder="Password (min 6)"><button class="btn" data-a="auth" data-v="in">ورود</button><button class="btn o" data-a="auth" data-v="up">ساخت حساب جدید</button><button class="btn o" data-a="auth" data-v="google">ورود با Google (Gmail)</button>';}
+  if(!ses){h+='<p class="du">با ساخت حساب، پیشرفتت روی همهٔ دستگاه‌ها ذخیره می‌شود. بدون حساب، داده‌ها فقط روی همین دستگاه می‌مانند.</p><div style="display:flex;gap:8px;margin-bottom:8px"><input class="inp" id="e_fn" placeholder="Vorname (نام)" value="'+esc(prefs.fn||'')+'"><input class="inp" id="e_ln" placeholder="Nachname (نام خانوادگی)" value="'+esc(prefs.ln||'')+'"></div><input class="inp" id="e_email" type="email" placeholder="Email" style="margin-bottom:8px"><input class="inp" id="e_pw" type="password" placeholder="Password (min 6)"><button class="btn" data-a="auth" data-v="in">ورود</button><button class="btn o" data-a="auth" data-v="up">ساخت حساب جدید</button><button class="btn o" data-a="auth" data-v="google">ورود با Google (Gmail)</button>';}
   else{h+='<div class="eb">وارد شده با</div><div style="direction:ltr;text-align:left;font-weight:600">'+esc(ses.user.email)+'</div><button class="btn" data-a="auth" data-v="sync">همگام‌سازی همین حالا</button><button class="btn o" data-a="auth" data-v="out">خروج</button>';}
   if(amsg)h+='<p class="du" style="margin-top:8px">'+esc(amsg)+'</p>';
   return h+'</div>';
@@ -319,6 +523,7 @@ document.getElementById('app').addEventListener('click',function(e){
   else if(a==='gd'){gd[v]=!gd[v];save('hd_g',gd);}
   else if(a==='vd'){vd[v]=!vd[v];save('hd_v',vd);}
   else if(a==='goal'){prefs.goal=v;save('hd_prefs',prefs);}
+  else if(a==='name'){prefs.fn=(document.getElementById('p_fn')||{}).value||'';prefs.ln=(document.getElementById('p_ln')||{}).value||'';save('hd_prefs',prefs);amsg='نام ذخیره شد.';}
   else if(a==='qr'){qa={};}
   else if(a==='auth'){
     if(v==='google'){location.href=SB_URL+'/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(location.origin+location.pathname);return;}
