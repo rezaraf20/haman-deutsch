@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Haman Deutsch</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
 :root{--ink:#1B1F2A;--ink2:#2A3042;--paper:#F5F2EA;--card0:#fff;--red:#C0392B;--gold:#D4A017;--teal:#2E6E6B;--line:#DDD6C4;--text:#1B1F2A;--mut:#5B6478;
 --bg:var(--paper);--card:var(--card0);--fg:var(--text);--fgm:var(--mut);--bd:var(--line);--acc:#8C6A0A;--danger:#B4432E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -349,7 +347,8 @@ var GO = [
  {t:'Hören (شنیدن)',i:['قبل از پخش، سؤال‌ها را بخوان و کلمهٔ کلیدی را علامت بزن.','در بعضی بخش‌ها فقط یک بار می‌شنوی؛ هرچه می‌شنوی همان لحظه علامت بزن.','Distractor: گوینده نظر اول را می‌گوید و بعد اصلاح می‌کند؛ پاسخ نهایی مهم است.','اعداد، تاریخ و ساعت را تمرین کن: dreizehn / dreißig، halb drei = 2:30.','به حرف ربط‌ها گوش بده: aber، jedoch، trotzdem نشانهٔ تغییر نظر هستند.']},
  {t:'Schreiben (نوشتن)',i:['B1: ایمیل غیررسمی، پست انجمن (Forumsbeitrag) و ایمیل رسمی/اداری؛ به همهٔ نکات داده‌شده جواب بده.','ساختار: Anrede ← Einleitung ← نکات ← Schluss ← Grußformel.','رسمی: Sehr geehrte Damen und Herren, ... Mit freundlichen Grüßen. غیررسمی: Liebe Anna, ... Viele Grüße.','برای Forum: Meiner Meinung nach... | Einerseits..., andererseits... | Ich bin der Ansicht, dass...','تعداد کلمات را رعایت کن و آخر وقت املا، artikel و جای فعل را چک کن.']},
  {t:'Sprechen (گفتار)',i:['B1: Teil 1 برنامه‌ریزی مشترک، Teil 2 ارائهٔ یک موضوع، Teil 3 واکنش و پرسش.','فرمول ارائه: Einleitung ← persönliche Erfahrung ← Situation im Heimatland ← Vor- und Nachteile ← Schluss ← Dank.','جمله‌های پرکننده: Also, ... | Das ist eine gute Frage. | Ich würde sagen, ...','اگر کلمه‌ای را نمی‌دانی توضیح بده: Das ist etwas, womit man ...','با شریک آزمون همکاری کن؛ فقط خودت حرف نزن و سؤال بپرس.']},
- {t:'خطاهای رایج فارسی‌زبان‌ها',i:['فعل آخر جملهٔ پیرو (weil، dass) و جای دوم در جملهٔ اصلی.','artikel و جنس: همیشه اسم را با artikel یاد بگیر.','Großschreibung: همهٔ اسم‌ها با حرف بزرگ نوشته می‌شوند.','ویرگول قبل از dass، weil و جملهٔ موصولی اجباری است.','حروف اضافه را با حالتشان حفظ کن: mit + Dativ، für + Akkusativ.']}
+ {t:'خطاهای رایج فارسی‌زبان‌ها',i:['فعل آخر جملهٔ پیرو (weil، dass) و جای دوم در جملهٔ اصلی.','artikel و جنس: همیشه اسم را با artikel یاد بگیر.','Großschreibung: همهٔ اسم‌ها با حرف بزرگ نوشته می‌شوند.','ویرگول قبل از dass، weil و جملهٔ موصولی اجباری است.','حروف اضافه را با حالتشان حفظ کن: mit + Dativ، für + Akkusativ.']},
+ {t:'Schreiben: قالب ایمیل و عبارت‌های آماده',i:['ایمیل غیررسمی: Liebe Anna, ... Viele Grüße, Reza','Einleitung: Vielen Dank für deine Nachricht. / Ich hoffe, es geht dir gut.','Hauptteil: Leider kann ich nicht kommen, weil ich arbeiten muss. / Ich würde mich freuen, wenn du ...','ایمیل رسمی: Sehr geehrte Damen und Herren, ich schreibe Ihnen wegen ... Mit freundlichen Grüßen','عبارت‌های رسمی: Könnten Sie mir bitte mitteilen, ob ...? / Ich möchte mich über ... beschweren. / Vielen Dank im Voraus.','Forum: Meiner Meinung nach ... / Einerseits ..., andererseits ... / Ich bin der Ansicht, dass ...','قبل از ارسال: artikel، جای فعل در weil/dass، ویرگول و حرف بزرگ اسم‌ها را چک کن.']}
 ];
 var RU = [{t:'جنس از روی پسوند',i:['die (مؤنث): -ung، -heit، -keit، -schaft، -ion، -tät، -ie، -ik، -ur (die Zeitung، die Freiheit، die Universität).','der (مذکر): -er (شغل و عامل)، -ling، -ismus، -ig (der Lehrer، der Frühling).','das (خنثی): -chen، -lein، -um، -ment (das Mädchen، das Museum).','استثناهای اندکی هست؛ ولی این قواعد اکثر اسم‌ها را درست پیش‌بینی می‌کند.']},
  {t:'جدول artikel معین',i:['مذکر: der ← den ← dem ← des','مؤنث: die ← die ← der ← der','خنثی: das ← das ← dem ← des','جمع: die ← die ← den (+n) ← der','ترتیب: Nominativ ← Akkusativ ← Dativ ← Genitiv؛ این جدول را حفظ کن، همه‌چیز (صفت، ضمیر موصولی) از آن می‌آید.']},
@@ -372,7 +371,19 @@ var QZ = [
  {q:'___ des Regens bleiben wir hier.',o:['Wegen','Mit','Nach','Für'],a:0,e:'wegen + Genitiv (des Regens).'},
  {q:'Sie sagte, sie ___ müde.',o:['sei','ist','war','würde'],a:0,e:'نقل غیرمستقیم رسمی: Konjunktiv I ← sei.'},
  {q:'Er lernt, ___ besser zu werden.',o:['um','damit','dass','weil'],a:0,e:'هدف با فاعل یکسان: um ... zu.'},
- {q:'ein ___ Mann',o:['alte','alter','alten','altes'],a:1,e:'ein + مذکر نامعین: ein alter Mann.'}
+ {q:'ein ___ Mann',o:['alte','alter','alten','altes'],a:1,e:'ein + مذکر نامعین: ein alter Mann.'},
+ {q:'Ich gehe ___ Schule.',o:['in der','in die','in dem','im'],a:1,e:'حرکت (wohin) ← Akkusativ: in die Schule.'},
+ {q:'Wir fahren ___ Bus.',o:['mit dem','mit den','mit der','mit das'],a:0,e:'mit + Dativ؛ Bus مذکر ← dem.'},
+ {q:'Er hat keine Zeit, ___ er viel arbeiten muss.',o:['weil','denn','deshalb','aber'],a:0,e:'فعل آخر جمله است ← weil (جملهٔ پیرو). denn: فعل جای دوم.'},
+ {q:'Ich habe gestern ___ Film gesehen.',o:['ein','einen','einem','einer'],a:1,e:'مفعول مستقیم مذکر ← Akkusativ: einen Film.'},
+ {q:'Sie ___ gestern zu Hause geblieben.',o:['hat','ist','wird','war'],a:1,e:'bleiben با sein صرف می‌شود.'},
+ {q:'Wenn ich du ___, würde ich das nicht tun.',o:['wäre','bin','war','würde'],a:0,e:'جملهٔ شرطی غیرواقعی ← Konjunktiv II: wäre.'},
+ {q:'Ich warte ___ den Bus.',o:['für','auf','an','über'],a:1,e:'warten auf + Akkusativ.'},
+ {q:'Das ist das Auto, ___ ich gekauft habe.',o:['das','der','dem','die'],a:0,e:'ضمیر موصولی مفعول و جنس از Auto (خنثی) ← das.'},
+ {q:'Heute ist es kalt, ___ ziehe ich eine Jacke an.',o:['deshalb','weil','dass','obwohl'],a:0,e:'بعد از deshalb فعل جای دوم: deshalb ziehe ich.'},
+ {q:'Es ist wichtig, pünktlich ___ sein.',o:['zu','um','dass','ohne'],a:0,e:'Infinitiv mit zu: pünktlich zu sein.'},
+ {q:'Er arbeitet, ___ Geld zu verdienen.',o:['um','damit','dass','weil'],a:0,e:'هدف با فاعل یکسان: um ... zu.'},
+ {q:'Der Student, ___ ich geholfen habe, ist nett.',o:['der','den','dem','des'],a:2,e:'helfen + Dativ؛ Student مذکر ← dem.'}
 ];
 function load(k,f){try{var v=localStorage.getItem(k);return v===null?f:JSON.parse(v);}catch(e){return f;}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}if(k.indexOf('hd_')===0&&k!=='hd_session'&&k!=='hd_last'){sched();}}
@@ -380,6 +391,7 @@ function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&am
 var LV=['A1','A2','B1','B2','C1'];
 var gd=load('hd_g',{}), vd=load('hd_v',{}), prefs=load('hd_prefs',{}), ql=load('hd_q',[]);
 var view='gr', lv='all', qa={};
+function speakDe(w){ if(!('speechSynthesis' in window)){ alert('این مرورگر پخش صدا را پشتیبانی نمی‌کند.'); return; } try{ speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(w); u.lang = 'de-DE'; u.rate = 0.9; speechSynthesis.speak(u); }catch(e){} }
 function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
 function streakUp(){var last=load('hd_last',null),s=load('hd_streak',0),t=today();if(last!==t){var y=new Date(Date.now()-86400000);var ys=y.getFullYear()+'-'+(y.getMonth()+1)+'-'+y.getDate();s=(last===ys)?s+1:1;save('hd_streak',s);save('hd_last',t);}return s;}
 var streak=streakUp();
@@ -447,10 +459,10 @@ function rGr(){
 }
 function rVo(){
   var tw=VW[dayIdx(VW.length)];
-  var h='<div class="dc"><div class="eb">کلمهٔ امروز</div><h1 class="dt">'+art(tw)+tw.w+' <span style="font-weight:400;font-size:14px;color:var(--fgm)">'+tw.l+'</span></h1><p class="du">'+tw.fa+' &middot; جمع: '+esc(tw.pl)+'</p><p class="ex">'+esc(tw.ex)+'</p>'+(tw.p?'<div class="parts">🧩 '+tw.p+'</div>':'')+'</div>';
+  var h='<div class="dc"><div class="eb">کلمهٔ امروز</div><h1 class="dt">'+art(tw)+tw.w+' <span style="font-weight:400;font-size:14px;color:var(--fgm)">'+tw.l+'</span></h1><p class="du">'+tw.fa+' &middot; جمع: '+esc(tw.pl)+'</p><button class="mini" style="margin:0 0 8px" data-a="say" data-v="'+esc(tw.w)+'">🔊 تلفظ</button><p class="ex">'+esc(tw.ex)+'</p>'+(tw.p?'<div class="parts">🧩 '+tw.p+'</div>':'')+'</div>';
   h+=chips()+'<div class="g">';
   vOf().forEach(function(v){
-    h+='<div class="card"><div class="ch" data-a="tog"><div><div class="w">'+art(v)+v.w+(vd[v.w]?' \u2714':'')+'</div><div class="pl">'+esc(v.pl)+' &middot; '+v.l+'</div></div><span class="lb">'+v.fa+'</span></div><div class="cb"><div class="cbi"><p class="ex">'+esc(v.ex)+'</p>'+(v.p?'<div class="parts">🧩 '+v.p+'</div>':'')+'<button class="mini '+(vd[v.w]?'d':'')+'" data-a="vd" data-v="'+esc(v.w)+'">'+(vd[v.w]?'\u2714 بلدم':'یاد گرفتم')+'</button></div></div></div>';
+    h+='<div class="card"><div class="ch" data-a="tog"><div><div class="w">'+art(v)+v.w+(vd[v.w]?' \u2714':'')+'</div><div class="pl">'+esc(v.pl)+' &middot; '+v.l+'</div></div><span class="lb">'+v.fa+'</span></div><div class="cb"><div class="cbi"><button class="mini" style="margin:0 0 8px" data-a="say" data-v="'+esc(v.w)+'">🔊 تلفظ</button><p class="ex">'+esc(v.ex)+'</p>'+(v.p?'<div class="parts">🧩 '+v.p+'</div>':'')+'<button class="mini '+(vd[v.w]?'d':'')+'" data-a="vd" data-v="'+esc(v.w)+'">'+(vd[v.w]?'\u2714 بلدم':'یاد گرفتم')+'</button></div></div></div>';
   });
   return h+'</div>';
 }
@@ -518,6 +530,7 @@ document.getElementById('app').addEventListener('click',function(e){
   var t=e.target.closest('[data-a]');if(!t)return;
   var a=t.getAttribute('data-a'),v=t.getAttribute('data-v');
   if(a==='tog'){t.closest('.card').classList.toggle('open');return;}
+  if(a==='say'){speakDe(v);return;}
   if(a==='tab'){view=v;}
   else if(a==='lvl'){lv=v;}
   else if(a==='gd'){gd[v]=!gd[v];save('hd_g',gd);}
