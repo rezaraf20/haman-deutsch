@@ -67,6 +67,37 @@ ul.tl{margin:0;padding:0 18px 12px 0;font-size:13.5px}ul.tl li{margin-bottom:8px
 .av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--gold);color:#241a05;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
 footer{text-align:center;color:var(--fgm);font-size:12px;margin-top:30px}
 </style>
+<style>.bdg{position:absolute;top:2px;left:calc(50% + 6px);background:#C0392B;color:#fff;font-size:10px;font-style:normal;border-radius:9px;padding:0 5px;line-height:16px;min-width:16px;text-align:center}
+.big{font-size:34px;font-weight:700;color:var(--acc);line-height:1.2}
+.rvf{font-size:22px;font-weight:700;margin:6px 0 10px}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
+.rate button{border:1px solid var(--bd);background:var(--card);color:var(--fg);font-family:inherit;border-radius:10px;padding:8px 2px;cursor:pointer;font-size:13px;font-weight:600}
+.rate button small{display:block;font-weight:400;font-size:10.5px;color:var(--fgm)}
+.rate .g0{border-color:#C0392B}.rate .g3{border-color:#3E8E5A}
+.res-ok{color:#3E8E5A;font-weight:600;margin:8px 0}.res-bad{color:var(--danger);font-weight:600;margin:8px 0}
+.stack{display:flex;height:12px;border-radius:8px;overflow:hidden;background:var(--bd);margin:8px 0}
+.stack i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--fgm)}
+.leg b{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:4px}
+.wk{display:flex;align-items:flex-end;gap:6px;height:64px;margin-top:8px}
+.wk div{flex:1;background:var(--teal);border-radius:4px 4px 0 0;min-height:3px}
+.wkl{display:flex;gap:6px;font-size:10px;color:var(--fgm);text-align:center}.wkl span{flex:1}
+.ecat{display:flex;justify-content:space-between;font-size:13px;margin-top:8px}
+.eitem{border-bottom:1px dashed var(--bd);padding:10px 0;font-size:13.5px}
+.eitem:last-child{border-bottom:none}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:0 7px;background:rgba(46,110,107,.18);color:var(--teal)}
+.opt2{display:block;width:100%;direction:ltr;text-align:left;font-family:inherit;font-size:13.5px;padding:8px 10px;margin:6px 0;border:1px solid var(--bd);border-radius:9px;background:transparent;color:var(--fg);cursor:pointer}
+.opt2.ok{border-color:#3E8E5A;background:rgba(62,142,90,.18)}.opt2.bad{border-color:var(--danger);background:rgba(180,67,46,.14)}
+.wta{width:100%;min-height:260px;margin-top:10px;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--fg);font-family:Georgia,serif;font-size:15px;line-height:1.7;resize:vertical;direction:ltr;text-align:left}
+.clock{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;direction:ltr}.clock.rec{color:#C0392B}
+.chk{display:block;font-size:13px;margin:8px 0;line-height:1.7}.chk input{margin-left:6px}
+.mt{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;margin:4px 0}.mt span{background:var(--bd);border-radius:8px;padding:1px 8px}.mt .ok{background:rgba(62,142,90,.25)}.mt .warn2{background:rgba(180,67,46,.2)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;direction:ltr;text-align:left}.tbl th,.tbl td{border:1px solid var(--bd);padding:6px 8px}
+
+.back{border:none;background:transparent;color:var(--acc);font-family:inherit;font-size:13px;font-weight:600;padding:18px 2px 0;cursor:pointer}
+.pcat{margin:10px 0;font-size:13px}.pcat span{display:flex;justify-content:space-between}
+.chips .chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+</style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#1B1F2A">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -558,7 +589,7 @@ async function pull(){
       if(d.q){var seen={};ql.forEach(function(x){seen[JSON.stringify(x)]=1;});d.q.forEach(function(x){if(!seen[JSON.stringify(x)])ql.push(x);});ql.sort(function(a,b){return a.d<b.d?1:-1;});ql=ql.slice(0,20);}}}
     else{var x='';try{x=await r.text();}catch(e){}err='خواندن: '+r.status+' '+x.slice(0,120);}
     save('hd_g',gd);save('hd_v',vd);save('hd_streak',streak);save('hd_prefs',prefs);save('hd_q',ql);
-    var p=await push();if(!p.ok&&!err)err='ذخیره: '+p.err;
+    var p=await push();if(!p.ok&&!err)err='ذخیره: '+p.err;try{await srsSync();}catch(e){}
   }catch(e){err='اتصال: '+(e&&e.name==='AbortError'?'زمان پاسخ‌دهی تمام شد':(e&&e.message?e.message:'نامشخص'));}
   amsg=err?'همگام‌سازی ناموفق بود ('+err+')':'همگام‌سازی شد.';
   render();
@@ -634,6 +665,7 @@ function rPr(){
   var avg=ql.length?Math.round(ql.reduce(function(a,q){return a+q.s/q.t;},0)/ql.length*100):0;
   var nm=((prefs.fn||'')+' '+(prefs.ln||'')).trim()||(ses?ses.user.email.split('@')[0]:'کاربر مهمان');
   var h='<div class="st">پروفایل من</div><div class="dc" style="margin-top:0;display:flex;gap:14px;align-items:center"><div class="av">'+esc(nm.charAt(0).toUpperCase())+'</div><div><div class="dt" style="font-size:18px;margin:0">'+esc(nm)+'</div><div class="du" style="margin:2px 0 0">'+(prefs.goal?'سطح هدف: '+prefs.goal:'سطح هدف انتخاب نشده')+'</div></div></div><div class="stats">'+stat(streak,'روز پیاپی')+stat(vN+' / '+VW.length,'لغت یادگرفته')+stat(gN+' / '+GT.length,'مبحث گرامر')+stat(ql.length?avg+'%':'-','میانگین آزمون')+'</div>';
+  h+=renderDash();
   h+='<div class="st">پیشرفت لغات هر سطح</div><div class="dc" style="margin-top:0">';
   LV.forEach(function(x){var t=VW.filter(function(v){return v.l===x;}),d=t.filter(function(v){return vd[v.w];}).length;h+='<div style="margin:8px 0;font-size:13px"><b>'+x+'</b> <span style="direction:ltr;display:inline-block">'+d+' / '+t.length+'</span><div class="bar"><div style="width:'+(t.length?Math.round(d/t.length*100):0)+'%"></div></div></div>';});
   h+='</div><div class="st">هدف من</div><div class="dc" style="margin-top:0"><div class="eb">سطح هدف</div><div class="chips" style="padding-top:2px">';
@@ -661,9 +693,9 @@ function render(){
   var sy=window.scrollY;
   var gN=GT.filter(function(t){return gd[t.id];}).length,vN=VW.filter(function(v){return vd[v.w];}).length;
   var pct=Math.round((gN+vN)/(GT.length+VW.length)*100);
-  var T=[['gr','گرامر'],['ru','قوانین'],['vo','لغات'],['go','Goethe'],['qz','تست'],['pr','پروفایل']];
+  var T=[['gr','گرامر'],['ru','قوانین'],['vo','لغات'],['rv','مرور'],['go','Goethe'],['qz','تست'],['pr','پروفایل']];
   var h='<header><div class="row"><div class="brand">Haman Deutsch<small>گرامر، لغات و آمادگی Goethe (A1 تا C1)</small></div><div class="streak"><div class="n">'+streak+'</div><div class="l">روز پیاپی</div></div></div><div class="pb"><div style="width:'+pct+'%"></div></div>';
-  h+='</header><div class="wrap">'+({gr:rGr,ru:rRu,vo:rVo,go:rGo,qz:rQz,pr:rPr}[view])()+'<footer>Haman Deutsch</footer></div>'+bnav(T);
+  h+='</header><div class="wrap">'+({gr:rGr,ru:rRu,vo:rVo,rv:function(){return renderReview();},errors:function(){return renderErrors();},go:rGo,qz:rQz,pr:rPr}[view])()+'<footer>Haman Deutsch</footer></div>'+bnav(T);
   document.getElementById('app').innerHTML=h;
   window.scrollTo(0,sy);
 }
@@ -681,11 +713,11 @@ document.getElementById('app').addEventListener('click',function(e){
   else if(a==='qr'){qa={};}
   else if(a==='auth'){
     if(v==='google'){location.href=SB_URL+'/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(location.origin+location.pathname);return;}
-    if(v==='out'){ses=null;save('hd_session',null);amsg='خارج شدید.';}
+    if(v==='out'){logoutClean();return;}
     else if(v==='sync'){amsg='در حال همگام‌سازی...';render();pull();return;}
     else{doAuth(v);return;}
   }
-  else if(a==='qa'){var p=v.split(':'),i=+p[0];if(qa[i]!==undefined)return;qa[i]=+p[1];
+  else if(a==='qa'){var p=v.split(':'),i=+p[0];if(qa[i]!==undefined)return;qa[i]=+p[1];onQuizAnswer(i,qa[i]);
     if(Object.keys(qa).length===QZ.length){var s=0;QZ.forEach(function(q,k){if(qa[k]===q.a)s++;});ql.unshift({s:s,t:QZ.length,d:new Date().toISOString().slice(0,10)});ql=ql.slice(0,20);save('hd_q',ql);}}
   render();if(a==='tab')window.scrollTo(0,0);
 });
@@ -694,6 +726,343 @@ render();
 if(ses){pull();}
 hashIn();
 if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){ window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+</script>
+<script>/* de_extra.js: SRS, error bank, exercises, planner and backup for Haman Deutsch (ported from Haman English, no AI) */
+function getToken(){ return getTok(); }
+function sbFetch(p, o, t){ return sbf(p, o, t); }
+Object.defineProperty(window, 'session', {get: function(){ return ses; }, set: function(v){ ses = v; }, configurable: true});
+NAVICON.rv = '<path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/>';
+function bnav(T){
+  var cur = view === 'errors' ? 'rv' : view, dc = queueLen(), h = '<nav class="bnav" aria-label="ناوبری اصلی"><div class="bnav-in">';
+  T.forEach(function(t){ h += '<button class="'+(cur === t[0] ? 'on' : '')+'" data-a="tab" data-v="'+t[0]+'" aria-current="'+(cur === t[0] ? 'page' : 'false')+'">'+(t[0] === 'rv' && dc ? '<i class="bdg">'+dc+'</i>' : '')+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+NAVICON[t[0]]+'</svg><span>'+t[1]+'</span></button>'; });
+  return h + '</div></nav>';
+}
+function onQuizAnswerShim(){}
+/* srs.js - Phase 1: spaced repetition (SRS), Error Bank, study stats, dashboard. No AI involved. */
+var DAYS = [0, 1, 3, 7, 14, 30, 60], DAY_MS = 86400000;
+var srs = load('hn_srs', {}), errs = load('hn_err', []), days = load('hn_days', {});
+var srsDirty = {}, errDirty = {}, dayDirty = false, srsTimer = null, rv = null, qr = null, lastInput = Date.now();
+var CATL = {spelling: 'املا', recall: 'یادآوری لغت', artikel: 'artikel (جنس اسم)', listening: 'تشخیص شنیداری', quiz: 'گرامر (تست)'};
+function quizCat(x){ return 'quiz'; }
+function speak(text, lang){
+  if(!('speechSynthesis' in window)) return false;
+  try{ speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(text); u.lang = lang || 'de-DE'; u.rate = 0.9; speechSynthesis.speak(u); return true; }catch(e){ return false; }
+}
+function resolveErr(area, item){ var e = errs.filter(function(x){ return x.area === area && x.item === item && !x.res; })[0]; if(e){ e.res = true; e.ok = 2; errDirty[e.id] = 1; sv(); schedSrs(); } }
+function selfErr(area, item, cat, label, checked, ex){ if(checked) resolveErr(area, item); else logErr({area: area, cat: cat, item: item, prompt: label, ua: '(تیک نخورد)', ca: '', ex: ex || ''}); }
+var VMAP = {}; VW.forEach(function(v){ VMAP[v.w] = v; });
+function sv(){ save('hn_srs', srs); save('hn_err', errs); save('hn_days', days); }
+function dkey(d){ d = d || new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function dayRec(){ var k = dkey(); return days[k] || (days[k] = {s: 0, rv: 0, ok: 0, nw: 0}); }
+function uuid(){ return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){ var r = Math.random()*16|0; return (c==='x' ? r : (r&3|8)).toString(16); }); }
+/* ---- scheduling ---- */
+function plan(c0, g){
+  var isNew = !c0, b = isNew ? 0 : c0.b, now = Date.now(), nb, d;
+  if(g === 0){ nb = 0; d = now + 600000; }
+  else if(g === 1){ nb = Math.max(1, b); d = now + (isNew ? 1 : Math.max(1, Math.round(DAYS[nb]*0.6))) * DAY_MS; }
+  else { nb = Math.min(6, b + (g === 3 ? 2 : 1)); d = now + DAYS[nb] * DAY_MS; }
+  return {b: nb, d: d};
+}
+function rate(w, g){
+  var old = srs[w], p = plan(old, g), c = old || {b: 0, r: 0, l: 0, d: 0, t: 0};
+  if(g === 0 && old && old.b > 0) c.l++;
+  c.b = p.b; c.d = p.d; c.r++; c.t = Date.now(); srs[w] = c; srsDirty[w] = 1;
+  var dd = dayRec(); dd.rv++; if(g >= 2) dd.ok++; if(!old) dd.nw = (dd.nw || 0) + 1; dayDirty = true;
+  sv(); schedSrs();
+}
+function newLeft(){ return Math.max(0, (prefs.newPerDay || 10) - (dayRec().nw || 0)); }
+function buildQueue(){
+  var now = Date.now();
+  var due = VW.filter(function(v){ var c = srs[v.w]; return c && c.d <= now; }).sort(function(a, b){ return srs[a.w].d - srs[b.w].d; });
+  var fresh = VW.filter(function(v){ return !srs[v.w]; }).sort(function(a, b){ return (vd[b.w]?1:0) - (vd[a.w]?1:0); }).slice(0, newLeft());
+  return due.concat(fresh);
+}
+function queueLen(){ return buildQueue().length; }
+function ivLabel(c, g){ if(g === 0) return '۱۰ دقیقه'; var d = Math.round((plan(c, g).d - Date.now()) / DAY_MS); return d + ' روز'; }
+/* ---- error bank ---- */
+function logErr(o){
+  var e = errs.filter(function(x){ return x.area === o.area && x.item === o.item && !x.res; })[0];
+  if(e){ e.ts = Date.now(); e.ua = o.ua; e.ok = 0; errDirty[e.id] = 1; }
+  else { o.id = uuid(); o.ts = Date.now(); o.ok = 0; o.res = false; errs.unshift(o); errs = errs.slice(0, 300); errDirty[o.id] = 1; }
+  sv(); schedSrs();
+}
+function errUpdate(e, ok){ if(ok){ e.ok++; if(e.ok >= 2) e.res = true; } else { e.ok = 0; e.res = false; } errDirty[e.id] = 1; sv(); schedSrs(); }
+function onQuizAnswer(q, a){
+  var x = QZ[q]; if(a === x.a) return;
+  logErr({area: 'quiz', cat: quizCat(x), item: 'T' + q, prompt: x.q, ua: x.o[a], ca: x.o[x.a], ex: x.e});
+}
+function openErrs(){ return errs.filter(function(e){ return !e.res; }); }
+/* ---- study time (counts only while the page is visible and recently used) ---- */
+['click', 'keydown', 'touchstart', 'scroll'].forEach(function(ev){ window.addEventListener(ev, function(){ lastInput = Date.now(); }, {passive: true}); });
+setInterval(function(){
+  if(document.visibilityState === 'visible' && Date.now() - lastInput < 60000){ var d = dayRec(); d.s++; dayDirty = true; if(d.s % 20 === 0){ sv(); schedSrs(); } }
+}, 1000);
+/* ---- sync with Supabase (only when logged in; tables are protected by RLS) ---- */
+function schedSrs(){ if(!session) return; clearTimeout(srsTimer); srsTimer = setTimeout(function(){ srsSync().catch(function(){}); }, 2500); }
+async function srsSync(){
+  var t = await getToken(); if(!t) return;
+  var H = {'Prefer': 'resolution=merge-duplicates'};
+  var r = await sbFetch('/rest/v1/vocab_progress_de?select=word,box,due_at,reps,lapses,last_at&limit=1000', {}, t);
+  if(r.ok){ (await r.json()).forEach(function(x){ var ts = Date.parse(x.last_at), c = srs[x.word]; if(!c || ts > c.t){ srs[x.word] = {b: x.box, d: Date.parse(x.due_at), r: x.reps, l: x.lapses, t: ts}; delete srsDirty[x.word]; } }); }
+  r = await sbFetch('/rest/v1/error_log_de?select=id,area,category,item,prompt,user_answer,correct_answer,explanation,streak,resolved,created_at&order=created_at.desc&limit=300', {}, t);
+  if(r.ok){ (await r.json()).forEach(function(x){ var e = errs.filter(function(y){ return y.id === x.id; })[0];
+    if(!e){ errs.push({id: x.id, area: x.area, cat: x.category, item: x.item, prompt: x.prompt, ua: x.user_answer, ca: x.correct_answer, ex: x.explanation, ok: x.streak, res: x.resolved, ts: Date.parse(x.created_at)}); }
+    else { if(x.resolved) e.res = true; if(x.streak > e.ok) e.ok = x.streak; } });
+    errs.sort(function(a, b){ return b.ts - a.ts; }); errs = errs.slice(0, 300); }
+  r = await sbFetch('/rest/v1/study_days_de?select=day,seconds,reviews,correct&order=day.desc&limit=60', {}, t);
+  if(r.ok){ (await r.json()).forEach(function(x){ var d = days[x.day] || (days[x.day] = {s: 0, rv: 0, ok: 0, nw: 0}); d.s = Math.max(d.s, x.seconds); d.rv = Math.max(d.rv, x.reviews); d.ok = Math.max(d.ok, x.correct); }); }
+  sv();
+  var rows = Object.keys(srsDirty).filter(function(w){ return srs[w]; }).map(function(w){ var c = srs[w]; return {user_id: session.user.id, word: w, box: c.b, due_at: new Date(c.d).toISOString(), reps: c.r, lapses: c.l, last_at: new Date(c.t).toISOString()}; });
+  if(rows.length){ var p = await sbFetch('/rest/v1/vocab_progress_de', {method: 'POST', headers: H, body: rows}, t); if(p.ok) srsDirty = {}; }
+  var er = Object.keys(errDirty).map(function(id){ return errs.filter(function(e){ return e.id === id; })[0]; }).filter(Boolean).map(function(e){ return {id: e.id, user_id: session.user.id, area: e.area, category: e.cat, item: String(e.item).slice(0, 120), prompt: String(e.prompt || '').slice(0, 600), user_answer: String(e.ua || '').slice(0, 300), correct_answer: String(e.ca || '').slice(0, 300), explanation: String(e.ex || '').slice(0, 600), streak: e.ok || 0, resolved: !!e.res, created_at: new Date(e.ts).toISOString()}; });
+  if(er.length){ var q = await sbFetch('/rest/v1/error_log_de', {method: 'POST', headers: H, body: er}, t); if(q.ok) errDirty = {}; }
+  if(dayDirty){ var d = dayRec(); var s = await sbFetch('/rest/v1/study_days_de', {method: 'POST', headers: H, body: [{user_id: session.user.id, day: dkey(), seconds: d.s, reviews: d.rv, correct: d.ok}]}, t); if(s.ok) dayDirty = false; }
+}
+async function logoutClean(){
+  amsg = 'در حال خروج...'; render();
+  try{ await push(); await srsSync(); }catch(e){}
+  ['hd_session','hd_g','hd_v','hd_streak','hd_prefs','hd_q','hd_last','hn_srs','hn_err','hn_days','hn_ex','hn_plan'].forEach(function(k){ try{ localStorage.removeItem(k); }catch(e){} });
+  ses = null; gd = {}; vd = {}; prefs = {}; ql = []; srs = {}; errs = []; days = {}; srsDirty = {}; errDirty = {}; rv = null; try{ EXS = {}; PL = {}; ex = null; }catch(e){} streak = 1;
+  amsg = 'خارج شدید. داده‌های این دستگاه برای حفظ حریم خصوصی پاک شد.'; render();
+}
+/* ---- review sessions ---- */
+function norm(s){ return String(s).toLowerCase().replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ').trim(); }
+function lev(a, b){ var m = [], i, j; for(i = 0; i <= a.length; i++) m[i] = [i]; for(j = 1; j <= b.length; j++) m[0][j] = j;
+  for(i = 1; i <= a.length; i++) for(j = 1; j <= b.length; j++) m[i][j] = Math.min(m[i-1][j] + 1, m[i][j-1] + 1, m[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1)); return m[a.length][b.length]; }
+function expOf(v){ return (v.a ? v.a + ' ' : '') + v.w; }
+function mkSession(mode, words, errMode){ return {mode: mode, q: words, i: 0, show: false, res: null, err: !!errMode, n: 0, ok: 0, req: {}, done: words.length === 0}; }
+function advance(){ rv.i++; rv.show = false; rv.res = null; if(rv.i >= rv.q.length) rv.done = true; }
+function applyGrade(g){
+  var v = rv.q[rv.i]; rv.n++; if(g >= 2) rv.ok++;
+  if(!rv.err) rate(v.w, g);
+  if(g === 0){ if(rv.mode === 'flip') logErr({area: 'vocab', cat: 'recall', item: v.w, prompt: v.fa, ua: '(نمی‌دانستم)', ca: v.w, ex: v.fa}); if(!rv.err && !rv.req[v.w]){ rv.req[v.w] = 1; rv.q.push(v); } }
+  advance();
+}
+function checkTyped(){
+  var v = rv.q[rv.i], inp = document.getElementById('rv_in'), ans = norm(inp ? inp.value : ''), ex = rv.mode === 'listen' ? v.w : expOf(v);
+  if(!ans) return;
+  var ok = rv.mode === 'listen' ? ans === norm(v.w) : ans === norm(ex); rv.res = {ok: ok, ans: ans};
+  if(ok){ if(rv.err){ var e = errs.filter(function(x){ return x.area === 'vocab' && x.item === v.w && !x.res; })[0]; if(e) errUpdate(e, true); rv.n++; rv.ok++; } }
+  else {
+    var cat = (rv.mode !== 'listen' && v.a && (ans === norm(v.w) || ans.split(' ').slice(1).join(' ') === norm(v.w))) ? 'artikel' : (lev(ans, norm(ex)) <= 2 ? 'spelling' : (rv.mode === 'listen' ? 'listening' : 'recall'));
+    logErr({area: 'vocab', cat: cat, item: v.w, prompt: v.ex.replace(/<[^>]+>/g, '').slice(0, 300), ua: ans.slice(0, 100), ca: ex, ex: v.fa});
+    if(rv.err){ rv.n++; } else { rate(v.w, 0); rv.n++; if(!rv.req[v.w]){ rv.req[v.w] = 1; rv.q.push(v); } }
+  }
+}
+function renderReview(){
+  var h = '<div class="st">مرور لغات با تکرار فاصله‌دار (SRS)</div>';
+  if(rv && !rv.done) return h + rSession();
+  if(rv && rv.done){
+    var acc = rv.n ? Math.round(rv.ok / rv.n * 100) : 0;
+    h += '<div class="dc" style="margin-top:0"><div class="eb">جلسه تمام شد</div><div class="big">'+acc+'%</div><p class="du">'+rv.ok+' پاسخ درست از '+rv.n+' پاسخ.'+(rv.err ? '' : ' مرورهای بعدی خودکار زمان‌بندی شد.')+'</p><button class="btn" data-rv="end">بازگشت</button></div>';
+    return h;
+  }
+  var n = queueLen(), due = VW.filter(function(v){ var c = srs[v.w]; return c && c.d <= Date.now(); }).length, oe = openErrs().length;
+  var seen = Object.keys(srs).length, mast = VW.filter(function(v){ return srs[v.w] && srs[v.w].b >= 5; }).length;
+  h += '<div class="dc" style="margin-top:0"><div class="eb">امروز</div><div class="big">'+n+' کارت</div><p class="du">'+due+' مرور سررسید + '+(n - due)+' لغت جدید (سقف روزانه '+(prefs.newPerDay || 10)+')</p>';
+  if(n){ h += '<button class="btn" data-rv="start" data-m="flip">شروع فلش‌کارت</button><button class="btn o" style="margin-top:8px" data-rv="start" data-m="type">شروع تمرین تایپی (جای خالی)</button><button class="btn o" style="margin-top:8px" data-rv="start" data-m="listen">شنیدن و نوشتن (املا)</button>'; }
+  else h += '<p class="du">امروز مروری باقی نمانده. فردا دوباره سر بزن، یا سقف لغت جدید را در پروفایل بالا ببر.</p>';
+  h += '</div><div class="stats" style="margin-top:12px">'+stat(seen+' / '+VW.length,'کارت دیده‌شده')+stat(mast,'تسلط (فاصله ≥ ۳۰ روز)')+'</div>';
+  h += '<div class="dc"><div class="eb">بانک خطا</div><p class="du">'+oe+' اشتباه باز. هر اشتباه با دو پاسخ درست پشت‌سرهم حل‌شده حساب می‌شود.</p><button class="btn o" data-a="tab" data-v="errors">باز کردن بانک خطا</button></div>';
+  h += '<p class="du" style="margin:14px 4px">روش کار: هر لغت پس از پاسخ درست با فاصله‌های ۱، ۳، ۷، ۱۴، ۳۰ و ۶۰ روز دوباره می‌آید. با «دوباره» به ابتدا برمی‌گردد. تیک «یادگرفتم» در تب لغات به‌تنهایی به‌معنی تسلط نیست؛ فقط لغت را زودتر در صف مرور می‌گذارد.</p>';
+  return h;
+}
+function rSession(){
+  var v = rv.q[rv.i], c = srs[v.w], isNew = !c;
+  var h = '<div class="eb" style="margin:0 4px 6px">'+(rv.i + 1)+' / '+rv.q.length+(rv.err ? ' · تمرین اشتباهات' : '')+'</div><div class="dc" style="margin-top:0">';
+  if(rv.mode === 'flip'){
+    h += '<div class="eb">'+(isNew ? 'کلمهٔ جدید' : 'مرور')+' · '+v.l+'</div><div class="rvf">'+v.fa+'</div>';
+    if(!rv.show) h += '<p class="du">انگلیسی‌اش را به ذهن بیاور، بعد پاسخ را ببین.</p><button class="btn" data-rv="show">نمایش پاسخ</button>';
+    else {
+      h += '<div class="w" style="font-size:22px;direction:ltr;text-align:left">'+art(v)+v.w+' <button class="mini" style="width:auto;display:inline;padding:2px 8px" data-say="'+esc(v.w)+'" data-lang="de-DE">🔊</button></div><div class="pl">'+esc(v.pl)+'</div><p class="ex">'+v.ex+'</p>'+(v.p ? '<div class="parts">🧩 '+v.p+'</div>' : '');
+      h += '<div class="rate">'+[['دوباره', 0], ['سخت', 1], ['خوب', 2], ['آسان', 3]].map(function(x){ return '<button class="g'+x[1]+'" data-rv="grade" data-g="'+x[1]+'">'+x[0]+'<small>'+ivLabel(c, x[1])+'</small></button>'; }).join('')+'</div>';
+    }
+  } else {
+    var ex = rv.mode === 'listen' ? v.w : expOf(v), cl = v.ex.replace(/<b>.*?<\/b>/, '_____');
+    if(rv.mode === 'listen') h += '<div class="eb">گوش بده و بنویس · '+v.l+'</div><button class="btn" data-say="'+esc(v.w)+'" data-lang="de-DE">🔊 پخش</button><button class="mini" data-say="'+esc(v.w)+'" data-lang="de-DE">🔊 دوباره</button><div class="du">'+(rv.res ? v.fa : 'کلمه را بشنو و املایش را بنویس ('+ex.length+' حرف)')+'</div>';
+    else h += '<div class="eb">معنی ← آلمانی · '+v.l+'</div><div class="rvf">'+v.fa+'</div><div class="du">'+(v.a ? 'با artikel بنویس (der / die / das)' : 'فعل یا صفت را بنویس')+'</div>';
+    if(!rv.res) h += '<input class="inp" id="rv_in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type the word"><button class="btn" data-rv="check">بررسی</button>';
+    else if(rv.res.ok){
+      h += '<div class="res-ok">درست است ✔ '+esc(ex)+'</div>';
+      h += rv.err ? '<button class="btn" data-rv="next">ادامه</button>' : '<div class="rate" style="grid-template-columns:1fr 1fr"><button class="g2" data-rv="grade" data-g="2">خوب<small>'+ivLabel(c, 2)+'</small></button><button class="g3" data-rv="grade" data-g="3">آسان<small>'+ivLabel(c, 3)+'</small></button></div>';
+    } else h += '<div class="res-bad">نادرست ✘ پاسخ: '+esc(ex)+'</div><p class="ex">'+v.ex+'</p><div class="pl">'+esc(v.pl)+'</div><button class="btn" data-rv="next">ادامه</button>';
+  }
+  return h + '</div><button class="btn o" data-rv="end">پایان جلسه</button>';
+}
+function renderErrors(){
+  var oe = openErrs(), cats = {}; oe.forEach(function(e){ cats[e.cat] = (cats[e.cat] || 0) + 1; });
+  var h = '<button class="back" data-a="tab" data-v="rv">&lsaquo; بازگشت به مرور</button><div class="st">بانک خطا</div><div class="dc" style="margin-top:0"><div class="big">'+oe.length+'</div><p class="du">اشتباه باز · '+(errs.length - oe.length)+' حل‌شده</p>';
+  Object.keys(cats).sort(function(a, b){ return cats[b] - cats[a]; }).forEach(function(k){ h += '<div class="ecat"><span>'+(CATL[k] || k)+'</span><b>'+cats[k]+'</b></div>'; });
+  var vw = oe.filter(function(e){ return e.area === 'vocab' && VMAP[e.item]; });
+  if(vw.length) h += '<button class="btn" data-rv="errall">تمرین همهٔ لغت‌های اشتباه ('+vw.length+')</button>';
+  h += '</div>';
+  if(!oe.length) return h + '<p class="du" style="margin:14px 4px">هنوز اشتباه باز نداری. اشتباه‌های تست و مرور اینجا جمع می‌شوند.</p>';
+  h += '<div class="dc" style="padding:6px 16px">';
+  oe.slice(0, 40).forEach(function(e){
+    h += '<div class="eitem"><span class="tag">'+(CATL[e.cat] || e.cat)+'</span> <small>پاسخ درست پشت‌سرهم: '+e.ok+' / 2</small>';
+    if(e.area === 'quiz'){
+      var qi = +String(e.item).slice(1), x = QZ[qi];
+      h += '<div class="ex" style="margin-top:6px">'+esc(e.prompt)+'</div>';
+      if(qr && qr.id === e.id){
+        x.o.forEach(function(o, j){ var c = ''; if(qr.pick !== undefined){ if(j === x.a) c = ' ok'; else if(j === qr.pick) c = ' bad'; } h += '<button class="opt2'+c+'" data-rv="qpick" data-id="'+e.id+'" data-o="'+j+'">'+o+'</button>'; });
+        if(qr.pick !== undefined) h += '<div class="du">'+x.e+'</div><button class="mini" data-rv="qclose">بستن</button>';
+      } else h += '<div class="du">پاسخ تو: '+esc(e.ua)+' ← درست: '+esc(e.ca)+'</div><div class="du">'+esc(e.ex)+'</div><button class="mini" data-rv="qretry" data-id="'+e.id+'">حل دوباره</button>';
+    } else if(e.area === 'writing' || e.area === 'speaking' || e.area === 'exercise'){ h += '<div class="ex" style="margin-top:6px">'+esc(e.prompt || '')+'</div><div class="du">'+(e.area === 'exercise' ? 'پاسخ تو: '+esc(e.ua)+' ← درست: '+esc(e.ca)+' · ' : '')+esc(e.ex || '')+(e.area !== 'exercise' && e.ua ? ' · '+esc(e.ua) : '')+'</div>'; } else h += '<div class="ex" style="margin-top:6px"><b>'+esc(e.item)+'</b> ('+esc(e.ex || '')+')</div><div class="du">پاسخ تو: '+esc(e.ua)+' ← درست: '+esc(e.ca)+'</div>'+(VMAP[e.item] ? '<button class="mini" data-rv="errword" data-w="'+esc(e.item)+'">تمرین این لغت</button>' : '');
+    h += '</div>';
+  });
+  return h + '</div>';
+}
+function renderDash(){
+  var st = {n: 0, l: 0, y: 0, m: 0}; VW.forEach(function(v){ var c = srs[v.w]; if(!c) st.n++; else if(c.b <= 2) st.l++; else if(c.b <= 4) st.y++; else st.m++; });
+  var T = VW.length, wk = [], i, tot = 0, rvs = 0, oks = 0;
+  for(i = 6; i >= 0; i--){ var k = dkey(new Date(Date.now() - i * DAY_MS)), r = days[k] || {s: 0, rv: 0, ok: 0}; wk.push({k: k, r: r}); tot += r.s; rvs += r.rv; oks += r.ok; }
+  var mx = Math.max.apply(null, wk.map(function(x){ return x.r.s; }).concat([60])), td = days[dkey()] || {s: 0};
+  var oe = openErrs(), cats = {}; oe.forEach(function(e){ cats[e.cat] = (cats[e.cat] || 0) + 1; });
+  var h = '<div class="st">داشبورد یادگیری</div><div class="stats" style="margin-top:0">'+stat(queueLen(),'کارت امروز')+stat(st.m+' / '+T,'لغت مسلط')+stat(Math.round(td.s / 60)+' دقیقه','مطالعهٔ امروز')+stat(rvs ? Math.round(oks / rvs * 100)+'%' : '-','دقت مرور (۷ روز)')+'</div>';
+  h += '<div class="dc" style="margin-top:12px"><div class="eb">مراحل یادگیری لغات</div><div class="stack"><i style="width:'+(st.m/T*100)+'%;background:#3E8E5A"></i><i style="width:'+(st.y/T*100)+'%;background:#2E6E6B"></i><i style="width:'+(st.l/T*100)+'%;background:#C98A2C"></i></div><div class="leg"><span><b style="background:#3E8E5A"></b>مسلط '+st.m+'</span><span><b style="background:#2E6E6B"></b>در حال تثبیت '+st.y+'</span><span><b style="background:#C98A2C"></b>تازه '+st.l+'</span><span><b style="background:#999"></b>ندیده '+st.n+'</span></div></div>';
+  h += '<div class="dc" style="margin-top:12px"><div class="eb">زمان مطالعه (۷ روز اخیر): '+Math.round(tot / 60)+' دقیقه</div><div class="wk">'+wk.map(function(x){ return '<div style="height:'+Math.max(5, Math.round(x.r.s / mx * 100))+'%"></div>'; }).join('')+'</div><div class="wkl">'+wk.map(function(x){ return '<span>'+x.k.slice(8)+'</span>'; }).join('')+'</div></div>';
+  h += '<div class="dc" style="margin-top:12px"><div class="eb">پرتکرارترین خطاها</div>';
+  var ks = Object.keys(cats).sort(function(a, b){ return cats[b] - cats[a]; });
+  h += ks.length ? ks.slice(0, 5).map(function(k){ return '<div class="ecat"><span>'+(CATL[k] || k)+'</span><b>'+cats[k]+'</b></div>'; }).join('') : '<p class="du">هنوز خطایی ثبت نشده.</p>';
+  h += '<button class="btn o" data-a="tab" data-v="errors">بانک خطا</button></div>';
+  var np = prefs.newPerDay || 10; h += '<div class="dc" style="margin-top:12px"><div class="eb">سقف لغت جدید در روز</div><div class="chips" style="padding-top:2px">'+[5, 10, 15, 20].map(function(n){ return '<button class="chip '+(np === n ? 'on' : '')+'" data-rv="npd" data-v="'+n+'">'+n+'</button>'; }).join('')+'</div></div>';
+  var rec = queueLen() ? 'امروز '+queueLen()+' کارت مرور و لغت جدید داری.' : (oe.length ? 'اشتباهات باز را تمرین کن.' : 'لغت جدیدی از تب لغات شروع کن یا تست بزن.');
+  h += '<div class="dc" style="margin-top:12px"><div class="eb">پیشنهاد بعدی</div><p class="du" style="margin:0">'+rec+'</p></div>';
+  h += '<div class="dc" style="margin-top:12px"><div class="eb">تخمین سطح Goethe</div><p class="du" style="margin:0">برای تخمین واقعی باید آزمون‌های شبیه‌سازی Lesen، Hören، Schreiben و Sprechen انجام شود (هنوز اضافه نشده). سطح را از روی درصد لغت‌ها حساب نمی‌کنیم چون گمراه‌کننده است.</p></div>';
+  return h;
+}
+document.getElementById('app').addEventListener('click', function(e){
+  var t = e.target.closest('[data-rv]'); if(!t) return;
+  var a = t.getAttribute('data-rv');
+  if(a === 'start'){ var m = t.getAttribute('data-m'); rv = mkSession(m, buildQueue(), false); }
+  else if(a === 'npd'){ prefs.newPerDay = +t.getAttribute('data-v'); save('hd_prefs', prefs); }
+  else if(a === 'show'){ rv.show = true; }
+  else if(a === 'grade'){ applyGrade(+t.getAttribute('data-g')); }
+  else if(a === 'check'){ checkTyped(); }
+  else if(a === 'next'){ advance(); }
+  else if(a === 'end'){ rv = null; }
+  else if(a === 'errall'){ rv = mkSession('type', openErrs().filter(function(x){ return x.area === 'vocab' && VMAP[x.item]; }).map(function(x){ return VMAP[x.item]; }), true); view = 'rv'; }
+  else if(a === 'errword'){ rv = mkSession('type', [VMAP[t.getAttribute('data-w')]], true); view = 'rv'; }
+  else if(a === 'qretry'){ qr = {id: t.getAttribute('data-id')}; }
+  else if(a === 'qclose'){ qr = null; }
+  else if(a === 'qpick'){ if(qr && qr.pick === undefined){ var er = errs.filter(function(x){ return x.id === t.getAttribute('data-id'); })[0], j = +t.getAttribute('data-o'); qr.pick = j; if(er) errUpdate(er, j === QZ[+String(er.item).slice(1)].a); } }
+  render();
+  if(rv && !rv.done && rv.mode === 'listen' && !rv.res && (a === 'start' || a === 'grade' || a === 'next')) speak(rv.q[rv.i].w, 'de-DE');
+});
+document.getElementById('app').addEventListener('click', function(e){ var t = e.target.closest('[data-say]'); if(t){ if(!speak(t.getAttribute('data-say'), t.getAttribute('data-lang'))) alert('این مرورگر پخش صدا را پشتیبانی نمی‌کند.'); } });
+document.getElementById('app').addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.id === 'rv_in'){ checkTyped(); render(); } });
+
+/* exercise.js: adaptive grammar exercises, daily planner and local backup (no AI) */
+var EX = [{"id": "x0", "cat": "artikel و حالت", "lvl": "A1", "type": "mcq", "q": "Ich sehe ___ Mann.", "o": ["der", "den", "dem", "des"], "a": 1, "e": "مفعول مستقیم مذکر ← Akkusativ: den Mann."}, {"id": "x1", "cat": "artikel و حالت", "lvl": "A2", "type": "mcq", "q": "Ich gebe ___ Frau das Buch.", "o": ["die", "der", "den", "das"], "a": 1, "e": "مفعول غیرمستقیم مؤنث ← Dativ: der Frau."}, {"id": "x2", "cat": "artikel و حالت", "lvl": "B1", "type": "mcq", "q": "Das ist das Auto ___ Lehrers.", "o": ["der", "des", "dem", "den"], "a": 1, "e": "مالکیت ← Genitiv: des Lehrers."}, {"id": "x3", "cat": "artikel و حالت", "lvl": "A2", "type": "mcq", "q": "Wir fahren mit ___ Zug.", "o": ["dem", "den", "der", "das"], "a": 0, "e": "mit + Dativ؛ Zug مذکر ← dem Zug."}, {"id": "x4", "cat": "جای فعل", "lvl": "A1", "type": "mcq", "q": "Morgen ___ nach Berlin.", "o": ["fahre ich", "ich fahre", "fahren ich", "ich fahren"], "a": 0, "e": "فعل جای دوم (V2): Morgen fahre ich."}, {"id": "x5", "cat": "جای فعل", "lvl": "A2", "type": "mcq", "q": "Ich weiß nicht, wo er ___.", "o": ["wohnt", "wohnen", "wohnst", "wohne"], "a": 0, "e": "در جملهٔ پیرو فعل آخر می‌رود و با er می‌خواند."}, {"id": "x6", "cat": "جای فعل", "lvl": "A2", "type": "mcq", "q": "Er sagt, dass er heute nicht ___.", "o": ["kommt", "kommen", "kommst", "komme"], "a": 0, "e": "dass ← فعل صرف‌شده آخر جمله: kommt."}, {"id": "x7", "cat": "جای فعل", "lvl": "A2", "type": "mcq", "q": "Ich möchte heute ins Kino ___.", "o": ["gehen", "gehe", "gegangen", "zu gehen"], "a": 0, "e": "فعل وجهی + مصدر در آخر جمله."}, {"id": "x8", "cat": "Perfekt", "lvl": "A2", "type": "mcq", "q": "Ich ___ gestern Fußball gespielt.", "o": ["habe", "bin", "werde", "war"], "a": 0, "e": "spielen با haben صرف می‌شود."}, {"id": "x9", "cat": "Perfekt", "lvl": "A2", "type": "mcq", "q": "Er ___ nach Hause gegangen.", "o": ["hat", "ist", "wird", "hatte"], "a": 1, "e": "gehen (حرکت) با sein صرف می‌شود."}, {"id": "x10", "cat": "Perfekt", "lvl": "A2", "type": "mcq", "q": "Wir haben das Buch ___.", "o": ["gelesen", "gelest", "lesen", "lesten"], "a": 0, "e": "lesen فعل بی‌قاعده است: gelesen."}, {"id": "x11", "cat": "Perfekt", "lvl": "A2", "type": "mcq", "q": "Sie ___ früh aufgestanden.", "o": ["hat", "ist", "wird", "war"], "a": 1, "e": "aufstehen (تغییر حالت) با sein صرف می‌شود."}, {"id": "x12", "cat": "حروف اضافه", "lvl": "A2", "type": "mcq", "q": "Ich warte ___ den Bus.", "o": ["für", "auf", "an", "über"], "a": 1, "e": "warten auf + Akkusativ."}, {"id": "x13", "cat": "حروف اضافه", "lvl": "A2", "type": "mcq", "q": "Wir sind ___ Berlin gefahren.", "o": ["nach", "in", "zu", "an"], "a": 0, "e": "شهر بدون artikel ← nach."}, {"id": "x14", "cat": "حروف اضافه", "lvl": "A2", "type": "mcq", "q": "Er kommt ___ dem Iran.", "o": ["von", "aus", "bei", "nach"], "a": 1, "e": "aus + Dativ برای مبدأ؛ der Iran ← aus dem Iran."}, {"id": "x15", "cat": "حروف اضافه", "lvl": "A2", "type": "mcq", "q": "Das Buch liegt ___ dem Tisch.", "o": ["auf", "aus", "nach", "zu"], "a": 0, "e": "وضعیت (Wo?) ← auf + Dativ."}, {"id": "x16", "cat": "جملهٔ پیرو", "lvl": "A2", "type": "mcq", "q": "Ich bleibe zu Hause, ___ ich krank bin.", "o": ["weil", "denn", "deshalb", "aber"], "a": 0, "e": "فعل در آخر جمله است ← weil (جملهٔ پیرو)."}, {"id": "x17", "cat": "جملهٔ پیرو", "lvl": "B1", "type": "mcq", "q": "Wenn es regnet, ___ ich zu Hause.", "o": ["bleibe", "bleibt", "ich bleibe", "bleiben"], "a": 0, "e": "بعد از جملهٔ پیرو، فعل جملهٔ اصلی بلافاصله می‌آید."}, {"id": "x18", "cat": "جملهٔ پیرو", "lvl": "A2", "type": "mcq", "q": "Er lernt Deutsch, ___ er in Deutschland arbeiten möchte.", "o": ["weil", "denn", "obwohl", "sodass"], "a": 0, "e": "فعل (möchte) آخر جمله است ← weil."}, {"id": "x19", "cat": "جملهٔ پیرو", "lvl": "A2", "type": "mcq", "q": "Ich weiß, ___ du Zeit hast.", "o": ["dass", "das", "daß", "wass"], "a": 0, "e": "ربط dass با دو s نوشته می‌شود."}, {"id": "x20", "cat": "افعال وجهی", "lvl": "A2", "type": "mcq", "q": "Du ___ hier nicht rauchen.", "o": ["darfst", "darf", "dürfst", "darfen"], "a": 0, "e": "du darfst (مفرد دوم شخص)."}, {"id": "x21", "cat": "افعال وجهی", "lvl": "B1", "type": "mcq", "q": "Ich ___ gestern nicht kommen.", "o": ["konnte", "kann", "können", "gekonnt"], "a": 0, "e": "گذشته با Präteritum فعل وجهی: konnte."}, {"id": "x22", "cat": "افعال وجهی", "lvl": "A2", "type": "mcq", "q": "Er ___ gut Deutsch sprechen.", "o": ["kann", "kannst", "können", "könnt"], "a": 0, "e": "er kann."}, {"id": "x23", "cat": "ختم صفت", "lvl": "B1", "type": "mcq", "q": "Das ist ein ___ Mann.", "o": ["alter", "alte", "alten", "altes"], "a": 0, "e": "ein + مذکر نامعین در Nominativ: alter."}, {"id": "x24", "cat": "ختم صفت", "lvl": "B1", "type": "mcq", "q": "Ich sehe einen ___ Mann.", "o": ["alter", "alte", "alten", "altes"], "a": 2, "e": "einen + مذکر در Akkusativ: alten."}, {"id": "x25", "cat": "ختم صفت", "lvl": "B1", "type": "mcq", "q": "Die ___ Frau ist nett.", "o": ["alte", "alter", "alten", "altes"], "a": 0, "e": "die + مؤنث در Nominativ: alte."}, {"id": "x26", "cat": "Konjunktiv II", "lvl": "B1", "type": "mcq", "q": "Wenn ich Zeit ___, würde ich reisen.", "o": ["hätte", "habe", "hatte", "hat"], "a": 0, "e": "شرط غیرواقعی ← Konjunktiv II: hätte."}, {"id": "x27", "cat": "Konjunktiv II", "lvl": "B1", "type": "mcq", "q": "Ich ___ gern reich.", "o": ["wäre", "bin", "war", "werde"], "a": 0, "e": "آرزو: Ich wäre gern ..."}, {"id": "x28", "cat": "Konjunktiv II", "lvl": "B1", "type": "mcq", "q": "___ Sie mir bitte helfen?", "o": ["Könnten", "Können", "Konnten", "Gekonnt"], "a": 0, "e": "درخواست مؤدبانه ← Könnten Sie ...?"}, {"id": "x29", "cat": "مجهول", "lvl": "B1", "type": "mcq", "q": "Das Haus ___ 1990 gebaut.", "o": ["wurde", "wird", "ist", "hat"], "a": 0, "e": "مجهول گذشته: wurde + Partizip II."}, {"id": "x30", "cat": "مجهول", "lvl": "B1", "type": "mcq", "q": "Der Brief ___ gestern geschrieben.", "o": ["wurde", "wird", "hat", "ist"], "a": 0, "e": "مجهول گذشته: wurde geschrieben."}, {"id": "x31", "cat": "مجهول", "lvl": "B2", "type": "mcq", "q": "Das Problem muss schnell gelöst ___.", "o": ["werden", "wird", "worden", "sein"], "a": 0, "e": "مجهول با فعل وجهی: Partizip II + werden."}, {"id": "x32", "cat": "جملهٔ موصولی", "lvl": "B1", "type": "mcq", "q": "Das ist der Mann, ___ ich gestern gesehen habe.", "o": ["den", "der", "dem", "das"], "a": 0, "e": "مفعول مستقیم مذکر ← den."}, {"id": "x33", "cat": "جملهٔ موصولی", "lvl": "B1", "type": "mcq", "q": "Die Frau, ___ ich geholfen habe, ist nett.", "o": ["der", "die", "den", "dem"], "a": 0, "e": "helfen + Dativ؛ مؤنث ← der."}, {"id": "x34", "cat": "جملهٔ موصولی", "lvl": "B1", "type": "mcq", "q": "Das ist das Haus, in ___ ich wohne.", "o": ["dem", "das", "den", "der"], "a": 0, "e": "in + Dativ (wo?)؛ Haus خنثی ← dem."}, {"id": "x35", "cat": "Genitiv", "lvl": "B2", "type": "mcq", "q": "Wegen ___ Regens bleiben wir hier.", "o": ["des", "dem", "den", "der"], "a": 0, "e": "wegen + Genitiv؛ مذکر ← des Regens."}, {"id": "x36", "cat": "Genitiv", "lvl": "B2", "type": "mcq", "q": "Trotz ___ Kälte gehen wir spazieren.", "o": ["der", "die", "dem", "des"], "a": 0, "e": "trotz + Genitiv؛ Kälte مؤنث ← der Kälte."}];
+var EXS = load('hn_ex', {}), PL = load('hn_plan', {}), ex = null;
+var BK = ['hd_g','hd_v','hd_streak','hd_prefs','hd_q','hn_srs','hn_err','hn_days','hn_ex','hn_plan'];
+function shuf(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function exPick(n, onlyErr){
+  var open = errs.filter(function(e){ return e.area === 'exercise' && !e.res; }), oi = {}, oc = {};
+  open.forEach(function(e){ oi[e.item] = 1; oc[e.cat] = 1; });
+  var pool = EX.filter(function(x){ return !onlyErr || oi[x.id]; }), out = [];
+  while(out.length < n && pool.length){
+    var ws = pool.map(function(x){ var s = EXS[x.id] || {c: 0, w: 0}, w = 1; if(oi[x.id]) w += 4; if(oc[x.cat]) w += 2; if(!s.c && !s.w) w += 1; if(s.c >= 2 && !oi[x.id]) w *= 0.3; return w; });
+    var tot = ws.reduce(function(a, b){ return a + b; }, 0), r = Math.random() * tot, k = 0;
+    while(k < ws.length - 1 && r > ws[k]){ r -= ws[k]; k++; }
+    out.push(pool.splice(k, 1)[0]);
+  }
+  return out;
+}
+function exStart(onlyErr){
+  var l = exPick(10, onlyErr);
+  ex = {q: l.map(function(x){ var o = x.o.map(function(_, i){ return i; }); if(x.type === 'mcq') shuf(o); return {x: x, ord: o}; }), i: 0, n: 0, ok: 0, pick: null, wrong: {}, done: !l.length};
+}
+function exAnswer(j){
+  if(ex.pick !== null) return;
+  var it = ex.q[ex.i], x = it.x, ok = it.ord[j] === x.a;
+  ex.pick = j; ex.n++; if(ok) ex.ok++; else ex.wrong[x.cat] = (ex.wrong[x.cat] || 0) + 1;
+  var s = EXS[x.id] || (EXS[x.id] = {c: 0, w: 0, t: 0}); if(ok) s.c++; else s.w++; s.t = Date.now(); save('hn_ex', EXS);
+  var open = errs.filter(function(e){ return e.area === 'exercise' && e.item === x.id && !e.res; })[0];
+  if(ok){ if(open) errUpdate(open, true); }
+  else logErr({area: 'exercise', cat: x.cat, item: x.id, prompt: x.type === 'err' ? 'Find the error: ' + x.o.join(' ') : x.q, ua: x.o[it.ord[j]], ca: x.o[x.a], ex: x.e});
+  sv(); schedSrs();
+}
+function exHome(){
+  var oe = errs.filter(function(e){ return e.area === 'exercise' && !e.res; }).length;
+  return '<div class="st">تمرین هوشمند گرامر</div><div class="dc" style="margin-top:0"><p class="du">۱۰ سؤال؛ سؤال‌هایی که قبلاً اشتباه کرده‌ای و موضوع‌های ضعیف‌ترت بیشتر می‌آیند. هر اشتباه با دو پاسخ درست حل می‌شود. ('+EX.length+' سؤال اصلی با توضیح)</p><button class="btn" data-ex="start">شروع (۱۰ سؤال)</button>'+(oe ? '<button class="btn o" style="margin-top:8px" data-ex="errs">فقط اشتباهات قبلی ('+oe+')</button>' : '')+'</div>';
+}
+function exSession(){
+  var it = ex.q[ex.i], x = it.x, h = '<div class="eb" style="margin:0 4px 6px">'+(ex.i + 1)+' / '+ex.q.length+' · '+x.cat+'</div><div class="dc" style="margin-top:0"><p class="ex" style="font-size:15px;font-weight:600">'+esc(x.type === 'err' ? 'Find the error: ' + x.o.join(' ') : x.q)+'</p>';
+  it.ord.forEach(function(r, j){ var c = ''; if(ex.pick !== null){ if(r === x.a) c = ' ok'; else if(j === ex.pick) c = ' bad'; } h += '<button class="opt2'+c+'" data-ex="pick" data-j="'+j+'">'+(x.type === 'err' ? '('+'ABCD'.charAt(j)+') ' : '')+esc(x.o[r])+'</button>'; });
+  if(ex.pick !== null) h += '<div class="'+(it.ord[ex.pick] === x.a ? 'res-ok' : 'res-bad')+'">'+(it.ord[ex.pick] === x.a ? 'درست ✔' : 'نادرست ✘')+'</div><div class="du">'+x.e+'</div><button class="btn" data-ex="next">'+(ex.i + 1 >= ex.q.length ? 'پایان' : 'بعدی')+'</button>';
+  return h + '</div><button class="btn o" data-ex="end">پایان جلسه</button>';
+}
+function exSummary(){
+  var w = Object.keys(ex.wrong).map(function(k){ return k + ' ('+ex.wrong[k]+')'; });
+  return '<div class="st">نتیجهٔ تمرین گرامر</div><div class="dc" style="margin-top:0"><div class="big">'+Math.round(ex.ok / Math.max(1, ex.n) * 100)+'%</div><p class="du">'+ex.ok+' درست از '+ex.n+'.'+(w.length ? ' موضوع‌های نیازمند مرور: '+w.join('، ') : ' عالی بود!')+'</p><button class="btn" data-ex="start">۱۰ سؤال دیگر</button><button class="btn o" style="margin-top:8px" data-ex="end">بازگشت</button></div>';
+}
+function exStats(){
+  var cats = {}; EX.forEach(function(x){ var s = EXS[x.id]; if(s && (s.c + s.w)){ var c = cats[x.cat] || (cats[x.cat] = {c: 0, t: 0}); c.c += s.c; c.t += s.c + s.w; } });
+  var ks = Object.keys(cats).sort(function(a, b){ return cats[a].c / cats[a].t - cats[b].c / cats[b].t; });
+  return '<div class="dc" style="margin-top:12px"><div class="eb">دقت تمرین گرامر به تفکیک موضوع</div>'+(ks.length ? ks.map(function(k){ var p = Math.round(cats[k].c / cats[k].t * 100); return '<div class="pcat"><span><b>'+k+'</b><span style="direction:ltr">'+p+'% ('+cats[k].t+')</span></span><div class="bar"><div style="width:'+p+'%"></div></div></div>'; }).join('') : '<p class="du" style="margin:0">هنوز تمرینی حل نکرده‌ای.</p>')+'</div>';
+}
+/* ---- daily planner (rule-based, uses your own data) ---- */
+function buildPlan(){
+  var mins = prefs.mins || 40, due = queueLen(), xo = errs.filter(function(e){ return e.area === 'exercise' && !e.res; }).length, oq = errs.filter(function(e){ return e.area === 'quiz' && !e.res; }).length;
+  var B = 'style="width:auto;display:inline;padding:4px 10px"';
+  var it = [{k: 'v', w: due ? 3 : 1, t: 'مرور لغات (SRS)', d: due ? due + ' کارت سررسید یا جدید' : 'امروز مروری نیست؛ لغت جدید از تب لغات', b: due ? '<button class="mini" '+B+' data-rv="start" data-m="flip">شروع</button>' : '<button class="mini" '+B+' data-a="tab" data-v="vo">لغات</button>'},
+    {k: 'x', w: xo ? 3 : 2, t: xo ? 'تمرین گرامر و اشتباهات' : 'تمرین گرامر', d: xo ? xo + ' اشتباه باز در تمرین‌های گرامر' : '۱۰ سؤال تطبیقی', b: '<button class="mini" '+B+' data-ex="start">شروع</button>'},
+    {k: 'q', w: oq ? 2 : 1, t: 'تست Goethe', d: oq ? oq + ' اشتباه باز در تست' : 'یک دور تست کامل', b: '<button class="mini" '+B+' data-a="tab" data-v="qz">برو</button>'}];
+  var tot = it.reduce(function(a, x){ return a + x.w; }, 0), sum = 0, big = it[0];
+  it.forEach(function(x){ x.m = Math.max(5, 5 * Math.round(mins * x.w / tot / 5)); sum += x.m; if(x.w > big.w) big = x; });
+  if(mins - sum >= 5 || (sum - mins >= 5 && big.m - (sum - mins) >= 5)) big.m += mins - sum;
+  return {items: it, note: 'تمرین Schreiben و Sprechen و تمرین‌های Lesen و Hören هنوز در برنامه نیستند.'};
+}
+function planHtml(){
+  var P = buildPlan(), done = PL[dkey()] || {}, mins = prefs.mins || 40;
+  var h = '<div class="st">برنامهٔ امروز</div><div class="dc" style="margin-top:0"><div class="eb">زمان در دسترس</div><div class="chips" style="padding-top:2px">'+[20, 40, 60, 90].map(function(m){ return '<button class="chip '+(mins === m ? 'on' : '')+'" data-pl="mins" data-v="'+m+'">'+m+' دقیقه</button>'; }).join('')+'</div>';
+  P.items.forEach(function(x){ h += '<div class="eitem"><b>'+x.m+' دقیقه</b> · '+x.t+'<div class="du">'+x.d+'</div>'+x.b+' <button class="mini" style="width:auto;display:inline;padding:4px 10px" data-pl="chk" data-k="'+x.k+'">'+(done[x.k] ? '✔ انجام شد' : 'علامت انجام')+'</button></div>'; });
+  return h + '<div class="du" style="margin-top:8px">'+P.note+'</div></div>';
+}
+var _rr = renderReview;
+renderReview = function(){
+  if(ex && !ex.done) return '<div class="st">تمرین هوشمند گرامر</div>' + exSession();
+  if(ex && ex.done) return exSummary();
+  if(rv) return _rr();
+  return planHtml() + exHome() + _rr();
+};
+var _rd = renderDash;
+renderDash = function(){
+  return _rd() + exStats() + '<div class="dc" style="margin-top:12px"><div class="eb">پشتیبان‌گیری از داده‌ها</div><p class="du">یک فایل JSON از پیشرفتت (بدون رمز و بدون فایل‌های صوتی) دانلود کن یا از فایل بازیابی کن.</p><button class="btn o" data-bk="export">دانلود پشتیبان</button><label class="btn o" style="display:block;text-align:center;margin-top:8px;cursor:pointer">بازیابی از فایل<input type="file" id="bk_in" accept=".json,application/json" hidden></label></div>';
+};
+function exportData(){
+  var o = {}; BK.forEach(function(k){ var v = localStorage.getItem(k); if(v !== null) o[k] = v; });
+  var b = new Blob([JSON.stringify({app: 'haman-deutsch', v: 1, ts: Date.now(), data: o})], {type: 'application/json'}), a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download = 'haman-deutsch-backup-' + dkey() + '.json'; document.body.appendChild(a); a.click(); a.remove();
+}
+document.getElementById('app').addEventListener('click', function(e){
+  var t = e.target.closest('[data-ex],[data-pl],[data-bk]'); if(!t) return;
+  if(t.hasAttribute('data-ex')){
+    var a = t.getAttribute('data-ex');
+    if(a === 'start') exStart(false); else if(a === 'errs') exStart(true); else if(a === 'pick') exAnswer(+t.getAttribute('data-j'));
+    else if(a === 'next'){ ex.i++; ex.pick = null; if(ex.i >= ex.q.length) ex.done = true; } else if(a === 'end') ex = null;
+    view = 'rv'; render(); return;
+  }
+  if(t.hasAttribute('data-pl')){
+    var p = t.getAttribute('data-pl');
+    if(p === 'mins'){ prefs.mins = +t.getAttribute('data-v'); save('hd_prefs', prefs); }
+    else if(p === 'chk'){ var k = dkey(), kk = t.getAttribute('data-k'); PL[k] = PL[k] || {}; PL[k][kk] = !PL[k][kk]; save('hn_plan', PL); }
+    render(); return;
+  }
+  if(t.getAttribute('data-bk') === 'export') exportData();
+});
+document.getElementById('app').addEventListener('change', function(e){
+  if(e.target.id !== 'bk_in') return;
+  var f = e.target.files[0]; if(!f || f.size > 3000000){ alert('فایل نامعتبر یا خیلی بزرگ است.'); return; }
+  var r = new FileReader();
+  r.onload = function(){ try{ var j = JSON.parse(r.result); if(j.app !== 'haman-deutsch' || j.v !== 1 || typeof j.data !== 'object') throw 0;
+    Object.keys(j.data).forEach(function(k){ if(BK.indexOf(k) >= 0 && typeof j.data[k] === 'string'){ JSON.parse(j.data[k]); localStorage.setItem(k, j.data[k]); } });
+    alert('بازیابی انجام شد؛ برنامه دوباره بارگذاری می‌شود.'); location.reload(); }catch(err){ alert('فایل پشتیبان معتبر نیست.'); } };
+  r.readAsText(f);
+});
+
+render();
 </script>
 </body>
 </html>
